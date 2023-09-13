@@ -35,6 +35,9 @@
             <%= link_to "ユーザーログイン", new_user_session_path %>
           </li>
           <li>
+            <%= link_to "ゲストユーザーログイン", homes_guest_sign_in_path, method: :post %>
+          </li>
+          <li>
             <%= link_to "管理者ログイン", new_admin_session_path %>
           </li>
         <% end %>
