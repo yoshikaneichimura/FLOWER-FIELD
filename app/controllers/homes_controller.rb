@@ -14,4 +14,16 @@ class HomesController < ApplicationController
   sign_in user
   redirect_to about_path, notice: 'ゲストユーザーとしてログインしました'
   end
+
+  def guest_admin_sign_in
+    admin = Admin.find_or_create_by!(email: 'guest-admin@example.com') do |admin|
+    admin.name = "ゲスト管理者"
+    admin.password = SecureRandam.urlsafe_base64
+    end
+
+  sign_in admin
+  redirect_to about_path, notice: 'ゲスト管理者としてログインしました'
+
+  end
+
 end

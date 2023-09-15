@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
-  
+
   post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+  post '/homes/guest_admin/sign_in', to: 'homes#guest_admin_sign_in'
 
   devise_for :users,skip: [:passwords], controllers:{
     registrations: "user/registrations",
