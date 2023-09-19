@@ -35,7 +35,7 @@
             <%= link_to "ユーザーログイン", new_user_session_path %>
           </li>
           <li>
-            <%= link_to "ゲストユーザーログイン", homes_guest_sign_in_path, method: :post %>
+            <%= link_to "ゲストユーザーログイン", user_guest_sign_in_path, method: :post %>
           </li>
           <li>
             <%= link_to "管理者ログイン", new_admin_session_path %>
@@ -47,6 +47,16 @@
         </ul>
       </nav>
     </header>
+
+    <div>
+      <% if user_signed_in? %>
+        <h3><%= current_user.name %></h3>
+        <%= link_to 'ユーザーのプロフィールの編集',edit_user_registration_path %>
+      <% elsif admin_signed_in? %>
+        <h3><%= current_admin.name %></h3>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
