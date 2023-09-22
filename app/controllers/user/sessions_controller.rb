@@ -28,6 +28,5 @@ class User::SessionsController < Devise::SessionsController
     user = User.guest
     sign_in user
     redirect_to about_path, notice: 'ゲストユーザーとしてログインしました'
-
   end
 end
