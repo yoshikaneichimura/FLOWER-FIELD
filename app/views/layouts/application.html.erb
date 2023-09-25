@@ -47,17 +47,6 @@
         </ul>
       </nav>
     </header>
-
-    <div>
-      <% if user_signed_in? %>
-        <h3><%= current_user.name %></h3>
-        <%= link_to 'ユーザーのプロフィールの編集',edit_user_registration_path %>
-      <% elsif admin_signed_in? %>
-        <h3><%= current_admin.name %></h3>
-        <%= link_to '管理者のプロフィールの編集',edit_admin_registration_path %>
-      <% end %>
-    </div>
-
     <%= yield %>
   </body>
 </html>
