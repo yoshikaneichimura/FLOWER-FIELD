@@ -7,3 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 admin = Admin.new(:email => 'admin@test.com',:password => 'qqqqqq',:name => 'admin')
 admin.save!
+
+Tag.create([
+  { area: '北海道'},
+  { area: '東北'},
+  { area: '関東'},
+  { area: '信越'},
+  { area: '東海'},
+  { area: '北陸'},
+  { area: '近畿'},
+  { area: '中国'},
+  { area: '四国'},
+  { area: '九州'},
+  { area: '沖縄'},
+  ])
