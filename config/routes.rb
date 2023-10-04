@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
 
-  # post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
-  # post '/homes/guest_admin/sign_in', to: 'homes#guest_admin_sign_in'
-
   devise_for :users, controllers:{
     registrations: "user/registrations",
     password: 'user/passwords',
@@ -14,6 +11,10 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     post 'user/guest_sign_in',to: 'user/sessions#guest_sign_in'
+  end
+
+  namespace :user do
+    resources :post_images, only: [:new,:create,:index,:show,:edit,:update,:destroy]
   end
 
   devise_for :admin,skip: [:passwords], controllers: {

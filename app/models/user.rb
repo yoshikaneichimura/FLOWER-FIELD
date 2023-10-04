@@ -9,4 +9,5 @@ class User < ApplicationRecord
       user.name = "ゲストユーザー"
     end
   end
+  has_many :post_images, dependent: :destroy
 end

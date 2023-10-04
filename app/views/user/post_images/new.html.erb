@@ -1,0 +1,28 @@
+<h1>NEW</h1>
+
+<%= form_with model: @post_image, url: user_post_images_path, method: :post do |f| %>
+
+<h3>地域</h3>
+<%= f.collection_select(:tag_id,Tag.all,:id,:area)%>
+
+<h3>花の名前</h3>
+<%= f.text_field :flower %>
+
+<h3>花が咲いていた場所</h3>
+<%= f.text_field :field %>
+
+<h3>花が咲いていた日</h3>
+<%= f.date_field :day %>
+
+<h3>開花状況</h3>
+
+
+<h3>住所（任意）</h3>
+<%= f.text_area :address %>
+
+<h3>詳細（任意）</h3>
+<%= f.text_area :detail %>
+
+<%= f.submit '投稿' %>
+
+<% end %>
