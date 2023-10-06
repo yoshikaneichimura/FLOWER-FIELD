@@ -11,6 +11,7 @@ class User::PostImagesController < ApplicationController
   end
 
   def index
+    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images : PostImage.all
   end
 
   def show

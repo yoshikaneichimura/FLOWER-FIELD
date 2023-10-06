@@ -1,2 +1,34 @@
-<h1>User::PostImages#index</h1>
-<p>Find me in app/views/user/post_images/index.html.erb</p>
+<h1>FLOWER-FIELD INDEX</h1>
+
+<%= form_with url: user_post_images_path, method: :get, class: 'boards_searchForm' do %>
+  <%= select_tag :tag_id,
+    options_from_collection_for_select(Tag.all, :id, :area, params[:tag_id]),
+    {
+      prompt: 'エリアで絞り込み',
+      onchange: 'submit(this.form);'
+    }
+  %>
+  <% end %>
+
+<table>
+    <thead>
+      <tr>
+        <th>花の名前</th>
+        <th>花が咲いていた場所</th>
+        <th>花が咲いていた日</th>
+        <th>開花状況</th>
+        <th>投稿者</th>
+      </tr>
+    </thead>
+    <tbody>
+       <% @post_images.each do | post_image | %>
+      <tr>
+        <td><%= post_image.flower %></td>
+        <td><%= post_image.field %></td>
+        <td><%= post_image.day %></td>
+        <td><%= post_image.star %></td>
+        <td><%= post_image.user.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
