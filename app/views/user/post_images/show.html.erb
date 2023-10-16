@@ -1,7 +1,13 @@
 <h1>投稿内容</h1>
 
+<h3>投稿ユーザー画像<h3>
+<%= image_tag 'person.jpg' %>
+
 <h3>地域</h3>
 <p><%= @post_image.tag.area %></p>
+
+<h3>画像</h3>
+<p><%= image_tag @post_image.get_image(300,300) %></p>
 
 <h3>花の名前</h3>
 <p><%= @post_image.flower %></p>

@@ -5,6 +5,9 @@
 <h3>地域</h3>
 <%= f.collection_select(:tag_id,Tag.all,:id,:area)%>
 
+<h3>画像</h3>
+<%= f.file_field :image, accept: "image/*" %>
+
 <h3>花の名前</h3>
 <%= f.text_field :flower %>
 
