@@ -33,7 +33,20 @@
         <td><%= post_image.flower %></td>
         <td><%= post_image.field %></td>
         <td><%= post_image.day %></td>
-        <td><%= post_image.star %></td>
+        <td>
+          <div id="star<%= post_image.id %>"></div>
+          <script>
+            $('#star<%= post_image.id %>').empty();
+            $('#star<%= post_image.id %>').raty({
+              size     : 36,
+              starOff  : "<%= asset_path('star-off.png') %>",
+              starOn   : "<%= asset_path('star-on.png') %>",
+              score: <%= post_image.star%>,
+              half: false,
+              readOnly: true,
+            });
+          </script>
+        </td>
         <td><%= post_image.user.name %></td>
       </tr>
       <% end %>

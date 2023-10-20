@@ -19,7 +19,21 @@
 <p><%= @post_image.day %></p>
 
 <h3>開花状況</h3>
-<p><%= @post_image.star %></p>
+<p>
+  <!--@post_image.star-->
+  <div id="star<%= @post_image.id %>"></div>
+    <script>
+      $('#star<%= @post_image.id %>').empty();
+      $('#star<%= @post_image.id %>').raty({
+        size     : 36,
+        starOff  : "<%= asset_path('star-off.png') %>",
+        starOn   : "<%= asset_path('star-on.png') %>",
+        score: <%= @post_image.star%>,
+        half: false,
+        readOnly: true,
+      });
+    </script>
+</p>
 
 <h3>住所</h3>
 <p><%= @post_image.address %></p>

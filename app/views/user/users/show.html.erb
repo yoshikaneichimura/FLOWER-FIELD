@@ -1,0 +1,35 @@
+<% if @user.id == current_user.id %>
+ <h1>あなたのプロフィール</h1>
+  <% else %>
+ <h1>このユーザーのプロフィール</h1>
+<% end %>
+
+<div>
+  <%= image_tag @user.get_profile_image(100,100) %>
+</div>
+<p><%= @user.name %></p>
+<p><%= @user.introduction %></p>
+
+<div>
+  <h1>投稿一覧</h1>
+  <table>
+    <thead>
+      <th></th>
+      <th>花の名前</th>
+      <th>花の咲いていた場所</th>
+      <th>花の咲いていた日付</th>
+    </thead>
+    <tbody>
+    <% @post_images.each do | post_image | %>
+      <td>
+        <%= link_to user_post_image_path(post_image.id) do %>
+          <%= image_tag post_image.get_image(100,100) %>
+        <% end %>
+      </td>
+      <td><%= post_image.flower %></td>
+      <td><%= post_image.field %></td>
+      <td><%= post_image.day %></td>
+    </tbody>
+    <% end %>
+  </table>
+</div>

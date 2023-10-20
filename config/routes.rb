@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  # namespace :user do
+  #   get 'users/index'
+  #   get 'users/show'
+  #   get 'users/edit'
+  # end
   root to: 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
 
@@ -15,6 +20,7 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :post_images, only: [:new,:create,:index,:show,:edit,:update,:destroy]
+    resources :users, only: [:index,:show,:edit]
   end
 
   devise_for :admin,skip: [:passwords], controllers: {

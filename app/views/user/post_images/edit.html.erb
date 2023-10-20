@@ -19,6 +19,19 @@
 
 <h3>開花状況</h3>
 
+<div id="star">
+  <%= f.hidden_field :star, id: :star %>
+</div>
+<script>
+  $('#star').empty();
+  $('#star').raty({
+    size     : 36,
+    starOff  : "<%= asset_path('star-off.png') %>",
+    starOn   : "<%= asset_path('star-on.png') %>",
+    scoreName: 'post_image[star]',
+    half: false,
+  });
+</script>
 
 <h3>住所（任意）</h3>
 <%= f.text_area :address %>
@@ -27,6 +40,5 @@
 <%= f.text_area :detail %>
 
 <%= f.submit 'この内容で編集' %>
-
 
 <% end %>
