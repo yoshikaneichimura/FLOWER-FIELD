@@ -10,6 +10,11 @@
 <p><%= @user.name %></p>
 <p><%= @user.introduction %></p>
 
+<% if @user.id == current_user.id %>
+  <%= link_to "プロフィールを編集する",edit_user_user_path %><br>
+  <%= link_to 'メールアドレスパスワードを変更する',edit_user_registration_path %>
+<% end %>
+
 <div>
   <h1>投稿一覧</h1>
   <table>

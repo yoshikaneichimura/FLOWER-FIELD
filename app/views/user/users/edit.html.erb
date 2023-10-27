@@ -1,2 +1,12 @@
-<h1>User::Users#edit</h1>
-<p>Find me in app/views/user/users/edit.html.erb</p>
+<h1>プロフィールを編集する</h1>
+
+  <%= form_with model: @user,url: user_user_path, method: :patch do |f| %>
+  <p>プロフィール画像</p>
+  <%= f.file_field :profile_image, accept: "image/*"%>
+  <p>名前</p>
+  <%= f.text_field :name %>
+  <p>自己紹介</p>
+  <%= f.text_area :introduction %>
+
+  <%= f.submit "この内容で保存する"%>
+<% end %>
