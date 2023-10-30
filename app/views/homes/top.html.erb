@@ -1,10 +1,17 @@
 <h1>HOME</h1>
 <div>
-  <% if user_signed_in? %>
-    <h3><%= current_user.name %></h3>
-    <%= link_to 'ユーザーのプロフィールの編集',edit_user_registration_path %>
-  <% elsif admin_signed_in? %>
+  <% if admin_signed_in? %>
     <h3><%= current_admin.name %></h3>
     <%= link_to '管理者のプロフィールの編集',edit_admin_registration_path %>
   <% end %>
 </div>
+
+<div>
+  <% if ! (user_signed_in?)||(admin_signed_in?)  %>
+    <%= link_to "管理者ログイン", new_admin_session_path %><br>
+    <%= link_to "ゲストユーザーログイン", user_guest_sign_in_path, method: :post %><br>
+    <%= link_to "ゲスト管理者ログイン" ,admin_guest_sign_in_path,method: :post %>
+  <% end %>
+</div>
+
+

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     when Admin
       root_path
     when User
-      about_path
+      user_user_path(@user.id)
     end
   end
 
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     when :admin
       root_path
     when :user
-      about_path
+      root_path
     end
   end
 
