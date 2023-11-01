@@ -10,4 +10,12 @@ class PostImage < ApplicationRecord
     end
       image.variant(resize_to_limit: [width,height]).processed
   end
+
+  def self.search(search)
+    if search
+      PostImage.where(['flower LIKE ?',"%#{search}%"])
+    else
+      PostImage.all
+    end
+  end
 end

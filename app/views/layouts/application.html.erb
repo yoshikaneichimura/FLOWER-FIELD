@@ -29,6 +29,9 @@
           <li>
             <%= link_to "ユーザー一覧",user_users_path %>
           </li>
+          <li>
+            <%= link_to "花の名前を検索",user_post_image_search_path %>
+          </li>
         <% elsif admin_signed_in? %>
           <li>
             <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete %>

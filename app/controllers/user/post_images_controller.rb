@@ -34,6 +34,10 @@ class User::PostImagesController < ApplicationController
     post_image.destroy
     redirect_to user_post_images_path
   end
+  
+  def search
+    @post_images = PostImage.search(params[:search])
+  end
 
   private
 
