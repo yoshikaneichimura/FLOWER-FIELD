@@ -44,3 +44,17 @@
 <%= link_to "この投稿を編集する" ,edit_user_post_image_path %>
 <%= link_to "この投稿を削除する" ,user_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？"%>
 
+<div>
+  <% @post_image.post_comments.each do | post_comment | %>
+    <%= post_comment.comment %>
+  <% end %>
+</div>
+
+<!--url: user_post_image_post_comments_path-->
+
+<div>
+  <%= form_with model: [@post_image, @post_comment],url: user_post_image_post_comments_path(@post_image.id), method: :post do |f| %>
+    <%= f. text_area :comment %>
+    <%= f. submit "送信する" %>
+  <% end %>
+</div>

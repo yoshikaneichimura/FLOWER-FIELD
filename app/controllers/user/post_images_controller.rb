@@ -17,6 +17,7 @@ class User::PostImagesController < ApplicationController
 
   def show
     @post_image = PostImage.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit
@@ -34,7 +35,7 @@ class User::PostImagesController < ApplicationController
     post_image.destroy
     redirect_to user_post_images_path
   end
-  
+
   def search
     @post_images = PostImage.search(params[:search])
   end
@@ -44,5 +45,4 @@ class User::PostImagesController < ApplicationController
   def post_image_params
     params.require(:post_image).permit(:user_id,:tag_id,:flower,:field,:day,:star,:address,:detail,:image)
   end
-
 end
