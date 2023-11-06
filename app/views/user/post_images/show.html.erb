@@ -50,8 +50,6 @@
   <% end %>
 </div>
 
-<!--url: user_post_image_post_comments_path-->
-
 <div>
   <%= form_with model: [@post_image, @post_comment],url: user_post_image_post_comments_path(@post_image.id), method: :post do |f| %>
     <%= f. text_area :comment %>
