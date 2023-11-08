@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :post_images, only: [:new,:create,:index,:show,:edit,:update,:destroy] do
-      resources :post_comments, only: [:create]
+      resources :post_comments, only: [:create,:destroy]
     end
     get 'post_image/search' => 'post_images#search'
     resources :users, only: [:index,:show,:edit,:update]

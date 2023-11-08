@@ -20,7 +20,6 @@
 
 <h3>開花状況</h3>
 <p>
-  <!--@post_image.star-->
   <div id="star<%= @post_image.id %>"></div>
     <script>
       $('#star<%= @post_image.id %>').empty();
@@ -45,14 +44,21 @@
 <%= link_to "この投稿を削除する" ,user_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？"%>
 
 <div>
+  <p>コメント件数：<%= @post_image.post_comments.count %></p>
   <% @post_image.post_comments.each do | post_comment | %>
-    <%= post_comment.comment %>
+    <%= image_tag post_comment.user.get_profile_image(100,100) %>
+    <%= post_comment.user.name %><br>
+    <%= post_comment.comment %><br>
+    <%= post_comment.created_at.strftime('%Y/%m/%d')%><br>
+    <% if post_comment.user == current_user %>
+      <%= link_to "このコメントを削除する", user_post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %><br>
+    <% end %>
   <% end %>
 </div>
 
 <div>
   <%= form_with model: [@post_image, @post_comment],url: user_post_image_post_comments_path(@post_image.id), method: :post do |f| %>
-    <%= f. text_area :comment %>
+    <%= f. text_area :comment , placeholder: "コメントをここに" %>
     <%= f. submit "送信する" %>
   <% end %>
 </div>
