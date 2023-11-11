@@ -62,3 +62,19 @@
     <%= f. submit "送信する" %>
   <% end %>
 </div>
+
+<div>
+  <% if @post_image.favorited_by?(current_user) %>
+    <p>
+      <%= link_to user_post_image_favorite_path(@post_image), method: :delete do %>
+      ♥<%= @post_image.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% else %>
+    <p>
+      <%= link_to user_post_image_favorite_path(@post_image), method: :post do %>
+      ♡<%= @post_image.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+</div>
