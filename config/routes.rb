@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :user do
+    get 'relationships/followings'
+    get 'relationships/followers'
+  end
   # namespace :user do
   #   get 'users/index'
   #   get 'users/show'
@@ -24,7 +28,11 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
     end
     get 'post_image/search' => 'post_images#search'
-    resources :users, only: [:index,:show,:edit,:update]
+    resources :users, only: [:index,:show,:edit,:update] do
+      resource :relationships, only: [:create, :destroy]
+        get 'folloewings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
+    end
   end
 
   devise_for :admin,skip: [:passwords], controllers: {
