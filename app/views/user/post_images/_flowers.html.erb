@@ -1,0 +1,42 @@
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>画像</th>
+        <th>花の名前</th>
+        <th>花が咲いていた場所</th>
+        <th>花が咲いていた日</th>
+        <th>開花状況</th>
+        <th>投稿者</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% post_images.each do | post_image | %>
+      <tr>
+        <td><%= link_to user_post_image_path(post_image.id) do %>
+              <%= image_tag post_image.get_image(100,100) %>
+            <% end %>
+        </td>
+        <td><%= post_image.flower %></td>
+        <td><%= post_image.field %></td>
+        <td><%= post_image.day %></td>
+        <td>
+          <div id="star<%= post_image.id %>"></div>
+          <script>
+            $('#star<%= post_image.id %>').empty();
+            $('#star<%= post_image.id %>').raty({
+              size     : 36,
+              starOff  : "<%= asset_path('star-off.png') %>",
+              starOn   : "<%= asset_path('star-on.png') %>",
+              score: <%= post_image.star%>,
+              half: false,
+              readOnly: true,
+            });
+          </script>
+        </td>
+        <td><%= link_to "#{post_image.user.name}",user_user_path(post_image.user.id) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

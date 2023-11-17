@@ -1,33 +1,15 @@
-<% if @user.id == current_user.id %>
- <h3>あなたのプロフィール</h3>
-  <% else %>
- <h3>このユーザーのプロフィール</h3>
-<% end %>
-
-<div>
-  <%= image_tag @user.get_profile_image(100,100) %>
-</div>
-<p><%= @user.name %></p>
-<p><%= @user.introduction %></p>
-
-<% if current_user.following?(@user)%>
-  <p><strong><%= link_to "フォローを外す", user_user_relationships_path(@user.id), method: :delete %></strong></p>
-<% elsif current_user != @user %>
-  <p><strong><%= link_to "フォローする", user_user_relationships_path(@user.id), method: :post %></strong></p>
-<% end %>
-
-<p><%= link_to "#{@user.followings.count} ：フォロー中", user_user_followings_path(@user.id) %></p>
-<p><%= link_to "#{@user.followers.count} ：フォロワー", user_user_followers_path(@user.id) %></p>
-
-<% if @user.id == current_user.id %>
-  <%= link_to "プロフィールを編集する",edit_user_user_path(@user.id) %><br>
-  <%= link_to 'メールアドレス、パスワードを変更する',edit_user_registration_path(@user.id) %>
-<% end %>
+<%= render 'user/users/profile', user: @user %>
 
 <% if current_user == @user %>
-  <h1>あなたがフォロー中のユーザー</h1>
+  <h3>あなたがフォロー中のユーザー</h3>
 <% else %>
-  <h1><%= @user.name %>さんがフォロー中のユーザー</h1>
+  <h3><%= @user.name %>さんがフォロー中のユーザー</h3>
 <% end %>
 
-<%= render 'follow_list',users: @users %>
+<% if @users.exists? %>
+ <%= render 'user/users/users', users: @users %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
+
+<%= link_to "ユーザー情報に戻る",user_user_path(@user.id)%>

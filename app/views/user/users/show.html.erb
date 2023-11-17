@@ -1,49 +1,9 @@
-<% if @user.id == current_user.id %>
- <h1>あなたのプロフィール</h1>
-  <% else %>
- <h1>このユーザーのプロフィール</h1>
+<%= render 'profile', user: @user %>
+
+<% if %>
+  <h3>あなたの花の咲く場所</h3>
+<% else %>
+  <h3>このユーザーの花の咲く場所</h3>
 <% end %>
 
-<div>
-  <%= image_tag @user.get_profile_image(100,100) %>
-</div>
-<p><%= @user.name %></p>
-<p><%= @user.introduction %></p>
-
-<% if current_user.following?(@user)%>
-  <p><strong><%= link_to "フォローを外す", user_user_relationships_path(@user.id), method: :delete %></strong></p>
-<% elsif current_user != @user %>
-  <p><strong><%= link_to "フォローする", user_user_relationships_path(@user.id), method: :post %></strong></p>
-<% end %>
-
-<p><%= link_to "#{@user.followings.count} フォロー中", user_user_followings_path(@user.id) %></p>
-<p><%= link_to "#{@user.followers.count} フォロワー", user_user_followers_path(@user.id) %></p>
-
-<% if @user.id == current_user.id %>
-  <%= link_to "プロフィールを編集する",edit_user_user_path %><br>
-  <%= link_to 'メールアドレス、パスワードを変更する',edit_user_registration_path %>
-<% end %>
-
-<div>
-  <h1>投稿一覧</h1>
-  <table>
-    <thead>
-      <th></th>
-      <th>花の名前</th>
-      <th>花の咲いていた場所</th>
-      <th>花の咲いていた日付</th>
-    </thead>
-    <tbody>
-    <% @post_images.each do | post_image | %>
-      <td>
-        <%= link_to user_post_image_path(post_image.id) do %>
-          <%= image_tag post_image.get_image(100,100) %>
-        <% end %>
-      </td>
-      <td><%= post_image.flower %></td>
-      <td><%= post_image.field %></td>
-      <td><%= post_image.day %></td>
-    </tbody>
-    <% end %>
-  </table>
-</div>
+<%= render 'user/post_images/flowers', post_images: @post_images %>
