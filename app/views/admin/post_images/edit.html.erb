@@ -1,0 +1,35 @@
+<h1>投稿内容の編集</h1>
+
+<div>
+  <%= form_with model: @post_image, url: admin_post_image_path, method: :patch do |f| %>
+    <h3>地域</h3>
+    <%= f.collection_select(:tag_id,Tag.all,:id,:area)%>
+    <h3>画像</h3>
+    <%= f.file_field :image, accept: "image/*" %>
+    <h3>花の名前</h3>
+    <%= f.text_field :flower %>
+    <h3>花が咲いていた場所</h3>
+    <%= f.text_field :field %>
+    <h3>花が咲いていた日</h3>
+    <%= f.date_field :day %>
+    <h3>開花状況</h3>
+    <div id="star">
+      <%= f.hidden_field :star, id: :star %>
+    </div>
+      <script>
+        $('#star').empty();
+        $('#star').raty({
+          size     : 36,
+          starOff  : "<%= asset_path('star-off.png') %>",
+          starOn   : "<%= asset_path('star-on.png') %>",
+          scoreName: 'post_image[star]',
+          half: false,
+        });
+      </script>
+    <h3>住所（任意）</h3>
+    <%= f.text_area :address %>
+    <h3>詳細（任意）</h3>
+    <%= f.text_area :detail %>
+    <%= f.submit 'この内容で投稿する' %>
+  <% end %>
+</div>
