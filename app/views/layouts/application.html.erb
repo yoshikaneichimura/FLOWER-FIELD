@@ -23,16 +23,16 @@
           </li>
         <% if user_signed_in? %>
           <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
-          <li>
-            <%= link_to "花の咲く場所を投稿する", new_user_post_image_path %>
+            <%= link_to "マイページ", user_user_path(current_user.id) %>
           </li>
           <li>
             <%= link_to "花の咲く場所", user_post_images_path %>
           </li>
           <li>
             <%= link_to "花を見つけた人達",user_users_path %>
+          </li>
+          <li>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           </li>
         <% elsif admin_signed_in? %>
           <li>
@@ -56,6 +56,7 @@
       </nav>
       <% if user_signed_in? %>
         <p><%= image_tag current_user.get_profile_image(50,50)%>ようこそ<strong><%= current_user.name %></strong>様</p>
+        <%= link_to "花の咲く場所を投稿する",new_user_post_image_path(current_user.id)%>
         <p>花の名前を検索</p>
         <%= form_tag(user_post_image_search_path, :method => 'get' ) do  %>
           <%= text_field_tag :search %>

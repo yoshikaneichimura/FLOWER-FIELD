@@ -1,7 +1,7 @@
 <h1>投稿内容</h1>
 
 <h3>投稿ユーザー画像<h3>
-<%= image_tag 'person.jpg' %>
+<%= image_tag @post_image.user.get_profile_image(100,100) %>
 
 <h3>地域</h3>
 <p><%= @post_image.tag.area %></p>

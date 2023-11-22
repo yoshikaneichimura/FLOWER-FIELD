@@ -1,6 +1,6 @@
 <%= render 'profile', user: @user %>
 
-<% if %>
+<% if @user == current_user %>
   <h3>あなたの花の咲く場所</h3>
 <% else %>
   <h3>このユーザーの花の咲く場所</h3>

@@ -1,7 +1,8 @@
 <div>
-  <% if user.id == current_user.id %>
+  <% if user == current_user %>
    <h3>あなたのプロフィール</h3>
-    <% else %>
+   <p><%= link_to "花の咲く場所を投稿する", new_user_post_image_path %><p>
+  <% else %>
    <h3>このユーザーのプロフィール</h3>
   <% end %>
   <%= image_tag user.get_profile_image(200,200) %>
