@@ -1,0 +1,12 @@
+<h1>このユーザーのプロフィールを編集する</h1>
+
+  <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
+  <p>プロフィール画像</p>
+  <%= f.file_field :profile_image, accept: "image/*"%>
+  <p>名前</p>
+  <%= f.text_field :name %>
+  <p>自己紹介</p>
+  <%= f.text_area :introduction %>
+
+  <%= f.submit "この内容で保存する"%>
+<% end %>
