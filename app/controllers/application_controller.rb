@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case resource
     when Admin
-      root_path
+      admin_users_path
     when User
       user_user_path(@user.id)
     end
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     when :admin
       root_path
     when :user
-      root_path
+      about_path
     end
   end
 

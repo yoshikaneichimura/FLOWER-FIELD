@@ -1,6 +1,6 @@
 <h1>投稿一覧</h1>
 
-<%= form_with url: user_post_images_path, method: :get, class: 'boards_searchForm' do %>
+<%= form_with url: admin_post_images_path, method: :get, class: 'boards_searchForm' do %>
   <%= select_tag :tag_id,
     options_from_collection_for_select(Tag.all, :id, :area, params[:tag_id]),
     {

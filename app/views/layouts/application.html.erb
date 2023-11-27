@@ -36,13 +36,16 @@
           </li>
         <% elsif admin_signed_in? %>
           <li>
-            <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete %>
-          </li>
-          <li>
             <%=link_to "投稿一覧" ,admin_post_images_path %>
           </li>
           <li>
             <%=link_to "投稿者一覧" ,admin_users_path %>
+          </li>
+          <li>
+            <%= link_to '管理者情報の編集',edit_admin_registration_path %>
+          </li>
+          <li>
+            <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete %>
           </li>
         <% else %>
           <li>
