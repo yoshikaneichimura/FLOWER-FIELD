@@ -9,4 +9,7 @@
   <%= f.text_area :introduction %>
 
   <%= f.submit "この内容で保存する"%>
+
 <% end %>
+
+<%= link_to "退会する",user_user_unsubscribes_path(@user.id) %>

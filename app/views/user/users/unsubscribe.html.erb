@@ -1,0 +1,4 @@
+<h1>退会確認面</h1>
+
+<p><%= link_to "退会する", user_user_withdraw_path , method: :patch,　date: { confilm: "本当に退会しますか"} %></p>
+<p><%= link_to "退会しない",user_user_path(@user.id)%></p>

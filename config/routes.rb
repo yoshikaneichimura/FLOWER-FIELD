@@ -27,8 +27,12 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+
     get 'post_image/search' => 'post_images#search'
+
     resources :users, only: [:index,:show,:edit,:update] do
+    get 'unsubscribes' => 'users#unsubscribe'
+    patch 'withdraw' => 'users#withdraw'
       resource :relationships, only: [:create, :destroy]
         get 'folloewings' => 'relationships#followings', as: 'followings'
         get 'followers' => 'relationships#followers', as: 'followers'

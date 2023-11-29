@@ -17,6 +17,17 @@ class User::UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.update(user_params)
     redirect_to user_user_path
+  end
+
+  def unsubscribe
+    @user = current_user
+  end
+
+  def withdraw
+    user = current_user
+    user.update(is_active: false)
+    reset_session
+    redirect_to about_path
 
   end
 
