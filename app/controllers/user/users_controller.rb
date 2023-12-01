@@ -28,14 +28,11 @@ class User::UsersController < ApplicationController
     user.update(is_active: false)
     reset_session
     redirect_to about_path
-
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
-
+    params.require(:user).permit(:name, :introduction, :is_active, :profile_image)
   end
-
 end

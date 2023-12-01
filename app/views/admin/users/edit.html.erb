@@ -7,6 +7,12 @@
   <%= f.text_field :name %>
   <p>自己紹介</p>
   <%= f.text_area :introduction %>
-
+  <p>会員状況</p>
+  
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :"有効会員" %>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :"退会済み" %>
+  
   <%= f.submit "この内容で保存する"%>
 <% end %>
