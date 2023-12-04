@@ -34,7 +34,9 @@
             });
           </script>
         </td>
-        <td><%= post_image.user.name %></td>
+        <td>
+          <%= link_to "#{post_image.user.name}",admin_user_path(post_image.user.id) %>
+        </td>
       </tr>
       <% end %>
     </tbody>
