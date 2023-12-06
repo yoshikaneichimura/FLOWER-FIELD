@@ -11,6 +11,9 @@ class User < ApplicationRecord
   end
 
   has_one_attached :profile_image
+
+  validates :name,  presence: true
+
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy

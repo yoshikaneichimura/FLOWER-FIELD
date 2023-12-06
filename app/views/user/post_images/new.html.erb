@@ -1,6 +1,15 @@
 <h1>花の咲く場所の投稿</h1>
 <h3>あなたの見つけた花の咲く場所と投稿してみましょう</h3>
 
+<% if @post_image.errors.any? %>
+  <%= @post_image.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @post_image.errors.full_messages.each do | message |%>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div>
   <%= form_with model: @post_image, url: user_post_images_path, method: :post do |f| %>
     <h3>地域</h3>

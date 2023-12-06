@@ -1,5 +1,22 @@
 <h1>投稿内容</h1>
 
+<% if flash[:notice] %>
+  <p id = "notice">
+    <%= flash[:notice]%>
+  </p>
+<% end %>
+
+<% if @error_comment.present? %>
+  <div id="error_explanation" >
+    <h3><%= @error_comment.errors.count %>件のエラーが発生しました</h3>
+    <ul>
+      <% @error_comment.errors.full_messages.each do | message | %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <h3>投稿ユーザー画像<h3>
 <%= image_tag @post_image.user.get_profile_image(100,100) %>
 
@@ -40,7 +57,7 @@
 <h3>詳細</h3>
 <p><%= @post_image.detail %></p>
 
-<%= link_to "この投稿を編集する" ,edit_user_post_image_path %>
+<%= link_to "この投稿を編集する" ,edit_user_post_image_path(@post_image) %>
 <%= link_to "この投稿を削除する" ,user_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？"%>
 
 <div>

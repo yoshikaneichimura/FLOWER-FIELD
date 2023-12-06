@@ -1,5 +1,6 @@
 class User::PostImagesController < ApplicationController
   before_action :authenticate_user!
+
   def new
     @post_image = PostImage.new
   end
@@ -7,8 +8,12 @@ class User::PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
-    @post_image.save
-    redirect_to user_post_image_path(@post_image.id)
+    if @post_image.save
+      flash[:notice] = "投稿しました"
+      redirect_to user_post_image_path(@post_image.id)
+    else
+      render :new
+    end
   end
 
   def index
@@ -26,8 +31,12 @@ class User::PostImagesController < ApplicationController
 
   def update
     @post_image = PostImage.find(params[:id])
-    @post_image.update(post_image_params)
-    redirect_to user_post_image_path(@post_image.id)
+    if @post_image.update(post_image_params)
+      flash[:notice] = "投稿内容を編集しました"
+      redirect_to user_post_image_path(@post_image.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

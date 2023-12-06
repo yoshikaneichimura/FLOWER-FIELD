@@ -1,5 +1,14 @@
 <h1>投稿内容の編集</h1>
 
+<% if @post_image.errors.any? %>
+  <%= @post_image.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @post_image.errors.full_messages.each do | message |%>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <div>
   <%= form_with model: @post_image, url: user_post_image_path, method: :patch do |f| %>
     <h3>地域</h3>

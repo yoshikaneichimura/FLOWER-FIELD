@@ -15,8 +15,12 @@ class User::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_user_path
+    if  @user.update(user_params)
+      flash[:notice] = "ユーザー情報を更新しました"
+      redirect_to user_user_path
+    else
+        render :edit
+    end
   end
 
   def unsubscribe
