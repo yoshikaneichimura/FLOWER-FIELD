@@ -1,5 +1,14 @@
 <h1>このユーザーのプロフィールを編集する</h1>
 
+  <% if @user.errors.any? %>
+    <%= @user.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @user.errors.full_messages.each do | message |%>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
   <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
   <p>プロフィール画像</p>
   <%= f.file_field :profile_image, accept: "image/*"%>
@@ -8,11 +17,11 @@
   <p>自己紹介</p>
   <%= f.text_area :introduction %>
   <p>会員状況</p>
-  
+
   <%= f.radio_button :is_active, true %>
   <%= f.label :"有効会員" %>
   <%= f.radio_button :is_active, false %>
   <%= f.label :"退会済み" %>
-  
+
   <%= f.submit "この内容で保存する"%>
 <% end %>

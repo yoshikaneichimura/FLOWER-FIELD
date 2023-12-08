@@ -1,5 +1,11 @@
 <h1>投稿内容</h1>
 
+<% if flash[:notice] %>
+  <p id = "notice">
+    <%= flash[:notice]%>
+  </p>
+<% end %>
+
 <h3>投稿ユーザー画像<h3>
 <%= image_tag 'person.jpg' %>
 

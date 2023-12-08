@@ -1,4 +1,11 @@
 <h1>投稿者詳細</h1>
+
+<% if flash[:notice] %>
+  <p id = "notice">
+    <%= flash[:notice]%>
+  </p>
+<% end %>
+
 <div>
   <h3>このユーザーのプロフィール</h3>
   <% if @user.is_active == true %>
