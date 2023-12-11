@@ -56,9 +56,9 @@
     <%= post_comment.user.name %><br>
     <%= post_comment.comment %><br>
     <%= post_comment.created_at.strftime('%Y/%m/%d')%><br>
-    <% if post_comment.user == current_user %>
-      <%= link_to "このコメントを削除する", user_post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %><br>
-    <% end %>
+
+      <%= link_to "このコメントを削除する", admin_post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %><br>
+
   <% end %>
 </div>
 
