@@ -7,23 +7,17 @@
 <% end %>
 
 <h3>投稿ユーザー画像<h3>
-<%= image_tag 'person.jpg' %>
-
+<p><%= image_tag @post_image.user.get_profile_image(100,100) %><p>
 <h3>地域</h3>
 <p><%= @post_image.tag.area %></p>
-
 <h3>画像</h3>
 <p><%= image_tag @post_image.get_image(300,300) %></p>
-
 <h3>花の名前</h3>
 <p><%= @post_image.flower %></p>
-
 <h3>花の咲いていた場所</h3>
 <p><%= @post_image.field %></p>
-
 <h3>花が咲いていた日</h3>
 <p><%= @post_image.day %></p>
-
 <h3>開花状況</h3>
 <p>
   <div id="star<%= @post_image.id %>"></div>
@@ -39,10 +33,8 @@
       });
     </script>
 </p>
-
 <h3>住所</h3>
 <p><%= @post_image.address %></p>
-
 <h3>詳細</h3>
 <p><%= @post_image.detail %></p>
 
@@ -56,9 +48,7 @@
     <%= post_comment.user.name %><br>
     <%= post_comment.comment %><br>
     <%= post_comment.created_at.strftime('%Y/%m/%d')%><br>
-
-      <%= link_to "このコメントを削除する", admin_post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %><br>
-
+    <%= link_to "このコメントを削除する", admin_post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %><br>
   <% end %>
 </div>
 
