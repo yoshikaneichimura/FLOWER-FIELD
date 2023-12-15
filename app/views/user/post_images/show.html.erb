@@ -19,22 +19,16 @@
 
 <h3>投稿ユーザー画像<h3>
 <%= image_tag @post_image.user.get_profile_image(100,100) %>
-
 <h3>地域</h3>
 <p><%= @post_image.tag.area %></p>
-
 <h3>画像</h3>
 <p><%= image_tag @post_image.get_image(300,300) %></p>
-
 <h3>花の名前</h3>
 <p><%= @post_image.flower %></p>
-
 <h3>花の咲いていた場所</h3>
 <p><%= @post_image.field %></p>
-
 <h3>花が咲いていた日</h3>
 <p><%= @post_image.day %></p>
-
 <h3>開花状況</h3>
 <p>
   <div id="star<%= @post_image.id %>"></div>
@@ -50,15 +44,14 @@
       });
     </script>
 </p>
-
 <h3>住所</h3>
 <p><%= @post_image.address %></p>
-
 <h3>詳細</h3>
 <p><%= @post_image.detail %></p>
-
-<%= link_to "この投稿を編集する" ,edit_user_post_image_path(@post_image) %>
-<%= link_to "この投稿を削除する" ,user_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？"%>
+<% if @post_image.user == current_user %>
+  <%= link_to "この投稿を編集する" ,edit_user_post_image_path(@post_image) %>
+  <%= link_to "この投稿を削除する" ,user_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？"%>
+<% end %>
 
 <div>
   <p>コメント件数：<%= @post_image.post_comments.count %></p>
