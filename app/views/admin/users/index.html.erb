@@ -10,6 +10,7 @@
     <!--<p>< link_to "#{user.followers.count}：フォロワー",user_user_followers_path(user.id) ></p>-->
     <p>投稿件数：<%= user.post_images.count %></p>
   <% end %>
+  <%= paginate @users %>
 </div>
 
 
