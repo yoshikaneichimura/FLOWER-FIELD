@@ -46,7 +46,8 @@ class User::PostImagesController < ApplicationController
   end
 
   def search
-    @post_images = PostImage.search(params[:search])
+    post_images = PostImage.search(params[:search])
+    @post_images = post_images.page(params[:page])
   end
 
   private
