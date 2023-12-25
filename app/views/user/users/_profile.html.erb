@@ -15,7 +15,7 @@
 
   <% if current_user.following?(user)%>
     <p><strong><%= link_to "フォローを外す", user_user_relationships_path(user.id), method: :delete %></strong></p>
-  <% elsif current_user != user %>
+  <% elsif current_user != user && user.is_active == true %>
     <p><strong><%= link_to "フォローする", user_user_relationships_path(user.id), method: :post %></strong></p>
   <% end %>
   <% if user.id == current_user.id %>

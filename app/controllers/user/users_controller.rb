@@ -31,6 +31,7 @@ class User::UsersController < ApplicationController
     user = current_user
     user.update(is_active: false)
     reset_session
+    flash[:notice] = "退会処理をしました"
     redirect_to about_path
   end
 
