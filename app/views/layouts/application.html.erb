@@ -68,6 +68,12 @@
           <%= text_field_tag :search %>
           <%= submit_tag '検索', :name => nil %>
         <% end %>
+      <% elsif admin_signed_in? %>
+        <p>ユーザーを検索</p>
+        <%= form_tag(admin_user_search_path, :method => 'get' ) do  %>
+          <%= text_field_tag :search %>
+          <%= submit_tag '検索', :name => nil %>
+        <% end %>
       <% end %>
     </header>
     <%= yield %>

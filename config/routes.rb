@@ -48,12 +48,14 @@ Rails.application.routes.draw do
   devise_scope :admin do
     post 'admin/guest_sign_in', to: 'admin/sessions#guest_sign_in'
   end
-  
+
   namespace :admin do
     resources :post_images, only: [:index, :show, :edit, :update, :destroy] do
       resources :post_comments, only: [:destroy]
     end
     resources :users, only: [:index, :show, :edit ,:update]
+    get 'user/search' => 'users#search'
+
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
