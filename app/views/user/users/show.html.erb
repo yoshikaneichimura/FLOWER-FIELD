@@ -16,4 +16,8 @@
   <h3>このユーザーの花の咲く場所</h3>
 <% end %>
 
-<%= render 'user/post_images/flowers', post_images: @post_images %>
+<% if @post_images.exists? %>
+  <%= render 'user/post_images/flowers', post_images: @post_images %>
+<% else %>
+  <h3>投稿はまだありません</h3>
+<% end %>

@@ -42,7 +42,11 @@
 <%= link_to "この投稿を削除する" ,admin_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？"%>
 
 <div>
-  <p>コメント件数：<%= @post_image.post_comments.count %></p>
+  <% if @post_image.post_comments.exists? %>
+    <p>コメント件数：<%= @post_image.post_comments.count %></p>
+  <% else %>
+    <h3>コメントはまだありません</h3>
+  <% end %>
   <% @post_image.post_comments.each do | post_comment | %>
     <%= image_tag post_comment.user.get_profile_image(100,100) %>
     <%= post_comment.user.name %><br>

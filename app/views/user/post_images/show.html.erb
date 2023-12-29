@@ -58,7 +58,11 @@
 <% end %>
 
 <div>
-  <p>コメント件数：<%= @post_image.post_comments.count %></p>
+  <% if @post_image.post_comments.exists? %>
+    <p>コメント件数：<%= @post_image.post_comments.count %></p>
+  <% else %>
+    <h3>この投稿に対するコメントはまだありません</h3>
+  <% end %>
   <% @post_image.post_comments.each do | post_comment | %>
     <%= image_tag post_comment.user.get_profile_image(100,100) %>
     <%= post_comment.user.name %><br>
