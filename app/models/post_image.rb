@@ -19,7 +19,7 @@ class PostImage < ApplicationRecord
     end
       image.variant(resize_to_limit: [width,height]).processed
   end
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
@@ -30,6 +30,10 @@ class PostImage < ApplicationRecord
     else
       PostImage.all
     end
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+      ["flower"]
   end
 end
 
