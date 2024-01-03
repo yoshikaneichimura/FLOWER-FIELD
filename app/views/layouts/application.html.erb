@@ -63,17 +63,6 @@
       <% if user_signed_in? %>
         <p><%= image_tag current_user.get_profile_image(50,50)%>ようこそ<strong><%= current_user.name %></strong>様</p>
         <%= link_to "花の咲く場所を投稿する",new_user_post_image_path(current_user.id)%>
-        <p>花の名前を検索</p>
-        <%= form_tag(user_post_image_search_path, :method => 'get' ) do  %>
-          <%= text_field_tag :search %>
-          <%= submit_tag '検索', :name => nil %>
-        <% end %>
-      <% elsif admin_signed_in? %>
-        <p>ユーザーを検索</p>
-        <%= form_tag(admin_user_search_path, :method => 'get' ) do  %>
-          <%= text_field_tag :search %>
-          <%= submit_tag '検索', :name => nil %>
-        <% end %>
       <% end %>
     </header>
     <%= yield %>

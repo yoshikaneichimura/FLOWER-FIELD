@@ -23,11 +23,6 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def search
-    users = User.all.search(params[:search])
-    @users = users.page(params[:page])
-  end
-
   private
 
   def user_params

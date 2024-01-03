@@ -27,9 +27,6 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
-
-    get 'post_image/search' => 'post_images#search'
-
     resources :users, only: [:index,:show,:edit,:update] do
     get 'unsubscribes' => 'users#unsubscribe'
     patch 'withdraw' => 'users#withdraw'
@@ -54,8 +51,6 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:destroy]
     end
     resources :users, only: [:index, :show, :edit ,:update]
-    get 'user/search' => 'users#search'
-
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

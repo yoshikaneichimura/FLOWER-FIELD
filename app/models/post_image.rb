@@ -24,14 +24,6 @@ class PostImage < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
-  def self.search(search)
-    if search
-      PostImage.where(['flower LIKE ?',"%#{search}%"])
-    else
-      PostImage.all
-    end
-  end
-
   def self.ransackable_attributes(auth_object = nil)
       ["flower"]
   end

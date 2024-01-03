@@ -47,11 +47,6 @@ class User::PostImagesController < ApplicationController
     redirect_to user_post_images_path
   end
 
-  def search
-    post_images = PostImage.search(params[:search])
-    @post_images = post_images.page(params[:page])
-  end
-
   private
 
   def post_image_params

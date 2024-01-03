@@ -1,7 +1,0 @@
-<h1>検索結果</h1>
-
-<% if @post_images.exists? %>
-  <%= render 'flowers' ,post_images: @post_images %>
-<% else %>
-  <h3>検索結果はありませんでした</h3>
-<% end %>
