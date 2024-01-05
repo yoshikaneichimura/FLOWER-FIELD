@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+    get 'search' => 'post_images#search'
     resources :users, only: [:index,:show,:edit,:update] do
     get 'unsubscribes' => 'users#unsubscribe'
     patch 'withdraw' => 'users#withdraw'

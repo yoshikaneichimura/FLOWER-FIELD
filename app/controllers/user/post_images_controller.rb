@@ -17,9 +17,7 @@ class User::PostImagesController < ApplicationController
   end
 
   def index
-    @q = PostImage.ransack(params[:q])
-    post_images = @q.result(distinct: true)
-    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images.page(params[:page]) : post_images.page(params[:page])
+    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images.page(params[:page]) : PostImage.page(params[:page])
   end
 
   def show
@@ -45,6 +43,10 @@ class User::PostImagesController < ApplicationController
     post_image = PostImage.find(params[:id])
     post_image.destroy
     redirect_to user_post_images_path
+  end
+  
+  def search
+    @post_images = PostImage.all
   end
 
   private

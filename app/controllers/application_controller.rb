@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  before_action :set_search
+
+  def set_search
+    @search = PostImage.ransack(params[:q])
+    @search_post_images = @search.result(distinct: true).order(created_at: :desc).page(params[:page])
+  end
+
   protected
 
   def configure_permitted_parameters
