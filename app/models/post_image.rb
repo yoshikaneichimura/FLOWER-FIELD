@@ -25,7 +25,7 @@ class PostImage < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-      ["flower"]
+      ["flower","field"]
   end
 end
 
