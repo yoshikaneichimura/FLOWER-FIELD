@@ -43,4 +43,9 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+      ["name"]
+  end
 end
+

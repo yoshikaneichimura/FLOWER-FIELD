@@ -1,0 +1,7 @@
+<h1>検索結果</h1>
+
+<% if @search_users.exists? %>
+  <%= render 'users' ,users: @search_users %>
+<% else %>
+  <h3>一致するものが見つかりませんでした</h3>
+<% end %>
