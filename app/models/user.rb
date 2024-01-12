@@ -45,7 +45,11 @@ class User < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-      ["name"]
+    ["name","introduction"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+     ["flower","field","address","detail"]
   end
 end
 
