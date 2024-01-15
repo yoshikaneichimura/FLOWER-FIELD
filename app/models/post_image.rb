@@ -25,7 +25,7 @@ class PostImage < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["flower","field","address","detail"]
+    ["flower","field","day","address","detail"]
   end
 
   def self.ransackable_associations(auth_object = nil)
