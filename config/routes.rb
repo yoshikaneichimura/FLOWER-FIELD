@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index,:show,:edit,:update] do
     get 'unsubscribes' => 'users#unsubscribe'
     patch 'withdraw' => 'users#withdraw'
+      member do
+          get :favorites
+        end
       resource :relationships, only: [:create, :destroy]
         get 'folloewings' => 'relationships#followings', as: 'followings'
         get 'followers' => 'relationships#followers', as: 'followers'

@@ -1,0 +1,11 @@
+<% if @user == current_user %>
+  <h1>あなたのお気に入りの投稿</h1>
+<% else %>
+  <h1>このユーザーお気に入りに追加した投稿</h1>
+<% end %>
+
+<% if @favorites.present? %>
+  <%= render 'user/post_images/flowers', post_images: @favorites %>
+<% else %>
+  <h3>お気に入りに追加された投稿はありません</h3>
+<% end %>
