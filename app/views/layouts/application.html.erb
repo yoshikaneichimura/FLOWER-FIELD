@@ -62,17 +62,14 @@
       </nav>
       <% if user_signed_in? %>
         <p><%= image_tag current_user.get_profile_image(50,50)%>ようこそ<strong><%= current_user.name %></strong>様</p>
-
         <%= search_form_for @search, url: user_search_path do |f| %>
           <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索" %>
-
           <%= f.date_field :day_gteq %>
           <span>~</span>
           <%= f.date_field :day_lteq %>
-
           <%= f.submit '検索' %>
         <% end %>
-        <%= link_to "花の咲く場所を投稿する",new_user_post_image_path(current_user.id)%>
+        <%= link_to "花の咲く場所を投稿する",new_user_post_image_path(current_user.id) %>
         <% elsif admin_signed_in? %>
           <%= search_form_for @search, url: admin_search_path do |f| %>
             <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" %>

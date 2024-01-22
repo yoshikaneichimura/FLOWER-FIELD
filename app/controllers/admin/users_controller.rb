@@ -1,12 +1,12 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @users = User.page(params[:page])
+    @users = User.page(params[:page]).order(created_at: :desc)
   end
 
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images.page(params[:page])
+    @post_images = @user.post_images.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -21,10 +21,6 @@ class Admin::UsersController < ApplicationController
     else
         render :edit
     end
-  end
-
-  def search
-    @users = User.all
   end
 
   private

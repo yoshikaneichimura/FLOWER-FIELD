@@ -3,7 +3,7 @@
 <% if @post_image.errors.any? %>
   <%= @post_image.errors.count %>件のエラーが発生しました
   <ul>
-    <% @post_image.errors.full_messages.each do | message |%>
+    <% @post_image.errors.full_messages.each do | message | %>
       <li><%= message %></li>
     <% end %>
   </ul>

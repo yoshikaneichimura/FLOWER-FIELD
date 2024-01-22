@@ -2,7 +2,7 @@
 
 <% if flash[:notice] %>
   <p id = "notice">
-    <%= flash[:notice]%>
+    <%= flash[:notice] %>
   </p>
 <% end %>
 
@@ -54,9 +54,8 @@
 <p><%= @post_image.detail %></p>
 <% if @post_image.user == current_user %>
   <%= link_to "この投稿を編集する" ,edit_user_post_image_path(@post_image) %>
-  <%= link_to "この投稿を削除する" ,user_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？"%>
+  <%= link_to "この投稿を削除する" ,user_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <% end %>
-
 <div>
   <% if @post_image.post_comments.exists? %>
     <p>コメント件数：<%= @post_image.post_comments.count %></p>
@@ -67,13 +66,12 @@
     <%= image_tag post_comment.user.get_profile_image(100,100) %>
     <%= post_comment.user.name %><br>
     <%= post_comment.comment %><br>
-    <%= post_comment.created_at.strftime('%Y/%m/%d')%><br>
+    <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
     <% if post_comment.user == current_user %>
       <%= link_to "このコメントを削除する", user_post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %><br>
     <% end %>
   <% end %>
 </div>
-
 <div>
   <% if @post_image.user.is_active == true %>
     <%= form_with model: [@post_image, @post_comment],url: user_post_image_post_comments_path(@post_image.id), method: :post do |f| %>

@@ -17,7 +17,7 @@ class User::PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images.page(params[:page]) : PostImage.page(params[:page])
+    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images.page(params[:page]) : PostImage.page(params[:page]).order(created_at: :desc)
   end
 
   def show
@@ -43,10 +43,6 @@ class User::PostImagesController < ApplicationController
     post_image = PostImage.find(params[:id])
     post_image.destroy
     redirect_to user_post_images_path
-  end
-  
-  def search
-    @post_images = PostImage.all
   end
 
   private

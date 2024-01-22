@@ -1,6 +1,6 @@
 <% if flash[:notice] %>
   <p id = "notice">
-    <%= flash[:notice]%>
+    <%= flash[:notice] %>
   </p>
 <% end %>
 
@@ -10,7 +10,7 @@
 
 <%= render 'profile', user: @user %>
 
-<%= link_to "♥お気に入りリスト",favorites_user_user_path(@user)%>
+<%= link_to "♥お気に入りリスト",favorites_user_user_path(@user) %>
 
 <% if @user == current_user %>
   <h3>あなたの花の咲く場所</h3>

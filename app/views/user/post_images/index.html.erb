@@ -10,7 +10,7 @@
   %>
   <% end %>
 
-<% if @post_images.exists? %>
+ <% if @post_images.exists? %>
   <%= render 'flowers' ,post_images: @post_images %>
 <% else %>
   <h3>投稿はまだありません</h3>
