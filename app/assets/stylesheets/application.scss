@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Kiwi+Maru:wght@300&family=Playfair+Display&display=swap');
+
+body {
+  font-family: 'Comfortaa', sans-serif;
+  color: white;
+  background-color: grey;
+  border-bottom: solid 1px white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
