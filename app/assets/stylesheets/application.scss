@@ -14,16 +14,35 @@
  *= require_self
  */
 
- @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Kiwi+Maru:wght@300&family=Playfair+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+
+* {
+  margin : 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color : #165e83;
+  border-bottom: solid 1px red;
+}
 
 body {
-  font-family: 'Comfortaa', sans-serif;
-  color: white;
-  background-color: grey;
-  border-bottom: solid 1px white;
+  font-family: 'Zen Maru Gothic', serif;
+  color: #c1e4e9;
+  background-color: #203744;
 }
 
 a {
-  color: white;
+  color: #c1e4e9;
   text-decoration: none;
+}
+
+main {
+  min-height: 300px;
+}
+
+footer {
+  border-top: solid 1px red;
+  background-color : #165e83;
 }
