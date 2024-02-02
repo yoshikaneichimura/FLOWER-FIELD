@@ -2,64 +2,67 @@
 <html>
   <head>
     <title>FLOWER-FIELD</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <script src="https://kit.fontawesome.com/a5fc0fa3f9.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body>
+  <body class="d-flex flex-column">
     <header>
-      <% if admin_signed_in? %>
-        <h1>管理者ページ</h1>
-      <% else %>
-        <h1>FLOWER-FIELD</h1>
-      <% end %>
       <nav>
-        <ul>
-          <li>
-            <%= link_to "トップページ", root_path %>
-          </li>
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to "マイページ", user_user_path(current_user.id) %>
-          </li>
-          <li>
-            <%= link_to "花の咲く場所", user_post_images_path %>
-          </li>
-          <li>
-            <%= link_to "花を見つけた人達",user_users_path %>
-          </li>
-          <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
-        <% elsif admin_signed_in? %>
-          <li>
-            <%=link_to "投稿一覧" ,admin_post_images_path %>
-          </li>
-          <li>
-            <%=link_to "投稿者一覧" ,admin_users_path %>
-          </li>
-          <li>
-            <%= link_to '管理者情報の編集',edit_admin_registration_path %>
-          </li>
-          <li>
-            <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "ABOUT", about_path %>
-          </li>
-          <li>
-            <%= link_to "新規登録", new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "ログイン", new_user_session_path %>
-          </li>
-        <% end %>
-        </ul>
+        <div class="container">
+          <% if admin_signed_in? %>
+            <h1>管理者ページ</h1>
+          <% else %>
+            <h1>FLOWER-FIELD</h1>
+          <% end %>
+          <ul>
+            <div>
+              <li>
+                <%= link_to "トップページ", root_path %>
+              </li>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to "マイページ", user_user_path(current_user.id) %>
+              </li>
+              <li>
+                <%= link_to "花の咲く場所", user_post_images_path %>
+              </li>
+              <li>
+                <%= link_to "花を見つけた人達",user_users_path %>
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li>
+                <%=link_to "投稿一覧" ,admin_post_images_path %>
+              </li>
+              <li>
+                <%=link_to "投稿者一覧" ,admin_users_path %>
+              </li>
+              <li>
+                <%= link_to '管理者情報の編集',edit_admin_registration_path %>
+              </li>
+              <li>
+                <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to "ABOUT", about_path %>
+              </li>
+              <li>
+                <%= link_to "新規登録", new_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to "ログイン", new_user_session_path %>
+              </li>
+            <% end %>
+            </div>
+          </ul>
+        </div>
       </nav>
       <% if user_signed_in? %>
         <p><%= image_tag current_user.get_profile_image(50,50)%>ようこそ<strong><%= current_user.name %></strong>様</p>
@@ -81,6 +84,10 @@
     <main>
       <%= yield %>
     </main>
-    <footer><p>tefutefu</p></footer>
+    <footer>
+      <div class="container">
+        <p>tefutefu</p>
+      </div>
+    </footer>
   </body>
 </html>
