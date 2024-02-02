@@ -23,6 +23,10 @@
   font-family: 'Zen Maru Gothic', serif;
 }
 
+body {
+  height: 100vh;
+}
+
 header {
   background-color : #165e83;
   border-bottom: solid 1px red;
@@ -30,6 +34,8 @@ header {
 
 main {
   background-color: #203744;
+  height: 100%;
+  margin-bottom: auto;
 }
 
 footer {
