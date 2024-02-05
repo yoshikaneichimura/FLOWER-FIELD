@@ -11,75 +11,113 @@
   </head>
   <body class="d-flex flex-column">
     <header>
-      <nav>
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <% if admin_signed_in? %>
             <h1>管理者ページ</h1>
           <% else %>
-            <h1>FLOWER-FIELD</h1>
+            <h1>FLOWER
+              <%= link_to root_path do %>
+                <%= image_tag('FLOWER-FIELD.png') %>
+              <% end %>
+              FIELD
+            </h1>
           <% end %>
-          <ul>
-            <div>
-              <li>
-                <%= link_to "トップページ", root_path %>
-              </li>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbaraNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-              <li>
-                <%= link_to "マイページ", user_user_path(current_user.id) %>
+              <li class="nav-item ml-3">
+                <%= link_to user_user_path(current_user.id), class: 'nav-link text-white' do %>
+                  <i class="fas fa-user-circle"></i>  マイページ
+                <% end %>
+              </i>
+              <li class="nav-item ml-3">
+                <%= link_to user_post_images_path, class: 'nav-link text-white' do %>
+                  <i class="fas fa-images"></i> 花の咲く場所
+                <% end %>
               </li>
-              <li>
-                <%= link_to "花の咲く場所", user_post_images_path %>
+              <li class="nav-item ml-3">
+                <%= link_to user_users_path, class: 'nav-link text-white' do %>
+                  <i class="fas fa-users"></i>  花を見つけた人達
+                <% end %>
               </li>
-              <li>
-                <%= link_to "花を見つけた人達",user_users_path %>
-              </li>
-              <li>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <li class="nav-item ml-3">
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-white' do %>
+                  <i class="fas fa-walking"></i>  ログアウト
+                  <% end %>
               </li>
             <% elsif admin_signed_in? %>
-              <li>
-                <%=link_to "投稿一覧" ,admin_post_images_path %>
+              <li class="nav-item ml-3">
+                <%=link_to "投稿一覧" ,admin_post_images_path, class: 'nav-link text-white-50' %>
               </li>
-              <li>
-                <%=link_to "投稿者一覧" ,admin_users_path %>
+              <li class="nav-item ml-3">
+                <%=link_to "投稿者一覧" ,admin_users_path, class: 'nav-link text-white-50' %>
               </li>
-              <li>
-                <%= link_to '管理者情報の編集',edit_admin_registration_path %>
+              <li class="nav-item ml-3">
+                <%= link_to '管理者情報の編集',edit_admin_registration_path, class: 'nav-link text-white-50' %>
               </li>
-              <li>
-                <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete %>
+              <li class="nav-item ml-3">
+                <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-white-50' %>
               </li>
             <% else %>
-              <li>
-                <%= link_to "ABOUT", about_path %>
+              <li class="nav-item ml-3">
+                <%= link_to "ABOUT", about_path, class: 'nav-link text-white-50' %>
               </li>
-              <li>
-                <%= link_to "新規登録", new_user_registration_path %>
+              <li class="nav-item ml-3">
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-white-50' %>
               </li>
-              <li>
-                <%= link_to "ログイン", new_user_session_path %>
+              <li class="nav-item ml-3">
+                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-white-50' %>
               </li>
             <% end %>
-            </div>
           </ul>
         </div>
       </nav>
-      <% if user_signed_in? %>
-        <p><%= image_tag current_user.get_profile_image(50,50)%>ようこそ<strong><%= current_user.name %></strong>様</p>
-        <%= search_form_for @search, url: user_search_path do |f| %>
-          <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索" %>
-          <%= f.date_field :day_gteq %>
-          <span>~</span>
-          <%= f.date_field :day_lteq %>
-          <%= f.submit '検索' %>
-        <% end %>
-        <%= link_to "花の咲く場所を投稿する",new_user_post_image_path(current_user.id) %>
-        <% elsif admin_signed_in? %>
-          <%= search_form_for @search, url: admin_search_path do |f| %>
-            <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" %>
+
+    <div class="container">
+      <div class="row">
+        <% if user_signed_in? %>
+
+        <div>
+          <p><%= image_tag current_user.get_profile_image(50,50)%>  ようこそ<strong><%= current_user.name %></strong>様</p>
+        </div>
+
+        <div class="mt-1 ml-5 ">
+          <%= link_to "花の咲く場所を投稿する",new_user_post_image_path(current_user.id) %>
+        </div>
+
+        <div class="ml-auto">
+          <%= search_form_for @search, url: user_search_path do |f| %>
+            <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索" %>
+            <%= f.date_field :day_gteq %>
+            <span>~</span>
+            <%= f.date_field :day_lteq %>
             <%= f.submit '検索' %>
           <% end %>
+
+          <% elsif admin_signed_in? %>
+            <%= search_form_for @search, url: admin_search_path do |f| %>
+              <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" %>
+              <%= f.submit '検索' %>
+          <% end %>
+        </div>
+
+         <div class="ml-3">
+          <p><%= image_tag current_user.get_profile_image(50,50)%>ようこそ<strong><%= current_user.name %></strong>様</p>
+        </div>
+
+        </div>
+        </div>
       <% end %>
+
+
+
     </header>
     <main>
       <%= yield %>
