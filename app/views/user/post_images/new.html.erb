@@ -1,8 +1,6 @@
 <div class="container">
-  <div class="row ">
-
-
-    <h5 class="text-center">あなたの見つけた花の咲く場所と投稿してみましょう</h5>
+  <div class="row">
+    <h5 class="blockquote text-center my-3">あなたの見つけた花の咲く場所と投稿してみましょう</h5>
     <% if @post_image.errors.any? %>
       <%= @post_image.errors.count %>件のエラーが発生しました
       <ul>
@@ -12,82 +10,63 @@
       </ul>
     <% end %>
   </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="d-flex justify-content-center">
-        <div>
-          <%= form_with model: @post_image, url: user_post_images_path, method: :post do |f| %>
-          <form>
-          <div class="form-group">
+
+  <%= form_with model: @post_image, url: user_post_images_path, method: :post do |f| %>
+    <form class="my-3">
+      <div class="form-row">
+        <div class="form-group col-lg mr-3">
           <h5>地域</h5>
           <%= f.collection_select(:tag_id,Tag.all,:id,:area,{prompt: false},{class: "form-control"}) %>
+        </div>
+        <div class="form-group col-lg ">
           <h5>花の名前</h5>
           <%= f.text_field :flower,class: "form-control" %>
-          </div>
         </div>
       </div>
-    </div>
-
-
-    <div class="col-lg-6">
-      <div class="d-flex justify-content-center">
-        <div class="form-group">
+      <div class="form-row">
+        <div class="form-group col-lg mr-3">
           <h5>花が咲いていた場所</h5>
           <%= f.text_field :field ,class: "form-control" %>
+        </div>
+        <div class="form-group col-lg">
           <h5>花が咲いていた日</h5>
           <%= f.date_field :day ,class: "form-control" %>
         </div>
       </div>
-    </div>
-
-  </div>
-
-  <div class="row">
-
-    <div class="col-lg-6">
-      <div class="d-flex justify-content-center">
-        <div class="form-group">
+      <div class="form-row">
+        <div class="form-group col-lg mr-3">
           <h5>住所（任意）</h5>
           <%= f.text_area :address ,class: "form-control" %>
         </div>
-      </div>
-    </div>
-
-    <div class="col-lg-6">
-      <div class="d-flex justify-content-center">
-        <div class="form-group">
+        <div class="form-group col-lg">
           <h5>詳細（任意）</h5>
           <%= f.text_area :detail ,class: "form-control" %>
         </div>
       </div>
-    </div>
-
-  </div>
-
-
-  <div class="d-flex justify-content-center">
-    <div class="form-group">
-      <h5>画像</h5>
-        <%= f.file_field :image, class: "form-control-file", accept: "image/*"  %>
-      <h5>開花状況</h5>
-      <div id="star">
-        <%= f.hidden_field :star, id: :star %>
-      </div>
-        <script>
-          $('#star').empty();
-          $('#star').raty({
-            size     : 36,
-            starOff  : "<%= asset_path('star-off.png') %>",
-            starOn   : "<%= asset_path('star-on.png') %>",
-            scoreName: 'post_image[star]',
-            half: false,
-          });
-        </script>
-      <%= f.submit 'この内容で投稿する' %>
+      <div class="form-row">
+        <div class="form-group col-lg mr-3">
+          <h5>画像</h5>
+            <%= f.file_field :image, class: "form-control-file", accept: "image/*"  %>
+        </div>
+        <div class="form-group col-lg">
+          <h5>開花状況</h5>
+          <div id="star">
+            <%= f.hidden_field :star, id: :star %>
+          </div>
+            <script>
+              $('#star').empty();
+              $('#star').raty({
+                size     : 36,
+                starOff  : "<%= asset_path('star-off.png') %>",
+                starOn   : "<%= asset_path('star-on.png') %>",
+                scoreName: 'post_image[star]',
+                half: false,
+              });
+            </script>
+          </div>
+        </div>
+        <%= f.submit 'この内容で投稿する', class:  "btn btn-success" %>
       </form>
     <% end %>
-    </div>
-
-
   </div>
 </div>
