@@ -41,3 +41,18 @@ footer {
   border-top: solid 1px red;
   background-color : #165e83;
 }
+
+.pagination>li>a {
+  border: none;
+  background-color: #203744;
+  color: #c1e4e9;
+  margin: 1px;
+}
+
+.pagenation>.active>a {
+  background-color: red;
+}
+
+.pagination {
+  justify-content: center;
+}
