@@ -1,98 +1,121 @@
-<h1>投稿内容</h1>
-
-<% if flash[:notice] %>
-  <p id = "notice">
-    <%= flash[:notice] %>
-  </p>
-<% end %>
-
-<% if @post_image.user.is_active == false %>
-  <h3>こちらは退会済みユーザーの投稿です</h3>
-<% end %>
-
-<% if @error_comment.present? %>
-  <div id="error_explanation" >
-    <h3><%= @error_comment.errors.count %>件のエラーが発生しました</h3>
-    <ul>
-      <% @error_comment.errors.full_messages.each do | message | %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
+<div class="container">
+  <div class="row">
+    <% if flash[:notice] %>
+      <p id = "notice">
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+    <% if @post_image.user.is_active == false %>
+      <h3>こちらは退会済みユーザーの投稿です</h3>
+    <% end %>
+    <% if @error_comment.present? %>
+      <div id="error_explanation" >
+        <h3><%= @error_comment.errors.count %>件のエラーが発生しました</h3>
+        <ul>
+          <% @error_comment.errors.full_messages.each do | message | %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
-<% end %>
 
-<h3>投稿ユーザー画像<h3>
-<%= image_tag @post_image.user.get_profile_image(100,100) %>
-<h3>地域</h3>
-<p><%= @post_image.tag.area %></p>
-<h3>画像</h3>
-<p><%= image_tag @post_image.get_image(300,300) %></p>
-<h3>花の名前</h3>
-<p><%= @post_image.flower %></p>
-<h3>花の咲いていた場所</h3>
-<p><%= @post_image.field %></p>
-<h3>花が咲いていた日</h3>
-<p><%= @post_image.day %></p>
-<h3>開花状況</h3>
-<p>
-  <div id="star<%= @post_image.id %>"></div>
-    <script>
-      $('#star<%= @post_image.id %>').empty();
-      $('#star<%= @post_image.id %>').raty({
-        size     : 36,
-        starOff  : "<%= asset_path('star-off.png') %>",
-        starOn   : "<%= asset_path('star-on.png') %>",
-        score: <%= @post_image.star%>,
-        half: false,
-        readOnly: true,
-      });
-    </script>
-</p>
-<h3>住所</h3>
-<p><%= @post_image.address %></p>
-<h3>詳細</h3>
-<p><%= @post_image.detail %></p>
-<% if @post_image.user == current_user %>
-  <%= link_to "この投稿を編集する" ,edit_user_post_image_path(@post_image) %>
-  <%= link_to "この投稿を削除する" ,user_post_image_path(@post_image),method: :delete, "data-confirm" => "本当に削除しますか？" %>
-<% end %>
-<div>
-  <% if @post_image.post_comments.exists? %>
-    <p>コメント件数：<%= @post_image.post_comments.count %></p>
-  <% else %>
-    <h3>この投稿に対するコメントはまだありません</h3>
-  <% end %>
-  <% @post_image.post_comments.each do | post_comment | %>
-    <%= image_tag post_comment.user.get_profile_image(100,100) %>
-    <%= post_comment.user.name %><br>
-    <%= post_comment.comment %><br>
-    <%= post_comment.created_at.strftime('%Y/%m/%d') %><br>
-    <% if post_comment.user == current_user %>
-      <%= link_to "このコメントを削除する", user_post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %><br>
-    <% end %>
-  <% end %>
-</div>
-<div>
-  <% if @post_image.user.is_active == true %>
-    <%= form_with model: [@post_image, @post_comment],url: user_post_image_post_comments_path(@post_image.id), method: :post do |f| %>
-      <%= f. text_area :comment , placeholder: "コメントをここに" %>
-      <%= f. submit "送信する" %>
-    <% end %>
-  <% end %>
-</div>
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="d-flex flex-column my-3 ">
+        <h5 class="my-3" >ユーザー情報</h5>
+        <div class="my-3">
+          <%= image_tag @post_image.user.get_profile_image(100,100) %>
+        </div>
+        <h5><%= @post_image.user.name %></h5>
+      </div>
+    </div>
 
-<div>
-  <% if @post_image.favorited_by?(current_user) %>
-    <p>
-      <%= link_to user_post_image_favorite_path(@post_image), method: :delete do %>
-      ♥<%= @post_image.favorites.count %> いいね
+    <div class="col-lg-6">
+      <div class="mt-5 mb-3"><%= image_tag @post_image.get_image(600,600) ,class: "img-fluid" %></div>
+      <div class="row mx-auto">
+        <% if @post_image.user == current_user %>
+          <div class="mr-3"><%= link_to "投稿を編集する" ,edit_user_post_image_path(@post_image) , class: "btn btn-info" %></div>
+          <div><%= link_to "投稿を削除する" ,user_post_image_path(@post_image), class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-lg-3 my-5">
+      <h5>地域</h5>
+      <p><%= @post_image.tag.area %></p>
+      <h5>花の名前</h5>
+      <p><%= @post_image.flower %></p>
+      <h5>花の咲いていた場所</h5>
+      <p><%= @post_image.field %></p>
+      <h5>花が咲いていた日</h5>
+      <p><%= @post_image.day %></p>
+      <h5>開花状況</h5>
+      <p>
+        <div id="star<%= @post_image.id %>"></div>
+          <script>
+            $('#star<%= @post_image.id %>').empty();
+            $('#star<%= @post_image.id %>').raty({
+              size     : 36,
+              starOff  : "<%= asset_path('star-off.png') %>",
+              starOn   : "<%= asset_path('star-on.png') %>",
+              score: <%= @post_image.star%>,
+              half: false,
+              readOnly: true,
+            });
+          </script>
+      </p>
+      <h5>住所</h5>
+      <p><%= @post_image.address %></p>
+      <h5>詳細</h5>
+      <p><%= @post_image.detail %></p>
+
+      <div>
+        <% if @post_image.favorited_by?(current_user) %>
+          <p>
+            <%= link_to user_post_image_favorite_path(@post_image), method: :delete do %>
+            <i class="fas fa-heart"></i>  <%= @post_image.favorites.count %> いいね
+            <% end %>
+          </p>
+        <% elsif @post_image.user.is_active == true %>
+          <p>
+            <%= link_to user_post_image_favorite_path(@post_image), method: :post do %>
+            <i class="far fa-heart"></i>  <%= @post_image.favorites.count %> いいね
+            <% end %>
+          </p>
+        <% end %>
+      </div>
+      <div>
+        <% if @post_image.user.is_active == true %>
+          <%= form_with model: [@post_image, @post_comment],url: user_post_image_post_comments_path(@post_image.id), method: :post do |f| %>
+            <%= f. text_area :comment , placeholder: "コメントをここに" , class: "form-control" %>
+          <%= f. submit "送信する" , class: "btn btn-success btn-sm mt-3"%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="my-3">
+        <% if @post_image.post_comments.exists? %>
+          <h5 class="ml-3">コメント件数：<%= @post_image.post_comments.count %></h5>
+        <% else %>
+          <h5 class="ml-3">この投稿に対するコメントはまだありません</h5>
+        <% end %>
+    </div>
+      <% @post_image.post_comments.each do | post_comment | %>
+      <div class="border-top my-5 mx-auto">
+        <div class="d-flex justify-content-center my-3">
+          <div class="p-3"><%= image_tag post_comment.user.get_profile_image(100,100) %></div>
+          <div class="p-3"><%= post_comment.user.name %></div>
+          <div class="p-3"><%= post_comment.comment %></div>
+          <div class="p-3"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+        <% if post_comment.user == current_user %>
+          <div class="p-3"><%= link_to "このコメントを削除する", user_post_image_post_comment_path(post_comment.post_image,post_comment), method: :delete %></div>
+        <% end %>
+        </div>
       <% end %>
-    </p>
-  <% elsif @post_image.user.is_active == true %>
-    <p>
-      <%= link_to user_post_image_favorite_path(@post_image), method: :post do %>
-      ♡<%= @post_image.favorites.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
+    </div>
+  </div>
 </div>
