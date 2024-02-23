@@ -80,54 +80,43 @@
         </div>
       </nav>
 
-    <div class="container">
-      <div class="row">
-        <% if user_signed_in? %>
-        <div class="my-1 mx-3">
-          <p><%= image_tag current_user.get_profile_image(50,50)%>  ようこそ<strong><%= current_user.name %></strong>様</p>
-        </div>
-        <div class="my-1 mx-3">
-          <%= link_to "花の咲く場所を投稿",new_user_post_image_path(current_user.id) ,class: "btn btn-success" %>
-        </div>
-        <div class="my-3 ml-auto">
-          <%= search_form_for @search, url: user_search_path do |f| %>
-            <form>
-              <div class="form-inline">
-                <div class="form-group mr-3">
-                  <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索", class: "form-control" %>
-                </div>
-                <div class="form-group mr-3">
-                  <%= f.date_field :day_gteq ,class: "form-control" %>
-                </div>
-                  <span>〜</span>
-                <div class="form-group mx-3">
-                  <%= f.date_field :day_lteq ,class: "form-control" %>
-                </div>
-                <div>
-                  <%= f.submit '検索' , class: "btn btn-danger" %>
-                </div>
+      <div class="container">
+        <div class="row">
+          <% if user_signed_in? %>
+
+            <div class="d-inline p-3">
+              <%= image_tag current_user.get_profile_image(50,50)%>  <strong><%= current_user.name %></strong>
+            </div>
+            <div class="d-inline p-3">
+              <%= link_to "花の咲く場所を投稿",new_user_post_image_path(current_user.id) ,class: "btn btn-success" %>
+            </div>
+          <div>
+              <%= search_form_for @search, url: user_search_path do |f| %>
+                <form>
+                  <div class="form-inline p-3">
+                    <div class="form-group mr-3">
+                      <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索", class: "form-control" %>
+                    </div>
+                    <div class="form-group mr-3">
+                      <%= f.date_field :day_gteq ,class: "form-control" %>
+                    </div>
+                      <span>〜</span>
+                    <div class="form-group mx-3">
+                      <%= f.date_field :day_lteq ,class: "form-control" %>
+                    </div>
+                      <%= f.submit '検索' , class: "btn btn-danger" %>
+                    </div>
+                </form>
+                <% end %>
+                <% elsif admin_signed_in? %>
+                  <%= search_form_for @search, url: admin_search_path do |f| %>
+                    <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" %>
+                    <%= f.submit '検索' %>
+                <% end %>
               </div>
-            </form>
-
-          <% end %>
-
-          <% elsif admin_signed_in? %>
-            <%= search_form_for @search, url: admin_search_path do |f| %>
-              <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" %>
-              <%= f.submit '検索' %>
-          <% end %>
-        </div>
-
-         <div class="ml-3">
-          <p><%= image_tag current_user.get_profile_image(50,50)%>ようこそ<strong><%= current_user.name %></strong>様</p>
-        </div>
-
-        </div>
+          </div>
         </div>
       <% end %>
-
-
-
     </header>
     <main>
       <%= yield %>

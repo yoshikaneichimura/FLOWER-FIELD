@@ -1,6 +1,6 @@
 <div class="container">
   <div class="my-3">
-    <h1 class="text-center">花の咲く場所</h1>
+    <h3 class="text-center">花の咲く場所</h3>
       <%= form_with url: user_post_images_path, method: :get, class: 'boards_searchForm' do %>
       <form>
         <div class="row">
@@ -27,7 +27,7 @@
       <% if @post_images.exists? %>
         <%= render 'flowers' ,post_images: @post_images %>
       <% else %>
-        <h3>投稿はまだありません</h3>
+        <h3 class="text-center">投稿はまだありません</h3>
       <% end %>
     <div>
   </div>

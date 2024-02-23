@@ -1,6 +1,6 @@
 <div class="container">
+  <h3 class="text-center my-3">あなたの見つけた花の咲く場所と投稿してみましょう</h3>
   <div class="row">
-    <h5 class="blockquote text-center my-3">あなたの見つけた花の咲く場所と投稿してみましょう</h5>
     <% if @post_image.errors.any? %>
       <%= @post_image.errors.count %>件のエラーが発生しました
       <ul>
@@ -14,41 +14,41 @@
   <%= form_with model: @post_image, url: user_post_images_path, method: :post do |f| %>
     <form class="my-3">
       <div class="form-row">
-        <div class="form-group col-lg mr-3">
+        <div class="form-group col-lg m-3">
           <h5>地域</h5>
           <%= f.collection_select(:tag_id,Tag.all,:id,:area,{prompt: false},{class: "form-control"}) %>
         </div>
-        <div class="form-group col-lg ">
+        <div class="form-group col-lg m-3">
           <h5>花の名前</h5>
           <%= f.text_field :flower,class: "form-control" %>
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group col-lg mr-3">
+        <div class="form-group col-lg m-3">
           <h5>花が咲いていた場所</h5>
           <%= f.text_field :field ,class: "form-control" %>
         </div>
-        <div class="form-group col-lg">
+        <div class="form-group col-lg m-3">
           <h5>花が咲いていた日</h5>
           <%= f.date_field :day ,class: "form-control" %>
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group col-lg mr-3">
+        <div class="form-group col-lg m-3">
           <h5>住所（任意）</h5>
           <%= f.text_area :address ,class: "form-control" %>
         </div>
-        <div class="form-group col-lg">
+        <div class="form-group col-lg m-3">
           <h5>詳細（任意）</h5>
           <%= f.text_area :detail ,class: "form-control" %>
         </div>
       </div>
       <div class="form-row">
-        <div class="form-group col-lg mr-3">
+        <div class="form-group col-lg m-3">
           <h5>画像</h5>
             <%= f.file_field :image, class: "form-control-file", accept: "image/*"  %>
         </div>
-        <div class="form-group col-lg">
+        <div class="form-group col-lg m-3">
           <h5>開花状況</h5>
           <div id="star">
             <%= f.hidden_field :star, id: :star %>
@@ -65,7 +65,9 @@
             </script>
           </div>
         </div>
-        <%= f.submit 'この内容で投稿する', class:  "btn btn-success" %>
+        <div class="m-3">
+          <%= f.submit 'この内容で投稿する', class:  "btn btn-success" %>
+        </div>
       </form>
     <% end %>
   </div>
