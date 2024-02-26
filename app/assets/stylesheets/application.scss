@@ -56,3 +56,20 @@ footer {
 .pagination {
   justify-content: center;
 }
+
+.user-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-block {
+  width: 200px;
+  height: 400px;
+  background-color: #203744;
+}
+
+.user-image {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}

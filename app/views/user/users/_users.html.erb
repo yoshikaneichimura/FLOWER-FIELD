@@ -1,12 +1,17 @@
-<div>
-  <% users.each do |user| %>
-    <%= link_to user_user_path(user.id) do %>
-      <%= image_tag user.get_profile_image(200,200) %>
-    <% end %>
-    <p><strong><%= user.name %></strong></p>
-    <p><%= link_to "#{user.followings.count}：フォロー中",user_user_followings_path(user.id) %></p>
-    <p><%= link_to "#{user.followers.count}：フォロワー",user_user_followers_path(user.id) %></p>
-    <p>投稿件数：<%= user.post_images.count %></p>
+
+<% users.each do |user| %>
+  <div class="user-box">
+    <div class="user-block">
+      <div class="user-image">
+        <%= link_to user_user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(150,150), class: "mx-auto"%>
+        <% end %>
+      </div>
+      <p><strong><%= user.name %></strong></p>
+      <p><%= link_to "#{user.followings.count}：フォロー中",user_user_followings_path(user.id), class: "text-reset" %></p>
+      <p><%= link_to "#{user.followers.count}：フォロワー",user_user_followers_path(user.id), class: "text-reset" %></p>
+      <p>投稿件数：<%= user.post_images.count %></p>
+    </div>
   <% end %>
+  </div>
   <%= paginate users %>
-</div>
