@@ -1,25 +1,40 @@
-<div>
+<div class="profile-block">
   <% if user == current_user %>
-   <h3>あなたのプロフィール</h3>
-   <p><%= link_to "花の咲く場所を投稿する", new_user_post_image_path %><p>
-  <% else %>
-   <h3>このユーザーのプロフィール</h3>
+    <h3 class="text-center">あなたのプロフィール</h3>
+  <% elsif %>
+    <h3 class="text-center">プロフィール</h3>
   <% end %>
-  <%= image_tag user.get_profile_image(200,200) %>
-  <p>ユーザーネーム<strong><%= user.name %></strong></p>
+  <div class="my-5">
+    <%= image_tag user.get_profile_image(200,200) %>
+  </div>
+  <p>ユーザーネーム</p>
+  <p><%= user.name %></p>
   <p>自己紹介</p>
   <p><%= user.introduction %></p>
 
-  <p><%= link_to "#{user.followings.count} フォロー中", user_user_followings_path(user.id) %></p>
-  <p><%= link_to "#{user.followers.count} フォロワー", user_user_followers_path(user.id) %></p>
-
-  <% if current_user.following?(user)%>
-    <p><strong><%= link_to "フォローを外す", user_user_relationships_path(user.id), method: :delete %></strong></p>
-  <% elsif current_user != user && user.is_active == true %>
-    <p><strong><%= link_to "フォローする", user_user_relationships_path(user.id), method: :post %></strong></p>
-  <% end %>
+  <div>
+    <p><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></p>
+    <p><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></p>
+  </div>
+  <div>
+    <% if current_user.following?(user)%>
+      <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-3", method: :delete %>
+    <% elsif current_user != user && user.is_active == true %>
+      <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success my-3",method: :post %>
+    <% end %>
+  </div>
+  <div>
+    <% if user.id == current_user.id %>
+      <%= link_to "花の咲く場所を投稿する", new_user_post_image_path, class: "btn btn-success m-3" %>
+      <%= link_to "プロフィールを編集する",edit_user_user_path(user.id), class: "btn btn-info m-3" %><br>
+      <%= link_to 'メールアドレス、パスワードを変更する',edit_user_registration_path(user.id), class: "btn btn-info m-3" %>
+    <% end %>
+  </div>
+  <div>
   <% if user.id == current_user.id %>
-    <%= link_to "プロフィールを編集する",edit_user_user_path(user.id) %><br>
-    <%= link_to 'メールアドレス、パスワードを変更する',edit_user_registration_path(user.id) %>
+    <%= link_to "あなたのお気に入りリスト",favorites_user_user_path(user), class: "text-reset" %>
+  <% elsif %>
+    <%= link_to "このユーザーのお気に入りリスト",favorites_user_user_path(user), class: "text-reset" %>
   <% end %>
+  </div>
 </div>

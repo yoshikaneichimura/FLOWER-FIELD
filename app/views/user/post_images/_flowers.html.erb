@@ -1,4 +1,4 @@
-<div class="table-responsive-lg">
+<div class="table-responsive-lg my-3">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -34,7 +34,7 @@
             });
           </script>
         </td>
-        <td><%= link_to "#{post_image.user.name}",user_user_path(post_image.user.id) %></td>
+        <td><%= link_to "#{post_image.user.name}",user_user_path(post_image.user.id) ,class: "text-reset" %></td>
       </tr>
       <% end %>
     </tbody>
