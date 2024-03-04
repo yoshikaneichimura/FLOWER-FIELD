@@ -1,29 +1,34 @@
-<h1>ユーザーログイン</h1>
-
-<%= form_with model: @user, url: user_session_path do |f| %>
-
-  <div class="field">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :"ユーザー情報を保存" %>
+<div class="container">
+  <h3 class="text-center mt-3">ユーザーログイン</h3>
+  <div class="d-flex justify-content-center">
+    <div class="my-5">
+      <%= form_with model: @user, url: user_session_path do |f| %>
+        <form>
+          <div class="form-group">
+            <%= f.label :"メールアドレス" %><br />
+            <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"パスワード" %><br />
+            <%= f.password_field :password, class: "form-control",autocomplete: "current-password" %>
+          </div>
+          <% if devise_mapping.rememberable? %>
+            <div class="form-group">
+              <%= f.check_box :remember_me %>
+              <%= f.label :"ユーザー情報を保存" %>
+            </div>
+          <% end %>
+          <div class="actions">
+            <%= f.submit "ログイン" ,class: "btn btn-success" %>
+          </div>
+        </form>
+      <% end %>
+      <div class="my-3">
+        <%= render "user/shared/links"%>
+      </div>
+      <div class="my-5">
+        <%= link_to "ゲストユーザーログイン", user_guest_sign_in_path, class: "btn-lg btn-primary",method: :post %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
   </div>
-<% end %>
-
-<%= render "user/shared/links" %>
-
-<%= link_to "ゲストユーザーログインはこちら", user_guest_sign_in_path, method: :post %>
+</div>
