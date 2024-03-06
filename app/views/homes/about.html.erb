@@ -1,12 +1,18 @@
-<h1>ABOUT</h1>
-
-<% if flash[:notice] %>
-  <p id = "notice">
-    <%= flash[:notice] %>
-  </p>
-<% end %>
-
-<div>
- <p>このサイトは花の咲く場所を投稿し、また投稿された花の咲く場所を閲覧して、<br>
- 全国の花の名所や植物園などの開花状況などを共有できる「花の咲く場所」のレビューサイトです。</p>
+<div class="container">
+  <h1 class="text-center m-5">ABOUT</h1>
+  <div class="d-flex justify-content-center">
+    <div>
+      <% if flash[:notice] %>
+      <p id = "notice">
+        <%= flash[:notice] %>
+      </p>
+    <% end %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="layout-block">
+     <p class="text-center">このサイトは花の咲く場所を投稿し、また投稿された花の咲く場所を閲覧して、<br>
+     全国の花の名所や植物園などの開花状況などを共有できる「花の咲く場所」のレビューサイトです。</p>
+    </div>
+  </div>
 </div>

@@ -24,7 +24,7 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 header {
@@ -33,9 +33,28 @@ header {
 }
 
 main {
+  min-height: 1000vh;
   background-color: #203744;
   margin-bottom : auto;
 }
+
+.image-group {
+  height: 100%;
+  width: 100%;
+  background-color: #203744;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-block {
+  height: 150px;
+  width: 150px;
+}
+
+.layout-block {
+  height: 100%;
+  margin-bottom: auto;
+ }
 
 footer {
   border-top: solid 1px red;
