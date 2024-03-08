@@ -11,6 +11,13 @@
       <p><%= link_to "#{user.followings.count}：フォロー中",user_user_followings_path(user.id), class: "text-reset" %></p>
       <p><%= link_to "#{user.followers.count}：フォロワー",user_user_followers_path(user.id), class: "text-reset" %></p>
       <p>投稿件数：<%= user.post_images.count %></p>
+      <div>
+        <% if current_user.following?(user)%>
+          <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-3", method: :delete %>
+        <% elsif current_user != user && user.is_active == true %>
+          <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success my-3",method: :post %>
+        <% end %>
+      </div>
     </div>
   <% end %>
   </div>

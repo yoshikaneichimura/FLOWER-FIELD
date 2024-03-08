@@ -1,15 +1,21 @@
-<%= render 'user/users/profile', user: @user %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 my-5">
+      <%= render 'user/users/profile', user: @user %>
+    </div>
+    <div class="col-lg-9 my-5">
+      <% if current_user == @user %>
+        <h3 class="text-center mb-3">あなたがフォロー中のユーザー</h3>
+      <% else %>
+        <h3 class="text-center mb-3"><%= @user.name %>さんがフォロー中のユーザー</h3>
+      <% end %>
 
-<% if current_user == @user %>
-  <h3>あなたがフォロー中のユーザー</h3>
-<% else %>
-  <h3><%= @user.name %>さんがフォロー中のユーザー</h3>
-<% end %>
-
-<% if @users.exists? %>
- <%= render 'user/users/users', users: @users %>
-<% else %>
-  <p>ユーザーはいません</p>
-<% end %>
-
-<%= link_to "ユーザー情報に戻る",user_user_path(@user.id) %>
+      <% if @users.exists? %>
+       <%= render 'user/users/users', users: @users %>
+      <% else %>
+        <h5 class="text-center">ユーザーはいません</h5>
+      <% end %>
+    </div>
+  </div>
+  <p class="text-center"><%= link_to "ユーザー情報に戻る",user_user_path(@user.id),class: "text-reset" %></p>
+</div>

@@ -1,11 +1,11 @@
 <div class="profile-block">
   <% if user == current_user %>
-    <h3 class="text-center">あなたのプロフィール</h3>
+    <h5 class="text-center">あなたのプロフィール</h5>
   <% elsif %>
-    <h3 class="text-center">プロフィール</h3>
+    <h5 class="text-center">プロフィール</h5>
   <% end %>
   <div class="my-5">
-    <%= image_tag user.get_profile_image(200,200) %>
+    <%= image_tag user.get_profile_image(100,100) %>
   </div>
   <p>ユーザーネーム</p>
   <p><%= user.name %></p>
@@ -27,7 +27,6 @@
     <% if user.id == current_user.id %>
       <%= link_to "花の咲く場所を投稿する", new_user_post_image_path, class: "btn btn-success m-3" %>
       <%= link_to "プロフィールを編集する",edit_user_user_path(user.id), class: "btn btn-info m-3" %><br>
-      <%= link_to 'メールアドレス、パスワードを変更する',edit_user_registration_path(user.id), class: "btn btn-info m-3" %>
     <% end %>
   </div>
   <div>
