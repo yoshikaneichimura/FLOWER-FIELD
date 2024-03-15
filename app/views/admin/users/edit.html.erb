@@ -1,27 +1,46 @@
-<h1>このユーザーのプロフィールを編集する</h1>
+<div class="container">
+  <h3 class="text-center mt-3">このユーザーのプロフィールを編集する</h3>
+    <div>
+      <% if @user.errors.any? %>
+        <%= @user.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @user.errors.full_messages.each do | message |%>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div class="my-5">
 
-  <% if @user.errors.any? %>
-    <%= @user.errors.count %>件のエラーが発生しました
-    <ul>
-      <% @user.errors.full_messages.each do | message |%>
-      <li><%= message %></li>
+      <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
+      <form>
+        <div class="form-group">
+          <p>プロフィール画像</p>
+            <%= f.file_field :profile_image, class: "file-control", accept: "image/*"%>
+        </div>
+        <div class="form-group">
+          <p>名前</p>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <p>自己紹介</p>
+          <%= f.text_area :introduction, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <p>会員状況</p>
+          <div class="form-check form-check-inline mr-5">
+            <%= f.radio_button :is_active, true, class: "form-check-input" %>
+            <label class="form-check-label">有効会員</label>
+          </div>
+          <div class="form-check form-check-inline mr-5" >
+            <%= f.radio_button :is_active, false, class: "form-check-input"  %>
+            <label class="form-check-label">退会済み</label>
+          </div>
+        </div>
+      <%= f.submit "この内容で保存する", class: "btn btn-success my-3" %>
+      </form>
     <% end %>
-    </ul>
-  <% end %>
-
-  <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
-  <p>プロフィール画像</p>
-  <%= f.file_field :profile_image, accept: "image/*"%>
-  <p>名前</p>
-  <%= f.text_field :name %>
-  <p>自己紹介</p>
-  <%= f.text_area :introduction %>
-  <p>会員状況</p>
-
-  <%= f.radio_button :is_active, true %>
-  <%= f.label :"有効会員" %>
-  <%= f.radio_button :is_active, false %>
-  <%= f.label :"退会済み" %>
-
-  <%= f.submit "この内容で保存する"%>
-<% end %>
+    </div>
+  </div>
+</div>
