@@ -1,4 +1,4 @@
-<div class="table-responsive-lg my-3">
+<div class="table-responsive-lg mt-3">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -13,9 +13,16 @@
     <tbody>
         <% post_images.each do | post_image | %>
       <tr>
-        <td><%= link_to user_post_image_path(post_image.id) do %>
+        <td>
+          <% if user_signed_in? %>
+            <%= link_to user_post_image_path(post_image.id) do %>
               <%= image_tag post_image.get_image(100,100) %>
             <% end %>
+          <% elsif admin_signed_in? %>
+            <%= link_to admin_post_image_path(post_image.id) do %>
+              <%= image_tag post_image.get_image(100,100) %>
+            <% end %>
+          <% end %>
         </td>
         <td><%= post_image.flower %></td>
         <td><%= post_image.field %></td>
@@ -34,7 +41,13 @@
             });
           </script>
         </td>
-        <td><%= link_to "#{post_image.user.name}",user_user_path(post_image.user.id) ,class: "text-reset" %></td>
+        <td>
+          <% if user_signed_in? %>
+            <%= link_to "#{post_image.user.name}",user_user_path(post_image.user.id) ,class: "text-reset" %>
+          <% elsif admin_signed_in? %>
+            <%= link_to "#{post_image.user.name}",admin_user_path(post_image.user.id),class: "text-reset" %>
+          <% end %>
+        </td>
       </tr>
       <% end %>
     </tbody>
