@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3 my-5">
+      <%= render 'user/users/profile', user: @user %>
+    </div>
+    <div class="col-lg-9 my-5">
+      <h3 class="text-center mb-3"><%= @user.name %>さんのフォロワー</h3>
+      <% if @users.exists? %>
+       <%= render 'admin/users/users', users: @users %>
+      <% else %>
+        <h5 class="text-center">ユーザーはいません</h5>
+      <% end %>
+    </div>
+  </div>
+  <p class="text-center"><%= link_to "ユーザー情報に戻る",admin_user_path(@user.id),class: "text-reset" %></p>
+</div>
