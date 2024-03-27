@@ -1,14 +1,14 @@
 <div class="container">
-  <h1 class="text-center m-5">ABOUT</h1>
   <div class="d-flex justify-content-center">
-    <div>
-      <% if flash[:notice] %>
+    <div class="mt-3">
+    <% if flash[:notice] %>
       <p id = "notice">
         <%= flash[:notice] %>
       </p>
     <% end %>
     </div>
   </div>
+  <h1 class="text-center m-5">ABOUT</h1>
   <div class="d-flex justify-content-center">
     <div class="layout-block">
      <p class="text-center">このサイトは花の咲く場所を投稿し、また投稿された花の咲く場所を閲覧して、<br>

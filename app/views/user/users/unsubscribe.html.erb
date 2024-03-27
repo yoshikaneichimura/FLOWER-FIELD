@@ -1,11 +1,15 @@
 <div class="container">
   <h3 class="text-center mt-3">本当に退会しますか？</h3>
-    <p class="text-center my-5">一度退会させますと、投稿内容の閲覧ができなくなり、<br>
-    またこれまでの投稿された内容や会員情報の確認ができなくなります。<br>
-    再度ご利用いただく際には新規登録していただきますようお願い致します。<br>
-    退会される方は「退会する」をクリックして下さい</p>
-    <div class="buttons-group">
-      <%= link_to "退会しない",user_user_path(@user.id), class: "btn btn-primary btn-lg m-3" %>
-      <%= link_to "退会する", user_user_withdraw_path, class: "btn btn-danger btn-lg m-3", method: :patch, "data-confirm" =>  "退会しますか" %>
+    <p class="text-center mt-5">
+      一度退会させますと、投稿内容の閲覧ができなくなり、<br>
+      またこれまでの投稿された内容や会員情報の確認ができなくなります。<br>
+      再度ご利用いただく際には新規登録していただきますようお願い致します。<br>
+      退会される方は「退会する」をクリックして下さい
+    </p>
+    <div class="d-flex justify-content-center">
+      <div class="buttons-group">
+        <%= link_to "退会しない",user_user_path(@user.id), class: "btn btn-primary btn-lg m-3" %>
+        <%= link_to "退会する", user_user_withdraw_path, class: "btn btn-danger btn-lg m-3", method: :patch, "data-confirm" =>  "退会しますか" %>
+      </div>
     </div>
 </div>
