@@ -1,61 +1,60 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center mt-3">
   <% users.each do |user| %>
-  <div class="user-box">
+  <div class="user-group">
     <div class="user-block">
-      <!--<div class="user-image">-->
-        <% if user_signed_in? %>
-          <div class="user-image">
-            <%= link_to user_user_path(user.id) do %>
-              <%= image_tag user.get_profile_image(150,150)%>
-            <% end %>
+      <% if user_signed_in? %>
+        <div class="user-image">
+          <div>
+          <%= link_to user_user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(100,100)%>
+          <% end %>
           </div>
-          <% elsif admin_signed_in? %>
-          <div class="user-image">
-            <%= link_to admin_user_path(user.id) do %>
-              <%= image_tag user.get_profile_image(150,150)%>
-            <% end %>
+        </div>
+        <% elsif admin_signed_in? %>
+        <div class="user-image">
+          <%= link_to admin_user_path(user.id) do %>
+            <%= image_tag user.get_profile_image(100,100)%>
+          <% end %>
+        </div>
+      <% end %>
+    <div>
+      <% if admin_signed_in? && user.is_active == true %>
+        <h5 class="text-center mt-3">有効会員</h5>
+      <% elsif admin_signed_in? && user.is_active == false %>
+        <h5 class="text-center mt-3">退会済み</h5>
+      <% end %>
+    </div>
+    <p class="text-center mt-5"><strong><%= user.name %></strong></p>
+    <div>
+      <% if user_signed_in? %>
+
+        <p class="text-center"><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></p>
+        <p class="text-center"><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></p>
+
+        <% if current_user.following?(user)%>
+          <div class="d-flex justify-content-center">
+            <div class="my-3">
+              <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger", method: :delete %>
+            </div>
           </div>
-        <% end %>
-      <!--</div>-->
-      <div>
-        <% if admin_signed_in? && user.is_active == true %>
-          <h5 class="text-center mt-3">有効会員</h5>
-        <% elsif admin_signed_in? && user.is_active == false %>
-          <h5 class="text-center mt-3">退会済み</h5>
-        <% end %>
-      </div>
-      <p class="text-center"><strong><%= user.name %></strong></p>
-      <div>
-        <% if user_signed_in? %>
-
-          <p class="text-center"><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></p>
-          <p class="text-center"><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></p>
-
-          <% if current_user.following?(user)%>
+        <% elsif current_user != user && user.is_active == true %>
             <div class="d-flex justify-content-center">
               <div class="my-3">
-                <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger", method: :delete %>
-                </div>
+              <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success",method: :post %>
               </div>
-            <% elsif current_user != user && user.is_active == true %>
-              <div class="d-flex justify-content-center">
-                <div class="my-3">
-                <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success",method: :post %>
-                </div>
-              </div>
-            <% end %>
-
-          <% elsif admin_signed_in? %>
-
-          <p class="text-center"><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></p>
-          <p class="text-center"><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></p>
-          <p class="text-center">登録日時：<%= user.created_at.strftime('%Y/%m/%d')%></p>
-
+            </div>
         <% end %>
-      </div>
-      <p class="text-center">投稿件数：<%= user.post_images.count %></p>
+
+      <% elsif admin_signed_in? %>
+
+        <p class="text-center"><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></p>
+        <p class="text-center"><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></p>
+        <p class="text-center">登録日時：<%= user.created_at.strftime('%Y/%m/%d')%></p>
+
+      <% end %>
+    </div>
+    <p class="text-center">投稿件数：<%= user.post_images.count %></p>
     </div>
   <% end %>
   </div>
-  <%= paginate users %>
 </div>

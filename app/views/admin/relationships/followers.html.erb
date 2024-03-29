@@ -6,7 +6,7 @@
     <div class="col-lg-9 my-5">
       <h3 class="text-center mb-3"><%= @user.name %>さんのフォロワー</h3>
       <% if @users.exists? %>
-       <%= render 'admin/users/users', users: @users %>
+       <%= render 'user/users/users', users: @users %>
       <% else %>
         <h5 class="text-center">ユーザーはいません</h5>
       <% end %>
