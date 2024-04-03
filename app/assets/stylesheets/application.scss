@@ -75,6 +75,7 @@ footer {
 }
 
 .pagination {
+  display: flex;
   justify-content: center;
 }
 
@@ -97,18 +98,19 @@ footer {
   margin: 0 auto;
 }
 
-.user-box {
+.user-group {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
 }
 
 .user-block {
-  width: 200px;
+  width: 150px;
+  height: 450px;
   background-color: #203744;
 }
 
 .user-image {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin: 0 auto;
 }

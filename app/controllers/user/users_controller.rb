@@ -1,7 +1,8 @@
 class User::UsersController < ApplicationController
   before_action :authenticate_user!
+  
   def index
-    @users = User.page(params[:page]).order(created_at: :desc)
+    @users = User.order(created_at: :desc)
   end
 
   def show
