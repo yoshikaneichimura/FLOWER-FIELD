@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 my-5">
+    <div class="col-lg-3 mt-5">
       <%= render 'user/users/profile', user: @user %>
     </div>
-    <div class="col-lg-9 my-5">
+    <div class="col-lg-9 mt-5">
       <% if current_user == @user %>
-        <h3 class="text-center mb-3">あなたがフォロー中のユーザー</h3>
+        <h5 class="text-center mb-3">あなたがフォロー中のユーザー：<%= @user.followings.count %></h5>
       <% else %>
-        <h3 class="text-center mb-3"><%= @user.name %>さんがフォロー中のユーザー</h3>
+        <h5 class="text-center mb-3"><%= @user.name %>さんがフォロー中のユーザー：<%= @user.followings.count %></h5>
       <% end %>
 
       <% if @users.exists? %>
        <%= render 'user/users/users', users: @users %>
       <% else %>
-        <h5 class="text-center">ユーザーはいません</h5>
+        <h3 class="text-center">ユーザーはいません</h3>
       <% end %>
     </div>
   </div>
