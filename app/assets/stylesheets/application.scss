@@ -14,6 +14,8 @@
  *= require_self
  */
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+
 
 * {
   margin : 0;
@@ -35,6 +37,28 @@ header {
   border-bottom: solid 1px red;
 }
 
+.header-window {
+  height: 70px;
+  max-width: 350px;
+  background-color: #a22041;
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+  .background-color-admin {
+    background-color: #a22041;
+  }
+
+  .font-family-admin {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .font-color-admin {
+    color: #fdeff2;
+  }
+
 main {
   flex-grow: 1;
   background-color: #203744;
@@ -46,11 +70,6 @@ main {
   background-color: #203744;
   display: flex;
   flex-wrap: wrap;
-}
-
-.image-block {
-  height: 250px;
-  width: 150px;
 }
 
 .layout-block {

@@ -10,102 +10,125 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
+    <header class="
+      <% if admin_signed_in? %> background-color-admin
+      <% end %>
+    ">
+      <nav class="navbar navbar-light navbar-expand-lg
+      <% if admin_signed_in? %> background-color-admin
+      <% end %>
+      ">
         <div class="container">
-          <% if admin_signed_in? %>
-            <h3>管理者ページ</h3>
+          <% if user_signed_in? %>
+          <h3 class="mt-1">
+              FLOWER
+              <%= link_to root_path do %>
+                <%= image_tag('F.F.png') %>
+              <% end %>
+              FIELD
+            </h3>
+          <% elsif admin_signed_in? %>
+            <h3 class="mt-1">
+              FLOWER
+              <%= link_to admin_users_path do %>
+                <%= image_tag('F.F.png') %>
+              <% end %>
+              FIELD
+            </h3>
           <% else %>
-            <h3>FLOWER
+            <h3 class="mt-1">
+              FLOWER
               <%= link_to root_path do %>
                 <%= image_tag('F.F.png') %>
               <% end %>
               FIELD
             </h3>
           <% end %>
-
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbaraNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              aria-controls="navbaraNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
-         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto">
-            <% if user_signed_in? %>
-              <li class="nav-item ml-3">
-                <%= link_to user_user_path(current_user.id), class: 'nav-link text-reset' do %>
-                  <i class="fas fa-user-circle"></i>  マイページ
-                <% end %>
-              </i>
-              <li class="nav-item ml-3">
-                <%= link_to user_post_images_path, class: 'nav-link text-reset' do %>
-                  <i class="fas fa-images"></i> 花の咲く場所
-                <% end %>
-              </li>
-              <li class="nav-item ml-3">
-                <%= link_to user_users_path, class: 'nav-link text-reset' do %>
-                  <i class="fas fa-users"></i>  花を見つけた人達
-                <% end %>
-              </li>
-              <li class="nav-item ml-3">
-                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-reset' do %>
-                  <i class="fas fa-walking"></i>  ログアウト
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li class="nav-item ml-3">
+                  <%= link_to user_post_images_path, class: 'nav-link text-reset' do %>
+                    <i class="fas fa-images"></i> 花の咲く場所
                   <% end %>
-              </li>
-            <% elsif admin_signed_in? %>
-              <li class="nav-item ml-3">
-                <%=link_to "投稿一覧" ,admin_post_images_path, class: 'nav-link text-reset' %>
-              </li>
-              <li class="nav-item ml-3">
-                <%=link_to "投稿者一覧" ,admin_users_path, class: 'nav-link text-reset' %>
-              </li>
-              <li class="nav-item ml-3">
-                <%= link_to '管理者情報の編集',edit_admin_registration_path, class: 'nav-link text-reset' %>
-              </li>
-              <li class="nav-item ml-3">
-                <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-reset' %>
-              </li>
-            <% else %>
-              <li class="nav-item ml-3">
-                <%= link_to "ABOUT", about_path, class: 'nav-link text-reset' %>
-              </li>
-              <li class="nav-item ml-3">
-                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-reset' %>
-              </li>
-              <li class="nav-item ml-3">
-                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-reset' %>
-              </li>
-            <% end %>
-          </ul>
+                </li>
+                <li class="nav-item ml-3">
+                  <%= link_to user_users_path, class: 'nav-link text-reset' do %>
+                    <i class="fas fa-users"></i>  花を見つけた人達
+                  <% end %>
+                </li>
+                <li class="nav-item ml-3">
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-reset' do %>
+                    <i class="fas fa-walking"></i>  ログアウト
+                  <% end %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item ml-3 font-color-admin">
+                  <%=link_to "投稿一覧" ,admin_post_images_path, class: 'nav-link text-reset font-family-admin' %>
+                </li>
+                <li class="nav-item ml-3 font-color-admin">
+                  <%=link_to "投稿者一覧" ,admin_users_path, class: 'nav-link text-reset font-family-admin' %>
+                </li>
+                <li class="nav-item ml-3 font-color-admin">
+                  <%= link_to '管理者情報の編集',edit_admin_registration_path, class: 'nav-link text-reset font-family-admin' %>
+                </li>
+                <li class="nav-item ml-3 font-color-admin">
+                  <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-reset font-family-admin' %>
+                </li>
+              <% else %>
+                <li class="nav-item ml-3">
+                  <%= link_to "ABOUT", about_path, class: 'nav-link text-reset' %>
+                </li>
+                <li class="nav-item ml-3">
+                  <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-reset' %>
+                </li>
+                <li class="nav-item ml-3">
+                  <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-reset' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
       </nav>
       <div class="container">
+        <% if user_signed_in? %>
+
         <div class="row">
-          <% if user_signed_in? %>
-          <div class="col-xl-3 my-3">
-            <div class="d-flex flex-row">
-              <div class="mr-3 ">
-                <%= image_tag current_user.get_profile_image(50,50)%>  <strong><%= current_user.name %></strong>
-              </div>
-              <div>
-                <%= link_to new_user_post_image_path(current_user.id) ,class: "btn btn-success mt-1" do %>
-                  <i class="fas fa-pen"></i>
-                <% end %>
-              </div>
+
+          <div class="col-lg-4 my-3">
+          <div class="d-flex bd-highlight header-window">
+            <div class="bd-highlight ">
+              <%= link_to user_user_path(current_user.id) do %>
+                <%= image_tag current_user.get_profile_image(50,50) %>
+              <% end %>
+            </div>
+            <div class="bd-highlight mt-2 ml-3 ">
+              <span class="d-inline-block text-truncate" style="max-width: 200px;"><%= current_user.name %></span>
+            </div>
+            <div class="ml-auto">
+              <%= link_to new_user_post_image_path(current_user.id) ,class: "btn btn-success m-1" do %>
+                <i class="fas fa-pen"></i>
+              <% end %>
             </div>
           </div>
-          <div class="col-xl-9 my-3">
+          </div>
+
+          <div class="col-lg-8 my-3">
             <%= search_form_for @search, url: user_search_path do |f| %>
               <form>
-                <div class="form-row">
-                  <div class="col-md-3 m-1">
+                <div class="form-inline">
+                  <div class="m-1 mr-3">
                     <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索",class: "form-control" %>
                   </div>
-                  <div class="col-3 col-sm-4 col-md-3 m-1">
+                  <div class="m-1">
                     <%= f.date_field :day_gteq ,class: "form-control" %>
                   </div>
-                  <span class="mt-2">〜</span>
-                  <div class="col-3 col-sm-4 col-md-3 m-1">
+                  <span>〜</span>
+                  <div class="m-1">
                     <%= f.date_field :day_lteq ,class: "form-control" %>
                   </div>
                   <div class="m-1">
@@ -116,13 +139,19 @@
             <% end %>
           </div>
 
-            <% elsif admin_signed_in? %>
+        </div>
 
-          <div class="col-xl-9 my-3">
+
+          <% elsif admin_signed_in? %>
+
+          <div class="my-1">
+            <h5 class="ml-3 font-family-admin">管理者ページ</h5>
+          </div>
+          <div class="my-1 ml-auto">
             <%= search_form_for @search, url: admin_search_path do |f| %>
               <form>
                 <div class="form-row">
-                  <div class="col-3 m-1 ml-auto">
+                  <div class="col-auto m-1 ml-auto">
                     <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" ,class: "form-control" %>
                   </div>
                   <div class="m-1">
@@ -132,18 +161,23 @@
               </form>
             <% end %>
           </div>
+      </div>
 
 
-          </div>
-        </div>
+
+
+
       <% end %>
+
     </header>
     <main>
       <%= yield %>
     </main>
-    <footer>
+    <footer class="
+      <% if admin_signed_in? %> background-color-admin
+      <% end %>">
       <div class="container">
-        <p>tefutefu</p>
+        <p class="text-center font-family-admin font-color-admin">tefutefu</p>
       </div>
     </footer>
   </body>
