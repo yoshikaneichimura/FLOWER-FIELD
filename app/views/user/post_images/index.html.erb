@@ -1,28 +1,23 @@
 <div class="container">
   <div class="my-3">
-    <h3 class="text-center">花の咲く場所</h3>
-      <%= form_with url: user_post_images_path, method: :get, class: 'boards_searchForm' do %>
-      <form>
-        <div class="row">
-
-          <div class="m-3">
-            <h3>対象の地域を選択して下さい</h3>
-          </div>
-
-          <div class="form-group col-6 m-3">
+    <h5 class="text-center">花の咲く場所</h5>
+    <%= form_with url: user_post_images_path, method: :get, class: 'boards_searchForm' do %>
+    <form>
+      <div class="row">
+        <h6 class="mt-4 ml-5">対象の地域を選択して下さい</h6>
+        <div class="form-group col-xs-10 col-sm-5 m-3">
           <%= select_tag :tag_id,
-            options_from_collection_for_select(Tag.all, :id, :area, params[:tag_id]),
-            {
-              prompt: 'エリアで絞り込み',
-              class: 'form-control',
-              onchange: 'submit(this.form);'
-            }
+          options_from_collection_for_select(Tag.all, :id, :area, params[:tag_id]),
+          {
+            prompt: 'エリアで絞り込み',
+            class: 'form-control',
+            onchange: 'submit(this.form);'
+          }
           %>
-          </div>
         </div>
-      </form>
-        <% end %>
-
+      </div>
+    </form>
+    <% end %>
     <div class="my-3">
       <% if @post_images.exists? %>
         <%= render 'flowers' ,post_images: @post_images %>
