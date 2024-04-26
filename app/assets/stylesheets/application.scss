@@ -39,7 +39,8 @@ header {
 
 .header-window {
   height: 70px;
-  max-width: 350px;
+  min-width: 350px;
+  max-width: 500px;
   background-color: #a22041;
   padding: 10px;
   border: 1px solid red;
@@ -96,6 +97,24 @@ footer {
 .pagination {
   display: flex;
   justify-content: center;
+}
+
+.detail-area {
+  height: 500px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.comment-field {
+  width: 75%;
+  margin: 0 auto;
+}
+
+.comment-area {
+  width: 75%;
+  margin: 50px auto;
 }
 
 .profile-area {
