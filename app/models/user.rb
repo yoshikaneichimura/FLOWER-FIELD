@@ -12,7 +12,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
-  validates :name,  presence: true
+  validates :name,  {length: {in: 1..20} }
+  validates :introduction, {length: {maximum:20} }
 
   has_many :post_images, dependent: :destroy
   has_many :post_comments, dependent: :destroy

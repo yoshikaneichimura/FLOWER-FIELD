@@ -2,10 +2,12 @@ class PostImage < ApplicationRecord
 
   has_one_attached :image
 
-  validates :flower,  presence: true
-  validates :field,   presence: true
+  validates :flower,  {length: {in: 1..20} }
+  validates :field,   {length: {in: 1..20} }
   validates :day,     presence: true
   validates :star,    presence: true
+  validates :address,  {length: {maximum:20} }
+  validates :detail,  {length: {maximum:200} }
 
   belongs_to :user
   belongs_to :tag
