@@ -11,6 +11,7 @@ class User::PostCommentsController < ApplicationController
     else
       @error_comment = comment
       @post_image = PostImage.find(params[:post_image_id])
+      @user = @post_image.user
       @post_comment = PostComment.new
       render 'user/post_images/show'
     end
