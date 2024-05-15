@@ -139,7 +139,7 @@
                     <div class="col-auto col-sm-5 col-md-5 col-lg-3 m-1">
                       <%= f.date_field :day_lteq ,class: "form-control" %>
                     </div>
-                    <div class="col-1 m-1 ml-sm-n1 ml-md-2 ml-lg-1">
+                    <div class="col-1 m-1 ml-sm-n1 ml-md-3 ml-lg-">
                       <%= f.submit '検索' ,class: "btn btn-danger" %>
                     </div>
                 </div>
@@ -169,7 +169,11 @@
       <% end %>
     </header>
     <main>
+
+      <%= render 'shared/flash_message'%>
+
       <%= yield %>
+
     </main>
     <footer class="
       <% if admin_signed_in? %> background-color-admin
