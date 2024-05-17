@@ -1,6 +1,6 @@
 class PostComment < ApplicationRecord
 
-  validates :comment,  {length: {maximum:200} }
+  validates :comment, {length: {in: 1..200} }
 
   belongs_to :user
   belongs_to :post_image
