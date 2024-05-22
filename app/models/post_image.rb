@@ -6,7 +6,7 @@ class PostImage < ApplicationRecord
   validates :field,   {length: {in: 1..20} }
   validates :day,     presence: true
   validates :star,    presence: true
-  validates :adress,  {length: {maximum:20} }
+  validates :address,  {length: {maximum:20} }
   validates :detail,  {length: {maximum:20} }
 
   belongs_to :user
