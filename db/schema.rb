@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2023_11_13_101506) do
     t.string "flower", null: false
     t.string "field", null: false
     t.date "day", null: false
-    t.integer "star", default: 0, null: false
+    t.integer "star", null: false
     t.text "address"
     t.text "detail"
     t.datetime "created_at", precision: 6, null: false

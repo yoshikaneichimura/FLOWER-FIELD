@@ -6,7 +6,7 @@ class CreatePostImages < ActiveRecord::Migration[6.1]
       t.string  :flower,   null: false
       t.string  :field,    null: false
       t.date    :day,      null: false
-      t.integer :star,     null: false, default: 0
+      t.integer :star,     null: false
       t.text    :address
       t.text    :detail
 
