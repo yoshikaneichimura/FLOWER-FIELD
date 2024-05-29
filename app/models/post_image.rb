@@ -6,8 +6,8 @@ class PostImage < ApplicationRecord
   validates :field,   {length: {in: 1..20} }
   validates :day,     presence: true
   validates :star,    presence: true
-  validates :address,  {length: {maximum:20} }
-  validates :detail,  {length: {maximum:20} }
+  validates :address,  {length: {maximum:50} }
+  validates :detail,  {length: {maximum:200} }
 
   belongs_to :user
   belongs_to :tag
