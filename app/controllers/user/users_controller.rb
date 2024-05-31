@@ -1,6 +1,6 @@
 class User::UsersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @users = User.order(created_at: :desc)
   end
@@ -17,7 +17,7 @@ class User::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if  @user.update(user_params)
-      flash[:notice] = "ユーザー情報を更新しました"
+      flash[:notice] = "ユーザー情報を更新しました。"
       redirect_to user_user_path
     else
         render :edit
@@ -32,7 +32,7 @@ class User::UsersController < ApplicationController
     user = current_user
     user.update(is_active: false)
     reset_session
-    flash[:notice] = "退会処理をしました"
+    flash[:notice] = "退会処理をしました。"
     redirect_to about_path
   end
 

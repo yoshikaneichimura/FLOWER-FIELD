@@ -4,16 +4,17 @@
     <h3>退会済みユーザー</h3>
   <% end %>
 
-  <div class="row mt-3">
-
+  <div class="row">
     <div class="col-lg-4">
+
       <%= render 'user/users/profile', user: @user %>
     </div>
-
     <div class="col-lg-8 mt-3">
       <h3 class="text-center">このユーザーの花の咲く場所</h3>
       <% if @post_images.exists? %>
+
         <%= render 'user/post_images/flowers', post_images: @post_images %>
+
       <% else %>
       <div class="flowers-block">
         <h1 class="text-center m-5">投稿はまだありません</h1>

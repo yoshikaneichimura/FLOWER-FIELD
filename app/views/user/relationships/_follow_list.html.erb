@@ -1,7 +1,9 @@
 <% if users.exists? %>
+
  <%= render 'user/users/index', users: users %>
+ 
 <% else %>
   <p>ユーザーはいません</p>
 <% end %>
 
-<%= link_to "ユーザー情報に戻る",user_user_path(user.id) %>
+<%= link_to "＊ユーザー情報に戻る",user_user_path(user.id) %>

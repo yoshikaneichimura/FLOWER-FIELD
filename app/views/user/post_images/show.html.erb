@@ -18,7 +18,7 @@
   <%= render 'user/post_images/post_image',post_image: @post_image, user: @user %>
 
   <div class="d-flex flex-column">
-    <div class="my-5 ml-auto">
+    <div class="mt-3 ml-auto">
       <% if @post_image.favorited_by?(current_user) %>
         <h3>
           <%= link_to user_post_image_favorite_path(@post_image), class: "text-reset", method: :delete do %>

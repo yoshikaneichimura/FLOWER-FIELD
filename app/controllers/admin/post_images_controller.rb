@@ -17,7 +17,7 @@ class Admin::PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     if  @post_image.update(post_image_params)
-        flash[:notice] = "投稿内容を編集しました"
+        flash[:notice] = "投稿内容を編集しました。"
         redirect_to admin_post_image_path(@post_image.id)
     else
         render :edit
@@ -27,7 +27,7 @@ class Admin::PostImagesController < ApplicationController
   def destroy
     post_image = PostImage.find(params[:id])
     post_image.destroy
-    flash[:notice] = "投稿内容を削除しました"
+    flash[:notice] = "投稿を削除しました。"
     redirect_to admin_post_images_path
   end
 

@@ -154,7 +154,7 @@
               <%= search_form_for @search, url: admin_search_path do |f| %>
                 <form>
                   <div class="form-inline">
-                    <div class="col mt-3 mt-sm-1 ml-auto">
+                    <div class="col ml-auto">
                       <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" ,class: "form-control" %>
                     </div>
                     <div class="mr-3 ">
@@ -169,9 +169,10 @@
       <% end %>
     </header>
     <main>
+      <div class="flash-message-area">
 
-      <div class="message-area">
-        <%= render 'shared/flash_message'%>
+        <%= render 'shared/flash_message' %>
+
       </div>
 
       <%= yield %>
