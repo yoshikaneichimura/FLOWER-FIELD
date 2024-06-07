@@ -65,6 +65,11 @@ main {
   background-color: #203744;
 }
 
+.sign-up-form {
+  width: 300px;
+  margin-top: 30px;
+}
+
 .image-group {
   height: 100%;
   width: 100%;
@@ -159,4 +164,10 @@ footer {
 .flash-message-area {
   display: flex;
   justify-content: center;
+}
+
+.alert-message {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }

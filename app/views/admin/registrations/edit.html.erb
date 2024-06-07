@@ -1,8 +1,10 @@
 <div class="container">
   <h3 class="text-center mt-3">管理者情報の編集</h3>
-  <%= render "admin/shared/error_messages", resource: resource %>
+  <div class="alert-message">
+      <%= render "user/shared/error_messages", resource: resource %>
+  </div>
   <div class="d-flex justify-content-center">
-    <div class="my-3">
+    <div class="sign-up-form">
     <%= form_with model: @admin, url: admin_registration_path do |f| %>
       <form>
         <div class="form-group">
@@ -14,12 +16,8 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :"新しいパスワード" %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.label :"新しいパスワード" %><br />
           <%= f.password_field :password,class: "form-control", autocomplete: "new-password" %>
-          <% if @minimum_password_length %>
-            <br />
-            <em><%= @minimum_password_length %> characters minimum</em>
-          <% end %>
         </div>
 
         <div class="form-group">
@@ -28,20 +26,18 @@
         </div>
 
         <div class="form-group">
-          <%= f.label :"現在のパスワード" %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.label :"現在のパスワード" %><br />
           <%= f.password_field :current_password,class: "form-control", autocomplete: "current-password" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "この内容で保存" ,class: "btn btn-success"%>
+          <%= f.submit "この内容で保存" ,class: "btn btn-success mt-1"%>
         </div>
       </form>
       <% end %>
       <div class="my-3">
-        <%= button_to "削除", registration_path(resource_name),class: "btn btn-danger",
-        data: { confirm: "このアカウントを削除しますがよろしいですか？", turbo_confirm: "このアカウントを削除しますがよろしいですか？" }, method: :delete %>
+        <%= link_to "＊戻る", :back ,class: "text-reset"%>
       </div>
-      <%= link_to "戻る", :back ,class: "text-reset"%>
     </div>
   </div>
 </div>
