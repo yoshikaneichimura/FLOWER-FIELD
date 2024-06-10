@@ -9,7 +9,7 @@ class User::PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     if @post_image.save
-      flash[:notice] = "投稿しました。"
+      flash[:success] = "投稿しました。"
       redirect_to user_post_images_path
     else
       render :new
@@ -43,7 +43,7 @@ class User::PostImagesController < ApplicationController
   def destroy
     post_image = PostImage.find(params[:id])
     post_image.destroy
-    flash[:notice] = "投稿を削除しました。"
+    flash[:erorr] = "投稿を削除しました。"
     redirect_to user_post_images_path
   end
 

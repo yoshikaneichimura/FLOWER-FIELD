@@ -27,7 +27,7 @@ class Admin::PostImagesController < ApplicationController
   def destroy
     post_image = PostImage.find(params[:id])
     post_image.destroy
-    flash[:notice] = "投稿を削除しました。"
+    flash[:erorr] = "投稿を削除しました。"
     redirect_to admin_post_images_path
   end
 
