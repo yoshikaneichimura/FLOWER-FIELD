@@ -1,9 +1,6 @@
 <h3 class="text-center mt-3">投稿内容</h3>
-  <% if post_image.user.is_active == false %>
-    <h3>こちらは退会済みユーザーの投稿です</h3>
-  <% end %>
 <div class="row">
-  <div class="col-lg-6 mt-5 ">
+  <div class="col-lg-6 mt-3 ">
     <div class="d-flex justify-content-center">
       <div><%= image_tag post_image.get_image(600,600) ,class: "img-fluid" %></div>
     </div>
@@ -34,6 +31,8 @@
         <% if post_image.user == current_user %>
           <div class="mt-3"><%= link_to "この投稿を編集する" ,edit_user_post_image_path(post_image) , class: "btn btn-info" %></div>
           <div class="mt-3"><%= link_to "この投稿を削除する" ,user_post_image_path(post_image), class: "btn btn-danger" ,method: :delete, "data-confirm" => "本当に削除しますか？" %></div>
+        <% elsif user.is_active == false %>
+          <div class="bg-danger rounded text-white py-1 px-3 mt-3">退会済み</div>
         <% end %>
 
       <% elsif admin_signed_in? %>
@@ -51,19 +50,19 @@
     <div class="detail-area">
       <div>
         <h6>地域</h6>
-        <h5 class="mt-1"><%= post_image.tag.area %></h5>
+        <h3 class="mt-1"><%= post_image.tag.area %></h3>
       </div>
       <div>
-        <h6>花の名前</h6>
-        <h5 class="mt-1"><%= post_image.flower %></h5>
+        <h6 class="mt-3">花の名前</h6>
+        <h3 class="mt-1"><%= post_image.flower %></h3>
       </div>
       <div>
-        <h6>花の咲いていた場所</h6>
-        <h5 class="mt-1"><%= post_image.field %></h5>
+        <h6 class="mt-3">花の咲いていた場所</h6>
+        <h3 class="mt-1"><%= post_image.field %></h3>
       </div>
       <div>
-        <h6>花が咲いていた日</h6>
-        <h5 class="mt-1"><%= post_image.day %></h5>
+        <h6 class="mt-3">花が咲いていた日</h6>
+        <h3 class="mt-1"><%= post_image.day %></h3>
       </div>
       <div>
         <h6 class="mt-3">開花状況</h6>
@@ -75,7 +74,7 @@
                 size     : 36,
                 starOff  : "<%= asset_path('star-off.png') %>",
                 starOn   : "<%= asset_path('star-on.png') %>",
-                score: <%= post_image.star%>,
+                score: <%= post_image.star %>,
                 half: false,
                 readOnly: true,
               });

@@ -2,7 +2,7 @@
   <% if post_image.post_comments.exists? %>
     <h5 class="ml-3">コメント件数：<%= post_image.post_comments.count %></h5>
   <% else %>
-    <h5 class="text-center mt-3">この投稿に対するコメントはまだありません</h5>
+    <h5 class="text-center mt-3">この投稿に対するコメントはまだありません。</h5>
   <% end %>
   <% post_image.post_comments.each do | post_comment | %>
     <div class="border-top mt-3">

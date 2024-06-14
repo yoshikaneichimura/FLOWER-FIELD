@@ -16,11 +16,11 @@
         <td>
           <% if user_signed_in? %>
             <%= link_to user_post_image_path(post_image.id) do %>
-              <%= image_tag post_image.get_image(50,50) %>
+              <%= image_tag post_image.get_image(100,100) %>
             <% end %>
           <% elsif admin_signed_in? %>
             <%= link_to admin_post_image_path(post_image.id) do %>
-              <%= image_tag post_image.get_image(50,50) %>
+              <%= image_tag post_image.get_image(100,100) %>
             <% end %>
           <% end %>
         </td>

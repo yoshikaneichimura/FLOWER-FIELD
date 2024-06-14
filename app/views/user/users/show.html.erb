@@ -1,8 +1,5 @@
 <div class="container">
   <h3 class="text-center mt-3">ユーザー情報</h3>
-  <% if @user.is_active == false %>
-    <h3>退会済みユーザー</h3>
-  <% end %>
   <div class="row">
     <div class="col-lg-4">
 
@@ -11,9 +8,9 @@
     </div>
     <div class="col-lg-8 mt-1">
       <% if @user == current_user %>
-        <h3 class="text-center">あなたの花の咲く場所</h3>
+        <h5 class="text-center">あなたの花の咲く場所</h5>
       <% else %>
-        <h3 class="text-center">このユーザーの花の咲く場所</h3>
+        <h5 class="text-center">このユーザーの花の咲く場所</h5>
       <% end %>
       <% if @post_images.exists? %>
 
@@ -21,7 +18,7 @@
 
       <% else %>
       <div class="flowers-block">
-        <h1 class="text-center m-5">投稿はまだありません</h1>
+        <h1 class="text-center m-5">投稿はまだありません。</h1>
       </div>
       <% end %>
     </div>

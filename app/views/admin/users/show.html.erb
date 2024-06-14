@@ -1,16 +1,13 @@
 <div class="container">
   <h3 class="text-center mt-3">投稿者詳細</h3>
-  <% if @user.is_active == false %>
-    <h3>退会済みユーザー</h3>
-  <% end %>
-
   <div class="row">
     <div class="col-lg-4">
 
       <%= render 'user/users/profile', user: @user %>
+
     </div>
     <div class="col-lg-8 mt-3">
-      <h3 class="text-center">このユーザーの花の咲く場所</h3>
+      <h5 class="text-center">このユーザーの花の咲く場所</h5>
       <% if @post_images.exists? %>
 
         <%= render 'user/post_images/flowers', post_images: @post_images %>

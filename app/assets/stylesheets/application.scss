@@ -16,24 +16,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
 
+$main-color: #203744;
+$sub-color: #165e83;
+$font-color: #c1e4e9;
+$my-color: #a22041;
+$my-font-color: #fdeff2;
 
 * {
   margin : 0;
   padding: 0;
   box-sizing: border-box;
-  color : #c1e4e9;
+  color : $font-color;
   font-family: 'Zen Maru Gothic', serif;
+}
+
+.bg-my-color {
+  background-color: $my-color;
+}
+
+.my-font-color {
+  color: $my-font-color;
+}
+
+.border-line {
+  border: 1px solid $font-color;
+}
+
+.my-border-line {
+  border: 3px solid red;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  background-color: #203744;
+  background-color: $main-color;
   height: 100vh;
 }
 
 header {
-  background-color: #165e83;
+  background-color: $sub-color;
   border-bottom: solid 1px red;
 }
 
@@ -41,28 +62,21 @@ header {
   height: 70px;
   min-width: 350px;
   max-width: 500px;
-  background-color: #a22041;
+  background-color: $my-color;
   padding: 10px;
   border: 1px solid red;
   border-radius: 5px;
 }
 
-  .background-color-admin {
-    background-color: #a22041;
-  }
-
-  .font-family-admin {
-    font-family: "Noto Serif JP", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-  .font-color-admin {
-    color: #fdeff2;
-  }
+.font-family-admin {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 main {
   flex-grow: 1;
-  background-color: #203744;
+  background-color: $main-color;
 }
 
 .sign-up-form {
@@ -73,20 +87,20 @@ main {
 .image-group {
   height: 100%;
   width: 100%;
-  background-color: #203744;
+  background-color: $main-color;
   display: flex;
   flex-wrap: wrap;
 }
 
 footer {
   border-top: solid 1px red;
-  background-color : #165e83;
+  background-color : $sub-color;
 }
 
 .pagination>li>a {
   border: none;
-  background-color: #203744;
-  color: #c1e4e9;
+  background-color: $main-color;
+  color: $font-color;
   margin: 1px;
 }
 
@@ -101,7 +115,7 @@ footer {
 
 .detail-area {
   height: 400px;
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -120,14 +134,14 @@ footer {
 .profile-area {
   width: 250px;
   margin: 10px auto 30px;
-  background-color: #165e83;
-  border: 1px solid red;
+  padding: 10px;
+  background-color: $sub-color;
   border-radius: 5px;
 }
 
 .profile-image {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   margin: 10px auto 0;
 }
 
@@ -142,18 +156,25 @@ footer {
 }
 
 .user-block {
-  width: 150px;
-  height: 400px;
-  background-color: #203744;
+  width: 200px;
+  max-height: 500px;
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  background-color: $sub-color;
 }
 
 .user-image {
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  margin-top: 10px;
 }
 
 .user-name {
+  width: 150px;
   text-align: center;
   overflow: hidden;
   white-space: nowrap;

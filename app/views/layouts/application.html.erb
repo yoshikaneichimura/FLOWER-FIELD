@@ -11,11 +11,11 @@
   </head>
   <body>
     <header class="
-      <% if admin_signed_in? %> background-color-admin
+      <% if admin_signed_in? %> bg-my-color
       <% end %>
     ">
       <nav class="navbar navbar-light navbar-expand-lg
-      <% if admin_signed_in? %> background-color-admin
+      <% if admin_signed_in? %> bg-my-color
       <% end %>
       ">
         <div class="container">
@@ -28,7 +28,7 @@
               FIELD
             </h3>
           <% elsif admin_signed_in? %>
-            <h3 class="mt-1">
+            <h3 class="mt-1 my-font-color">
               FLOWER
               <%= link_to admin_users_path do %>
                 <%= image_tag('F.F.png') %>
@@ -72,16 +72,16 @@
                   <% end %>
                 </li>
               <% elsif admin_signed_in? %>
-                <li class="nav-item ml-3 font-color-admin">
+                <li class="nav-item ml-3 my-font-color">
                   <%=link_to "投稿一覧" ,admin_post_images_path, class: 'nav-link text-reset font-family-admin' %>
                 </li>
-                <li class="nav-item ml-3 font-color-admin">
+                <li class="nav-item ml-3 my-font-color">
                   <%=link_to "投稿者一覧" ,admin_users_path, class: 'nav-link text-reset font-family-admin' %>
                 </li>
-                <li class="nav-item ml-3 font-color-admin">
+                <li class="nav-item ml-3 my-font-color">
                   <%= link_to '管理者情報の編集',edit_admin_registration_path, class: 'nav-link text-reset font-family-admin' %>
                 </li>
-                <li class="nav-item ml-3 font-color-admin">
+                <li class="nav-item ml-3 my-font-color">
                   <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-reset font-family-admin' %>
                 </li>
               <% else %>
@@ -149,7 +149,7 @@
         </div>
           <% elsif admin_signed_in? %>
           <div class="row mb-3">
-            <h5 class="mb-3 ml-3  font-family-admin">管理者ページ</h5>
+            <h5 class="mb-3 ml-3  font-family-admin my-font-color">管理者ページ</h5>
             <div class="ml-auto">
               <%= search_form_for @search, url: admin_search_path do |f| %>
                 <form>
@@ -179,12 +179,12 @@
 
     </main>
     <footer class="
-      <% if admin_signed_in? %> background-color-admin
+      <% if admin_signed_in? %> bg-my-color
       <% end %>">
       <div class="container">
         <p class="text-center
          <% if admin_signed_in? %>
-        font-family-admin font-color-admin
+        font-family-admin my-font-color
         <% end %>
         ">tefutefu</p>
       </div>
