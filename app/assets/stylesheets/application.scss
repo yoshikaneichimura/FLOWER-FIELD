@@ -16,30 +16,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
 
-$main-color: #203744;
-$sub-color: #165e83;
-$font-color: #c1e4e9;
-$my-color: #a22041;
-$my-font-color: #fdeff2;
+$main-color-green: #165e83;
+$background-color-green: #203744;
+$color-green: #c1e4e9;
+
+$main-color-red: #a22041;
+$background-color-red: #640125;
+$color-red: #eebbcb;
 
 * {
   margin : 0;
   padding: 0;
   box-sizing: border-box;
-  color : $font-color;
+  color :$color-green;
   font-family: 'Zen Maru Gothic', serif;
 }
 
-.bg-my-color {
-  background-color: $my-color;
+.admin_sign_in {
+  * {
+    font-family: "Noto Serif JP", serif;
+    font-weight: 400;
+    font-style: normal;
+    // color: $color-red;
+  }
 }
 
-.my-font-color {
-  color: $my-font-color;
+.background-color-red {
+  background-color: $main-color-red;
+}
+
+.color-red {
+  color: $color-red;
 }
 
 .border-line {
-  border: 1px solid $font-color;
+  border: 1px solid $color-green;
 }
 
 .my-border-line {
@@ -49,12 +60,11 @@ $my-font-color: #fdeff2;
 body {
   display: flex;
   flex-direction: column;
-  background-color: $main-color;
   height: 100vh;
 }
 
 header {
-  background-color: $sub-color;
+  background-color: $main-color-green;
   border-bottom: solid 1px red;
 }
 
@@ -62,21 +72,19 @@ header {
   height: 70px;
   min-width: 350px;
   max-width: 500px;
-  background-color: $my-color;
+  background-color: $main-color-red;
   padding: 10px;
   border: 1px solid red;
   border-radius: 5px;
 }
 
-.font-family-admin {
-  font-family: "Noto Serif JP", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
 main {
   flex-grow: 1;
-  background-color: $main-color;
+  // @if color == $color-green {
+    background-color: $background-color-green;
+  // } @else if color == $color-red {
+    // backgroud-color: $background-color-red;
+  // }
 }
 
 .sign-up-form {
@@ -84,23 +92,10 @@ main {
   margin-top: 30px;
 }
 
-.image-group {
-  height: 100%;
-  width: 100%;
-  background-color: $main-color;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-footer {
-  border-top: solid 1px red;
-  background-color : $sub-color;
-}
-
 .pagination>li>a {
   border: none;
-  background-color: $main-color;
-  color: $font-color;
+  background-color: $main-color-green;
+  color: $color-green;
   margin: 1px;
 }
 
@@ -111,6 +106,21 @@ footer {
 .pagination {
   display: flex;
   justify-content: center;
+}
+
+@mixin user_area($width) {
+  width: $width;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  background-color: $main-color-green;
+}
+
+.user-datail {
+  @include user_area(250px)
+  padding: 20px;
+  margin: 10px auto 10px;
 }
 
 .detail-area {
@@ -132,54 +142,28 @@ footer {
 }
 
 .profile-area {
-  width: 250px;
-  margin: 10px auto 30px;
+  @include user_area(300px)
   padding: 10px;
-  background-color: $sub-color;
-  border-radius: 5px;
-}
-
-.profile-image {
-  width: 150px;
-  height: 150px;
-  margin: 10px auto 0;
-}
-
-.text-block {
-  width : 200px;
-  margin: 0 auto;
+  margin: 10px auto 30px;
 }
 
 .user-group {
   display: flex;
   flex-wrap: wrap-reverse;
-}
-
-.user-block {
-  width: 200px;
-  max-height: 500px;
-  margin: 10px;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 5px;
-  background-color: $sub-color;
-}
-
-.user-image {
-  width: 150px;
-  height: 150px;
-  margin-top: 10px;
-}
-
-.user-name {
-  width: 150px;
-  text-align: center;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  margin-top: 10px;
+  .user-block {
+    @include user_area(200px)
+    max-height: 500px;
+    margin: 10px;
+    padding: 20px;
+    .user-name {
+      width: 150px;
+      text-align: center;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin-top: 10px;
+    }
+  }
 }
 
 .flash-message-area {
@@ -191,4 +175,9 @@ footer {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+}
+
+footer {
+  border-top: solid 1px red;
+  background-color : $main-color-green;
 }
