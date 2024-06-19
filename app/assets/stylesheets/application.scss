@@ -20,6 +20,7 @@ $main-color-green: #165e83;
 $background-color-green: #203744;
 $color-green: #c1e4e9;
 
+
 $main-color-red: #a22041;
 $background-color-red: #640125;
 $color-red: #eebbcb;
@@ -153,7 +154,7 @@ main {
   .user-block {
     @include user_area(200px)
     max-height: 500px;
-    margin: 10px;
+    margin: 30px 10px;
     padding: 20px;
     .user-name {
       width: 150px;
@@ -175,6 +176,25 @@ main {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+}
+
+@mixin infometion-message ($background-color) {
+  background-color: $background-color;
+  width: 300px;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.infometion-message {
+  @include infometion-message($main-color-green)
+}
+.erorr-message {
+  @include infometion-message($main-color-red)
+  color: $color-red;
 }
 
 footer {

@@ -6,7 +6,7 @@
       <%= render 'profile', user: @user %>
 
     </div>
-    <div class="col-lg-8 mt-1">
+    <div class="col-lg-8 mt-3">
       <% if @user == current_user %>
         <h5 class="text-center">あなたの花の咲く場所</h5>
       <% else %>
@@ -18,7 +18,7 @@
 
       <% else %>
       <div class="flowers-block">
-        <h1 class="text-center m-5">投稿はまだありません。</h1>
+        <h5 class="infometion-message">＊ 投稿はまだありません。</h5>
       </div>
       <% end %>
     </div>

@@ -1,8 +1,10 @@
 <div class="container">
-  <h5 class="text-center mt-3">検索結果</h5>
+  <h3 class="text-center mt-3">検索結果</h3>
   <% if @search_post_images.exists? %>
+
     <%= render 'flowers' ,post_images: @search_post_images %>
+
   <% else %>
-    <h3 class="text-center mt-3">一致するものが見つかりませんでした</h3>
+    <h5 class="infometion-message">＊ 見つかりませんでした。</h5>
   <% end %>
 </div>

@@ -7,6 +7,6 @@
   <% if @favorites.present? %>
     <%= render 'user/post_images/flowers', post_images: @favorites %>
   <% else %>
-    <h3 class="text-center mt-5">お気に入りに追加された投稿はありません。</h3>
+    <h5 class="infometion-message">＊ 投稿まだはありません。</h5>
   <% end %>
 </div>

@@ -7,22 +7,20 @@ profile-area
 <% end %>">
 
   <% if user == current_user %>
-    <h6 class="text-center mt-3">あなたのプロフィール</h6>
+    <h5 class="text-center mt-3">あなたのプロフィール</h5>
     <% elsif %>
-    <h6 class="text-center mt-3">プロフィール</h6>
+    <h5 class="text-center mt-3">プロフィール</h5>
   <% end %>
 
   <%= image_tag user.get_profile_image(150,150) %>
 
   <div class="mt-3">
     <h6 class="text-center">ユーザーネーム</h6>
-    <h5 class="text-center"><%= user.name %></h5>
+    <h5 class="text-center text-break"><%= user.name %></h5>
     <h6 class="text-center">自己紹介</h6>
-    <div class="text-block">
-      <h5 class="text-center text-break">
-        <%= user.introduction %>
-      </h5>
-    </div>
+    <h5 class="text-center text-break">
+      <%= user.introduction %>
+    </h5>
   </div>
 
   <% if user_signed_in? %>
@@ -33,7 +31,7 @@ profile-area
     <% if current_user == user %>
       <%= link_to "花の咲く場所を投稿する", new_user_post_image_path, class: "btn btn-success mt-3" %>
       <%= link_to "プロフィールを編集する",edit_user_user_path(user.id), class: "btn btn-info mt-3" %>
-      <p class="text-center my-3"><%= link_to "＊お気に入りリスト",favorites_user_user_path(user), class: "text-reset" %></p>
+      <p class="text-center my-3"><%= link_to "＊ お気に入りリスト",favorites_user_user_path(user), class: "text-reset" %></p>
     <% elsif current_user.following?(user)%>
       <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-3", method: :delete %>
     <% elsif current_user != user && user.is_active == true %>

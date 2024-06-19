@@ -34,7 +34,8 @@
         <%= f.submit "この内容で保存する", class: "btn btn-success my-3" %>
       </form>
     <% end %>
-    <p><%= link_to '＊メールアドレス、パスワードを変更する',edit_user_registration_path(@user.id), class: "text-reset" %></p>
-    <p><%= link_to "＊退会する",user_user_unsubscribes_path(@user.id), class: "text-reset" %></p>
+    <p><%= link_to '＊ メールアドレス、パスワードを変更する',edit_user_registration_path(@user.id), class: "text-reset" %></p>
+    <p><%= link_to "＊ 退会する",user_user_unsubscribes_path(@user.id), class: "text-reset" %></p>
+    <p><%= link_to "＊ マイページに戻る", user_user_path(@user.id),class: "text-reset" %></p>
   </div>
 </div>

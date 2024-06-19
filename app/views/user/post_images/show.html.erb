@@ -36,14 +36,14 @@
     <div class="comment-field">
       <% if @post_image.user.is_active == true %>
         <%= form_with model: [@post_image, @post_comment],url: user_post_image_post_comments_path(@post_image.id), method: :post do |f| %>
-          <%= f. text_area :comment , placeholder: "コメントをここに" , class: "form-control" %>
-            <%= f. submit "送信する" , class: "btn btn-success btn-sm mt-3"%>
-          <% end %>
-      <% else %>
-        <h5 class="bg-danger rounded text-white p-3 mt-3">＊こちらの投稿はユーザーが退会済みのためコメントをする事はできません。</h5>
-      <% end %>
+        <%= f. text_area :comment , placeholder: "コメントをここに" , class: "form-control" %>
+        <%= f. submit "送信する" , class: "btn btn-success btn-sm mt-3"%>
+        <% end %>
     </div>
-
+      <% else %>
+        <h5 class="erorr-message">＊ 退会済みのためコメントはできません。</h5>
+      <% end %>
+    
     <%= render 'user/post_images/comment', post_image: @post_image %>
 
   </div>

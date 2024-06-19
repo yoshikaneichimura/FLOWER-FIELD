@@ -1,9 +1,5 @@
 <div class="container">
-  <% if current_user == @user %>
-    <h3 class="text-center mt-3">あなたがフォロー中のユーザー：<%= @user.followings.count %></h3>
-  <% else %>
-    <h3 class="text-center mt-3"><%= @user.name %>さんがフォロー中のユーザー：<%= @user.followings.count %></h3>
-  <% end %>
+  <h3 class="text-center mt-3">ユーザー情報</h3>
   <div class="row">
     <div class="col-lg-3 mt-3">
 
@@ -11,14 +7,20 @@
 
     </div>
     <div class="col-lg-9 mt-3">
+      <% if current_user == @user %>
+        <h5 class="text-center mt-3">フォロー中のユーザー：<%= @user.followings.count %></h5>
+      <% else %>
+        <h5 class="text-center mt-3"><%= @user.name %>さんがフォロー中のユーザー：<%= @user.followings.count %></h5>
+      <% end %>
+
       <% if @users.exists? %>
 
        <%= render 'user/users/users', users: @users %>
 
       <% else %>
-        <h3 class="text-center mt-5">フォロー中のユーザーはいません。</h3>
+        <h5 class="infometion-message">＊ ユーザーはいません。</h5>
       <% end %>
     </div>
   </div>
-  <p class="text-center mb-3"><%= link_to "＊ユーザー情報に戻る",user_user_path(@user.id),class: "text-reset" %></p>
+  <p class="text-center"><%= link_to "＊ ユーザー詳細に戻る",user_user_path(@user.id),class: "text-reset" %></p>
 </div>

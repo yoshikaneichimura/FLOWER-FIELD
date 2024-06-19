@@ -44,7 +44,9 @@
         </div>
       <%= f.submit "この内容で保存する", class: "btn btn-success my-3" %>
       </form>
+
     <% end %>
+    <p><%= link_to "＊ 投稿者詳細に戻る", admin_user_path(@user.id),class: "text-reset" %></p>
     </div>
   </div>
 </div>

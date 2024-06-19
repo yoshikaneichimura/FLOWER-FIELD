@@ -1,4 +1,4 @@
-<h3 class="text-center mt-3">投稿内容</h3>
+<h3 class="text-center mt-3">投稿詳細</h3>
 <div class="row">
   <div class="col-lg-6 mt-3 ">
     <div class="d-flex justify-content-center">
@@ -16,7 +16,8 @@
     <% end %>
     ">
       <h5 class="text-center">投稿ユーザー情報</h5>
-          <% if user_signed_in? %>
+      <div class="mt-1">
+        <% if user_signed_in? %>
             <%= link_to user_user_path(user.id) do %>
               <%= image_tag post_image.user.get_profile_image(150,150) %>
             <% end %>
@@ -25,9 +26,9 @@
               <%= image_tag post_image.user.get_profile_image(150,150) %>
             <% end %>
           <% end %>
-
-        <h5 class="text-center mt-3"><%= post_image.user.name %></h5>
-        <p class="text-center mt-3">投稿件数：<%= user.post_images.count %></p>
+      </div>
+      <h5 class="text-center text-break mt-3"><%= post_image.user.name %></h5>
+       <p class="text-center mt-3">投稿件数：<%= user.post_images.count %></p>
 
         <% if user_signed_in? %>
 
@@ -50,7 +51,7 @@
         <% end %>
     </div>
   </div>
-  
+
   <div class="col-lg-3 order-lg-first">
     <div class="detail-area">
       <div>

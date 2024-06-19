@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="text-center mt-3">投稿内容の修正</h5>
+  <h3 class="text-center mt-3">投稿詳細の修正</h3>
   <% if @post_image.errors.any? %>
   <div class="d-flex justify-content-center mt-3">
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -73,5 +73,6 @@
         <div class="col-10"><%= f.submit 'この内容で投稿する',class:  "btn btn-success btn-bg" %></div>
       </div>
     </form>
+    <p class="text-center"><%= link_to"＊ 投稿詳細に戻る",admin_post_image_path(@post_image.id),class: " text-center text-reset" %></p>
   <% end %>
 </div>
