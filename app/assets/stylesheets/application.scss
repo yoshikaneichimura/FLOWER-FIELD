@@ -20,7 +20,6 @@ $main-color-green: #165e83;
 $background-color-green: #203744;
 $color-green: #c1e4e9;
 
-
 $main-color-red: #a22041;
 $background-color-red: #640125;
 $color-red: #eebbcb;
@@ -38,16 +37,11 @@ $color-red: #eebbcb;
     font-family: "Noto Serif JP", serif;
     font-weight: 400;
     font-style: normal;
-    // color: $color-red;
   }
 }
 
 .background-color-red {
   background-color: $main-color-red;
-}
-
-.color-red {
-  color: $color-red;
 }
 
 .border-line {
@@ -67,9 +61,7 @@ body {
 header {
   background-color: $main-color-green;
   border-bottom: solid 1px red;
-}
-
-.header-window {
+  .header-window {
   height: 70px;
   min-width: 350px;
   max-width: 500px;
@@ -77,15 +69,12 @@ header {
   padding: 10px;
   border: 1px solid red;
   border-radius: 5px;
+  }
 }
 
 main {
   flex-grow: 1;
-  // @if color == $color-green {
-    background-color: $background-color-green;
-  // } @else if color == $color-red {
-    // backgroud-color: $background-color-red;
-  // }
+  background-color: $background-color-green;
 }
 
 .sign-up-form {
@@ -116,6 +105,13 @@ main {
   align-items: center;
   border-radius: 5px;
   background-color: $main-color-green;
+  p {
+    text-align: center;
+  }
+  h5 {
+    text-align: center;
+    word-break: break-all;
+  }
 }
 
 .user-datail {
@@ -153,12 +149,11 @@ main {
   flex-wrap: wrap-reverse;
   .user-block {
     @include user_area(200px)
-    max-height: 500px;
+    max-height: 450px;
     margin: 30px 10px;
     padding: 20px;
     .user-name {
       width: 150px;
-      text-align: center;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -185,8 +180,6 @@ main {
   margin: 20px auto;
   padding: 10px;
   text-align: center;
-  display: flex;
-  justify-content: center;
 }
 
 .infometion-message {

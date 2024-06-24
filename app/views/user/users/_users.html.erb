@@ -18,15 +18,14 @@
             <%= image_tag user.get_profile_image(150,150)%>
           <% end %>
       <% end %>
-      <div>
+
         <p class="user-name"><%= user.name %></p>
-        <p class="text-center mt-3">投稿件数：<%= user.post_images.count %></p>
-      </div>
+        <p class="mt-1">投稿件数：<%= user.post_images.count %></p>
 
       <% if user_signed_in? %>
 
-        <p class="text-center"><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></p>
-        <p class="text-center"><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></p>
+        <p><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></p>
+        <p><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></p>
 
         <% if current_user == user %>
           <%= link_to "マイページ",user_user_path(user.id), class: "btn btn-info my-3" %>
@@ -40,9 +39,9 @@
 
       <% elsif admin_signed_in? %>
 
-        <p class="text-center"><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></p>
-        <p class="text-center"><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></p>
-        <p class="text-center">登録日時：<%= user.created_at.strftime('%Y/%m/%d')%></p>
+        <p><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></p>
+        <p><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></p>
+        <p>登録日時：<%= user.created_at.strftime('%Y/%m/%d')%></p>
 
         <% if user.is_active == true %>
           <div class="bg-success rounded text-white py-1 px-3 my-3">有効会員</div>

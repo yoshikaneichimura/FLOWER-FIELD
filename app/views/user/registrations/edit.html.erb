@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 class="text-center mt-3">ユーザー情報の編集</h3>
+  <h3 class="text-center mt-3">メールアドレス・パスワードの変更</h3>
   <div class="alert-message">
       <%= render "user/shared/error_messages", resource: resource %>
     </div>
@@ -32,7 +32,7 @@
       </form>
       <% end %>
       <div class="my-3">
-        <%= link_to "＊ プロフィールを編集するに戻る", :back ,class: "text-reset" %>
+        <%= link_to "＊ プロフィールを編集するに戻る", edit_user_user_path(@user.id) ,class: "text-reset" %>
       </div>
     </div>
   </div>
