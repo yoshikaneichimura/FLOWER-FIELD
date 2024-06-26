@@ -14,7 +14,7 @@ ja:
         field: 花の咲いていた場所
         day: 花の咲いていた日
         star: 開花状況
-        adress: 住所
+        address: 住所
         detail: 詳細
       post_comment:
         comment: コメント

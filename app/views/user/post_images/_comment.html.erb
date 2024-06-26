@@ -1,4 +1,4 @@
-<% if post_image.post_comments.exists? %>
+<% if post_image.post_comments.exists? && post_image.user.is_active == true %>
   <div class="comment-area">
     <h5 class="ml-3">コメント件数：<%= post_image.post_comments.count %></h5>
     <% post_image.post_comments.each do | post_comment | %>
@@ -25,8 +25,10 @@
       <% end %>
     <% end %>
   </div>
-<% else %>
+<% elsif post_image.user.is_active == true %>
 
-  <h5 class="infometion-message">＊ コメントはありません。</h5>
-
+  <div class="infometion">
+    <%= image_tag("green-flower.png")%>
+    <h5>＊ コメントまだはありません。</h5>
+  </div>
 <% end %>

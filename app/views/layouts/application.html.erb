@@ -32,7 +32,7 @@
               FIELD
             </h3>
           <% elsif admin_signed_in? %>
-            <h3 class="mt-1 color-red">
+            <h3 class="mt-1 admin-font color-red">
               FLOWER
               <%= link_to admin_users_path do %>
                 <%= image_tag('F.F.png') %>
@@ -77,16 +77,16 @@
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item ml-3 color-red">
-                  <%=link_to "投稿一覧" ,admin_post_images_path, class: 'nav-link text-reset' %>
+                  <%=link_to "投稿一覧" ,admin_post_images_path, class: 'nav-link text-reset admin-font' %>
                 </li>
                 <li class="nav-item ml-3 color-red">
-                  <%=link_to "投稿者一覧" ,admin_users_path, class: 'nav-link text-reset' %>
+                  <%=link_to "投稿者一覧" ,admin_users_path, class: 'nav-link text-reset admin-font' %>
                 </li>
                 <li class="nav-item ml-3 color-red">
-                  <%= link_to '管理者情報の編集',edit_admin_registration_path, class: 'nav-link text-reset' %>
+                  <%= link_to '管理者情報の編集',edit_admin_registration_path, class: 'nav-link text-reset admin-font' %>
                 </li>
                 <li class="nav-item ml-3 color-red">
-                  <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-reset' %>
+                  <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-reset admin-font' %>
                 </li>
               <% else %>
                 <li class="nav-item ml-3">
@@ -153,7 +153,7 @@
         </div>
           <% elsif admin_signed_in? %>
           <div class="row mb-3">
-            <h5 class="mb-3 ml-3 color-red">管理者ページ</h5>
+            <h5 class="mb-3 ml-3 admin-font color-red">管理者ページ</h5>
             <div class="ml-auto">
               <%= search_form_for @search, url: admin_search_path do |f| %>
                 <form>
@@ -188,7 +188,7 @@
       <div class="container">
         <p class="text-center
         <% if admin_signed_in?%>
-         color-red
+         admin-font color-red
         <% end %>
         ">tefutefu</p>
       </div>

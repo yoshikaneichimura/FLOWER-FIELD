@@ -17,8 +17,10 @@
         <%= render 'user/post_images/flowers', post_images: @post_images %>
 
       <% else %>
-      <div class="flowers-block">
-        <h5 class="infometion-message">＊ 投稿はまだありません。</h5>
+
+      <div class="infometion">
+        <%= image_tag("green-flower.png")%>
+        <h5>＊ 投稿はまだありません。</h5>
       </div>
       <% end %>
     </div>

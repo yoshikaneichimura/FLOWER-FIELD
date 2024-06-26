@@ -14,7 +14,8 @@
  *= require_self
  */
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP&display=swap');
+
 
 $main-color-green: #165e83;
 $background-color-green: #203744;
@@ -32,14 +33,6 @@ $color-red: #eebbcb;
   font-family: 'Zen Maru Gothic', serif;
 }
 
-.admin_sign_in {
-  * {
-    font-family: "Noto Serif JP", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
-}
-
 .background-color-red {
   background-color: $main-color-red;
 }
@@ -50,6 +43,14 @@ $color-red: #eebbcb;
 
 .my-border-line {
   border: 3px solid red;
+}
+
+.admin-font {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.color-red {
+  color: $color-red;
 }
 
 body {
@@ -69,6 +70,7 @@ header {
   padding: 10px;
   border: 1px solid red;
   border-radius: 5px;
+  color: $color-red;
   }
 }
 
@@ -121,11 +123,20 @@ main {
 }
 
 .detail-area {
-  height: 400px;
+  max-width: 600px;
+  min-height: 500px;
   margin-top: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  h3 {
+    font-weight: bold;
+    color: #fff;
+    margin-top: 10px;
+  }
+  h6 {
+    margin-top: 30px;
+  }
 }
 
 .comment-field {
@@ -173,21 +184,16 @@ main {
   margin-top: 30px;
 }
 
-@mixin infometion-message ($background-color) {
-  background-color: $background-color;
-  width: 300px;
-  border-radius: 10px;
-  margin: 20px auto;
-  padding: 10px;
-  text-align: center;
-}
-
-.infometion-message {
-  @include infometion-message($main-color-green)
-}
-.erorr-message {
-  @include infometion-message($main-color-red)
-  color: $color-red;
+.infometion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto;
+  h5 {
+    color: #fff;
+    text-align: center;
+    margin: 100px auto;
+  }
 }
 
 footer {
