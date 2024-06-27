@@ -8,7 +8,7 @@
     </div>
     <div class="col-lg-9 mt-3">
       <% if current_user == @user %>
-        <h5 class="text-center mt-3">フォロワー ： <%= @user.followers.count %></h5>
+        <h5 class="text-center mt-3">あなたのフォロワー ： <%= @user.followers.count %></h5>
       <% else %>
         <h5 class="text-center mt-3"><%= @user.name %>さんのフォロワー ： <%= @user.followers.count %></h5>
       <% end %>
@@ -18,12 +18,12 @@
        <%= render 'user/users/users', users: @users %>
 
       <% else %>
-      <div class="infometion">
-        <%= image_tag("green-flower.png")%>
-        <h5>＊ ユーザーはいません。</h5>
-      </div>
+        <div class="infometion">
+          <%= image_tag("green-flower.png")%>
+          <h5>フォロワーはいません。</h5>
+        </div>
       <% end %>
     </div>
   </div>
-  <p class="text-center"><%= link_to "＊ ユーザー詳細に戻る",user_user_path(@user.id),class: "text-reset" %></p>
+  <p class="text-center"><%= link_to "＊ ユーザー情報を見る",user_user_path(@user.id),class: "text-reset" %></p>
 </div>

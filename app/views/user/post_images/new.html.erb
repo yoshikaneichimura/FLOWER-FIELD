@@ -73,6 +73,6 @@
         <div class="col-10"><%= f.submit 'この内容で投稿する',class:  "btn btn-success btn-bg" %></div>
       </div>
     </form>
-    <p class="text-center"><%= link_to "＊ 花の咲く場所に戻る",user_post_images_path, class: " text-center text-reset" %></p>
+    <p class="text-center"><%= link_to "＊ マイページに戻る",user_user_path(@user.id), class: " text-center text-reset" %></p>
   <% end %>
 </div>
