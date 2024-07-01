@@ -63,14 +63,52 @@ header {
   background-color: $main-color-green;
   border-bottom: solid 1px red;
   .header-window {
-  height: 70px;
-  min-width: 350px;
-  max-width: 500px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+}
+
+.user-window {
+  width: 300px;
   background-color: $main-color-red;
+  display: flex;
+  justify-content: center;
   padding: 10px;
   border: 1px solid red;
   border-radius: 5px;
   color: $color-red;
+  .header-user-name {
+    width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+  }
+}
+
+.search-form-window {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  .search-form-text {
+    margin: 5px;
+    }
+   .search-form-day {
+    display : flex;
+    justify-content: center;
+    .search-form-day-start {
+      margin: 5px;
+    }
+    span {
+      margin-top: 10px;
+    }
+    .search-form-day-end {
+      margin: 5px;
+    }
+    .search-form-button {
+      margin: 5px;
+    }
   }
 }
 
@@ -122,7 +160,7 @@ main {
   margin: 10px auto 10px;
 }
 
-.detail-area {
+.post-image-detail {
   max-width: 600px;
   min-height: 500px;
   margin-top: 30px;
@@ -158,6 +196,7 @@ main {
 .user-group {
   display: flex;
   flex-wrap: wrap-reverse;
+  justify-content: center;
   .user-block {
     @include user_area(200px)
     max-height: 450px;
@@ -188,15 +227,91 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px auto;
+  margin: 100px auto;
   h5 {
     color: #fff;
     text-align: center;
-    margin: 100px auto;
+    margin: 50px auto;
   }
 }
 
 footer {
   border-top: solid 1px red;
   background-color : $main-color-green;
+}
+
+@media screen and (max-width: 992px) {
+  .header-window {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+  }
+  .user-window {
+    width: 600px;
+    margin: 0 auto;
+    .header-user-name {
+      width: 350px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .user-window {
+    width: 500px;
+    margin: 0 auto;
+  }
+  .search-form-window {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-form-text {
+    width: 480px;
+  }
+  .search-form-day {
+    display : flex;
+    justify-content: center;
+    .search-form-day-start {
+      width: 200px;
+    }
+    .search-form-day-end {
+      width: 200px;
+    }
+  }
+}
+
+@media screen and (max-width: 567px) {
+  .user-window {
+    width: 300px;
+    margin: 0 auto;
+    .header-user-name {
+      width: 150px;
+    }
+  }
+  .search-form-window {
+    align-items: center;
+  }
+  .search-form-text {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .search-form-day {
+    display : flex;
+    flex-direction: column;
+    margin-top: 10px;
+    .search-form-day-start {
+      width: 300px;
+      margin: 0 auto;
+    }
+    span {
+      margin: 0 auto 10px;
+    }
+    .search-form-day-end {
+      width: 300px;
+      margin: 0 auto;
+    }
+    .search-form-button {
+      margin-left : 250px;
+    }
+  }
 }
