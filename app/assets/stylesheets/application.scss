@@ -117,6 +117,18 @@ main {
   background-color: $background-color-green;
 }
 
+.home-image {
+  height: 500px;
+}
+
+.home-button {
+  display: flex;
+  justify-content: center;
+  div {
+    margin: 10px;
+  }
+}
+
 .sign-up-form {
   width: 300px;
   margin-top: 30px;
@@ -277,6 +289,15 @@ footer {
     .search-form-day-end {
       width: 200px;
     }
+  }
+
+  .home-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div {
+    margin: 10px;
+   }
   }
 }
 
