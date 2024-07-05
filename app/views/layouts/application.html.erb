@@ -118,7 +118,7 @@
                 <% end %>
               </div>
               <div class="bd-highlight ml-3 ">
-                <span class="d-inline-block color-red header-user-name" ><%= current_user.name %></span>
+                <span class="d-inline-block header-user-name" ><%= current_user.name %></span>
               </div>
               <div class="ml-auto">
                 <%= link_to new_user_post_image_path(current_user.id) ,class: "btn btn-success m-1" do %>
@@ -130,7 +130,7 @@
                 <form>
                   <div class="search-form-window">
                     <div class="search-form-text">
-                      <div><%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索",class: "form-control" %></div>
+                      <div><%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索",class: "form-control w-100" %></div>
                     </div>
                     <div class="search-form-day">
                       <div class="search-form-day-start">

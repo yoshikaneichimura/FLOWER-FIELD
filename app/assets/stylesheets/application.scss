@@ -19,10 +19,10 @@
 
 $main-color-green: #165e83;
 $background-color-green: #203744;
-$color-green: #c1e4e9;
+$color-green: #c0c6c9;
 
 $main-color-red: #a22041;
-$background-color-red: #640125;
+$background-color-red: #6c2c2f;
 $color-red: #eebbcb;
 
 * {
@@ -38,10 +38,12 @@ $color-red: #eebbcb;
 }
 
 .border-line {
+  background-color: $main-color-green;
   border: 1px solid $color-green;
 }
 
 .my-border-line {
+  background-color: $background-color-red;
   border: 3px solid red;
 }
 
@@ -61,7 +63,6 @@ body {
 
 header {
   background-color: $main-color-green;
-  border-bottom: solid 1px red;
   .header-window {
     display: flex;
     justify-content: center;
@@ -70,27 +71,29 @@ header {
 }
 
 .user-window {
-  width: 300px;
-  background-color: $main-color-red;
+  width: 500px;
+  background-color: $background-color-red;
   display: flex;
   justify-content: center;
   padding: 10px;
-  border: 1px solid red;
+  border: 3px solid red;
   border-radius: 5px;
-  color: $color-red;
   .header-user-name {
-    width: 150px;
+    width: 350px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-top: 10px;
+    color: #fff;
   }
 }
 
 .search-form-window {
+  width: 600px;
   display: flex;
   justify-content: center;
   padding: 10px;
+  maggin: 0 auto;
   .search-form-text {
     margin: 5px;
     }
@@ -156,7 +159,7 @@ main {
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
-  background-color: $main-color-green;
+  // background-color: $main-color-green;
   p {
     text-align: center;
   }
@@ -248,11 +251,11 @@ main {
 }
 
 footer {
-  border-top: solid 1px red;
   background-color : $main-color-green;
 }
 
 @media screen and (max-width: 992px) {
+
   .header-window {
     display: flex;
     flex-direction: column;
@@ -264,6 +267,9 @@ footer {
     .header-user-name {
       width: 350px;
     }
+  }
+  .search-form-window {
+    width: auto;
   }
 }
 
