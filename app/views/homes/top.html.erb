@@ -1,12 +1,14 @@
 <div class="container">
   <h1 class="text-center mt-3 mr-5">
     FLOWER
-    <%= image_tag('F.F.png')%>
+      <%= image_tag('F.F.png')%>
     FIELD
   </h1>
 
-  <div class="home-image"></div>
-  
+  <div class="home-image">
+    <div><%= image_tag('F.F.png')%><%= image_tag('F.F.png')%><%= image_tag('F.F.png')%><%= image_tag('F.F.png')%><%= image_tag('F.F.png')%></div>
+  </div>
+
   <% unless signed_in? %>
     <div class="home-button">
         <div>

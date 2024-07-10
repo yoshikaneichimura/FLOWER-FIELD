@@ -122,9 +122,11 @@ main {
 
 .home-image {
   height: 500px;
-  background-image: url(../../../assets/images/home_1.JPG);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 .home-button {
   display: flex;
