@@ -69,6 +69,7 @@ body {
 
 header {
   background-color: $main-color-green;
+  border-bottom: solid 1px red;
   .header-window {
     display: flex;
     justify-content: center;
@@ -84,6 +85,7 @@ header {
   padding: 10px;
   border: 3px solid red;
   border-radius: 5px;
+  margin-bottom: 10px;
   .header-user-name {
     width: 350px;
     overflow: hidden;
@@ -129,9 +131,22 @@ main {
 .home-image {
   height: 500px;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-image: image-url("home_1.JPG");
+  background-size: cover;
+  margin: 20px auto;
+  div {
+    height: 500px;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    text-align: center;
+    padding-top: 100px;
+    h1 {
+      letter-spacing: 0.5em;
+    }
+    span {
+      letter-spacing: 0em;
+    }
+  }
 }
 
 .home-button {
@@ -260,6 +275,7 @@ main {
 }
 
 footer {
+  border-top: solid 1px red;
   background-color : $main-color-green;
 }
 
@@ -279,6 +295,15 @@ footer {
   }
   .search-form-window {
     width: auto;
+  }
+
+  .home-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  div {
+    margin: 10px;
+   }
   }
 }
 
@@ -305,14 +330,8 @@ footer {
       width: 200px;
     }
   }
-
-  .home-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  div {
-    margin: 10px;
-   }
+  .home-image {
+    background-image: image-url("home_2.JPG");
   }
 }
 
