@@ -1,5 +1,6 @@
 class User::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :guest_check, only: [:update]
 
   def index
     @users = User.order(created_at: :desc)
@@ -20,7 +21,7 @@ class User::UsersController < ApplicationController
       flash[:notice] = "ユーザー情報を更新しました。"
       redirect_to user_user_path
     else
-        render :edit
+      render :edit
     end
   end
 
@@ -30,10 +31,15 @@ class User::UsersController < ApplicationController
 
   def withdraw
     user = current_user
-    user.update(is_active: false)
-    reset_session
-    flash[:notice] = "退会処理をしました。"
-    redirect_to about_path
+    if user.email == 'guest@example.com'
+      flash[:notice] = "ゲストユーザーは退会処理できません。"
+      redirect_to user_user_path(user.id)
+    else
+      user.update(is_active: false)
+      reset_session
+      flash[:notice] = "退会処理をしました。"
+      redirect_to about_path
+    end
   end
 
   def favorites
@@ -41,6 +47,12 @@ class User::UsersController < ApplicationController
     favorites = Favorite.where(user_id: @user.id).pluck(:post_image_id)
     post_images = PostImage.find(favorites)
     @favorites = Kaminari.paginate_array(post_images).page(params[:page])
+  end
+
+  def guest_check
+   if current_user.email == 'guest@example.com'
+      redirect_to user_user_path(current_user.id),notice: "ゲストユーザーの情報の編集はできません。"
+   end
   end
 
   private

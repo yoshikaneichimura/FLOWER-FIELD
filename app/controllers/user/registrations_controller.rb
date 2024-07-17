@@ -49,6 +49,10 @@ class User::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+
+  def after_update_path_for(resource)
+    user_user_path(@user.id)
+  end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
@@ -65,7 +69,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   # end
   def ensure_normal_user
     if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーの編集削除できません。'
+      redirect_to user_user_path(@user.id), notice: 'ゲストユーザーの情報の編集はできません。'
     end
   end
 end
