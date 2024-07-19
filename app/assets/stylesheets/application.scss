@@ -97,28 +97,25 @@ header {
 }
 
 .search-form-window {
-  width: 600px;
   display: flex;
   justify-content: center;
-  padding: 10px;
-  maggin: 0 auto;
-  .search-form-text {
+  margin: 15px 0 0 5px;
+  .search-form-top {
     margin: 5px;
-    }
-   .search-form-day {
+  }
+  .search-form-bottom {
     display : flex;
     justify-content: center;
-    .search-form-day-start {
-      margin: 5px;
-    }
-    span {
-      margin-top: 10px;
-    }
-    .search-form-day-end {
-      margin: 5px;
+    margin: 5px;
+    .search-form-day {
+      display : flex;
+      justify-content: center;
+      span {
+        margin: 3px 5px 0;
+      }
     }
     .search-form-button {
-      margin: 5px;
+      margin-left: 10px;
     }
   }
 }
@@ -279,6 +276,16 @@ footer {
   background-color : $main-color-green;
 }
 
+@media screen and (max-width: 1200px) {
+
+  .user-window {
+    width: 300px;
+    .header-user-name {
+      width: 150px;
+    }
+  }
+}
+
 @media screen and (max-width: 992px) {
 
   .header-window {
@@ -294,41 +301,43 @@ footer {
     }
   }
   .search-form-window {
-    width: auto;
+    margin-top: 10px;
   }
 
   .home-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  div {
-    margin: 10px;
-   }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      margin: 10px;
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
 
-  .user-window {
-    width: 500px;
-    margin: 0 auto;
-  }
-  .search-form-window {
+  .haeder-window{
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
-  .search-form-text {
-    width: 480px;
+  .user-window {
+    width: 500px;
   }
-  .search-form-day {
-    display : flex;
-    justify-content: center;
-    .search-form-day-start {
-      width: 200px;
-    }
-    .search-form-day-end {
-      width: 200px;
-    }
+  .search-form-window {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-form-top {
+    width: 500px;
+  }
+  .search-form-day-start {
+    width: 200px;
+  }
+  .search-form-day-end {
+    width: 200px;
   }
   .home-image {
     background-image: image-url("home_2.JPG");
@@ -337,36 +346,26 @@ footer {
 
 @media screen and (max-width: 567px) {
   .user-window {
-    width: 300px;
-    margin: 0 auto;
+    width: 350px;
     .header-user-name {
       width: 150px;
     }
   }
-  .search-form-window {
-    align-items: center;
+  .search-form-top {
+    width: 340px;
   }
-  .search-form-text {
-    width: 300px;
-    margin: 0 auto;
+  .search-form-day-start {
+    width: 155px;
   }
-  .search-form-day {
-    display : flex;
+  .search-form-day-end {
+    width: 155px;
+  }
+  .search-form-bottom {
+    display: flex;
     flex-direction: column;
-    margin-top: 10px;
-    .search-form-day-start {
-      width: 300px;
-      margin: 0 auto;
-    }
-    span {
-      margin: 0 auto 10px;
-    }
-    .search-form-day-end {
-      width: 300px;
-      margin: 0 auto;
-    }
+    align-items: flex-end;
     .search-form-button {
-      margin-left : 250px;
+      margin-top: 10px;
     }
   }
 }

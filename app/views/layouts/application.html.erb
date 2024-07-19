@@ -126,27 +126,24 @@
                 <% end %>
               </div>
             </div>
-              <%= search_form_for @search, url: user_search_path do |f| %>
-                <form>
-                  <div class="search-form-window">
-                    <div class="search-form-text">
-                      <div><%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索",class: "form-control w-100" %></div>
-                    </div>
-                    <div class="search-form-day">
-                      <div class="search-form-day-start">
-                        <div><%= f.date_field :day_gteq ,class: "form-control" %></div>
-                      </div>
-                      <span>〜</span>
-                      <div class="search-form-day-end">
-                        <div><%= f.date_field :day_lteq ,class: "form-control" %></div>
-                      </div>
-                      <div class="search-form-button">
-                        <div><%= f.submit '検索' ,class: "btn btn-danger" %></div>
-                      </div>
-                    </div>
+            <%= search_form_for @search, url: user_search_path do |f| %>
+            <form>
+              <div class="search-form-window">
+                <div class="search-form-top">
+                <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索",class: "form-control" %>
+                </div>
+                <div class="search-form-bottom">
+                  <div class="search-form-day">
+                    <div class="search-form-day-start"><%= f.date_field :day_gteq ,class: "form-control" %></div>
+                    <span>〜</span>
+                    <div class="search-form-day-end"><%= f.date_field :day_lteq ,class: "form-control" %></div>
                   </div>
-                </form>
-              <% end %>
+                  <div class="search-form-button"><%= f.submit '検索' ,class: "btn btn-danger" %></div>
+                </div>
+              </div>
+            </form>
+            <% end %>
+          </div>
 
               <% elsif admin_signed_in? %>
 
