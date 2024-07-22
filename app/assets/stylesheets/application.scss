@@ -181,6 +181,7 @@ main {
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
+  padding: 10px;
   p {
     text-align: center;
   }
@@ -188,11 +189,13 @@ main {
     text-align: center;
     word-break: break-all;
   }
+  div {
+    margin-top: 10px;
+  }
 }
 
 .user-datail {
   @include user_area(250px)
-  padding: 20px;
   margin: 10px auto 10px;
 }
 
@@ -225,7 +228,6 @@ main {
 
 .profile-area {
   @include user_area(300px)
-  padding: 10px;
   margin: 10px auto 30px;
 }
 
@@ -235,9 +237,8 @@ main {
   justify-content: center;
   .user-block {
     @include user_area(200px)
-    max-height: 450px;
+    max-height: 480px;
     margin: 30px 10px;
-    padding: 20px;
     .user-name {
       width: 150px;
       overflow: hidden;

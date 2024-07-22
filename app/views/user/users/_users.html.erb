@@ -10,15 +10,18 @@
     <% end %>
     ">
       <% if user_signed_in? %>
-          <%= link_to user_user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(150,150)%>
-          <% end %>
+      <div>
+        <%= link_to user_user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(150,150)%>
+        <% end %>
+      </div>
       <% elsif admin_signed_in? %>
-          <%= link_to admin_user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(150,150)%>
-          <% end %>
+      <div>
+        <%= link_to admin_user_path(user.id) do %>
+          <%= image_tag user.get_profile_image(150,150)%>
+        <% end %>
+      </div>
       <% end %>
-
         <p class="user-name"><%= user.name %></p>
         <p class="mt-1">投稿件数：<%= user.post_images.count %></p>
 
