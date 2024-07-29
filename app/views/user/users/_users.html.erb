@@ -2,12 +2,12 @@
   <% users.each do |user| %>
   <div class="user-group">
     <div class="
-    user-block
-    <% if user == current_user %>
-     my-color
-    <% else %>
-     user-color
-    <% end %>
+        user-block
+      <% if user == current_user %>
+        my-color
+      <% else %>
+        user-color
+      <% end %>
     ">
       <% if user_signed_in? %>
       <div>
@@ -22,13 +22,13 @@
         <% end %>
       </div>
       <% end %>
-        <p class="user-name"><%= user.name %></p>
-        <p class="mt-1">投稿件数：<%= user.post_images.count %></p>
+        <h6 class="user-name"><%= user.name %></h6>
+        <h6 class="mt-1">投稿件数：<%= user.post_images.count %></h6>
 
       <% if user_signed_in? %>
 
-        <p><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></p>
-        <p><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></p>
+        <h6><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></h6>
+        <h6><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></h6>
 
         <% if current_user == user %>
           <%= link_to "マイページ",user_user_path(user.id), class: "btn btn-info my-3" %>
@@ -42,9 +42,9 @@
 
       <% elsif admin_signed_in? %>
 
-        <p><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></p>
-        <p><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></p>
-        <p>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></p>
+        <h6><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></h6>
+        <h6><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></h6>
+        <h6>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></h6>
 
         <% if user.is_active == true %>
           <div class="bg-success rounded text-white py-1 px-3 my-3">有効会員</div>

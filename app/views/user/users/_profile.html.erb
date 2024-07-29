@@ -1,51 +1,52 @@
 <div class="
-profile-area
-<% if user == current_user %>
- my-color
-<% else %>
- user-color
-<% end %>">
+    profile-area
+  <% if user == current_user %>
+    my-color
+  <% else %>
+    user-color
+  <% end %>
+">
 
   <% if user == current_user %>
-    <h5 class="text-center mt-3">あなたのプロフィール</h5>
+    <h5 class="mt-3">あなたのプロフィール</h5>
     <% elsif %>
-    <h5 class="text-center mt-3">プロフィール</h5>
+    <h5 class="mt-3">プロフィール</h5>
   <% end %>
-  <div><%= image_tag user.get_profile_image(150,150) %></div>
-  <div class="mt-3">
-    <p>ユーザーネーム</p>
+  <div><%= image_tag user.get_profile_image(200,200) %></div>
+  <div>
+    <h6>ユーザーネーム</h6>
     <h5 class="text-white"><%= user.name %></h5>
-    <p>自己紹介</p>
-    <h5 class="text-white"><%= user.introduction %></h5>
+    <h6>自己紹介</h6>
+    <h6 class="text-white p-1"><%= user.introduction %></h6>
   </div>
 
   <% if user_signed_in? %>
 
-    <p><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></p>
-    <p><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></p>
+  <h6><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></h6>
+  <h6><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></h6>
 
     <% if current_user == user %>
       <%= link_to "花の咲く場所を投稿する", new_user_post_image_path, class: "btn btn-success mt-3" %>
       <%= link_to "プロフィールを編集する",edit_user_user_path(user.id), class: "btn btn-info mt-3" %>
       <p class="text-center my-3"><%= link_to "＊ お気に入りリスト",favorites_user_user_path(user), class: "text-reset" %></p>
     <% elsif current_user.following?(user)%>
-      <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-3", method: :delete %>
+      <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-1", method: :delete %>
     <% elsif current_user != user && user.is_active == true %>
-      <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success my-3",method: :post %>
+      <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success my-1",method: :post %>
     <% else %>
-      <%= link_to "退会済み", user_user_relationships_path(user.id), class: "btn btn-danger disabled my-3",method: :post %>
+      <%= link_to "退会済み", user_user_relationships_path(user.id), class: "btn btn-danger disabled my-1",method: :post %>
     <% end %>
 
   <% elsif admin_signed_in? %>
 
-    <p><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></p>
-    <p><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></p>
-    <p>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></p>
+    <h6><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></h6>
+    <h6><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></h6>
+    <h6>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></h6>
 
     <% if user.is_active == true %>
-      <div class="bg-success rounded text-white py-1 px-3 mt-3">有効会員</div>
+      <div class="bg-success rounded text-white py-1 px-3">有効会員</div>
     <% else %>
-      <div class="bg-danger rounded text-white py-1 px-3 mt-3">退会済み</div>
+      <div class="bg-danger rounded text-white py-1 px-3">退会済み</div>
     <% end %>
     <div class="my-3">
       <%= link_to "＊ プロフィールを編集する",edit_admin_user_path(user.id),class: "btn btn-info" %>
