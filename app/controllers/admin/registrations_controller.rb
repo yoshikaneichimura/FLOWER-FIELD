@@ -70,7 +70,7 @@ class Admin::RegistrationsController < Devise::RegistrationsController
   # end
   def ensure_normal_admin
     if resource.email == 'guest_admin@example.com'
-      redirect_to root_path, alert: 'ゲスト管理者の編集・削除できません。'
+      redirect_to admin_users_path, alert: 'ゲスト管理者の編集・削除できません。'
     end
   end
 end
