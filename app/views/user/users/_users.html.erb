@@ -3,7 +3,7 @@
   <div class="user-group">
     <div class="
         user-block
-      <% if user == current_user %>
+      <% if user_signed_in? && user == current_user || admin_signed_in? && user.email == "guest@example.com" %>
         my-color
       <% else %>
         user-color

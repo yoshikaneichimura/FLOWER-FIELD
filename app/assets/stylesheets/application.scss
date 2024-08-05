@@ -185,9 +185,6 @@ main {
   align-items: center;
   border-radius: 5px;
   padding: 10px;
-  p {
-    text-align: center;
-  }
   h5 {
     text-align: center;
     word-break: break-all;
@@ -196,11 +193,18 @@ main {
     text-align: center;
     word-break: break-all;
   }
+  p {
+    text-align: center;
+  }
   div {
     margin-top: 10px;
   }
 }
 
+.post-image-border{
+  border: 3px solid $color-green;
+  border-radius: 3px;
+}
 .user-datail {
   @include user_area(250px)
   margin: 10px auto 10px;
@@ -267,7 +271,7 @@ main {
   margin-top: 30px;
 }
 
-.infometion {
+.informetion {
   display: flex;
   flex-direction: column;
   align-items: center;
