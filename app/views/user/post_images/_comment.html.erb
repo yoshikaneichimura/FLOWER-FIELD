@@ -3,10 +3,12 @@
     <h5 class="ml-3">コメント件数：<%= post_image.post_comments.count %></h5>
     <% post_image.post_comments.each do | post_comment | %>
       <div class="border-top mt-3">
-        <div class="d-flex bd-highlight mt-3">
+        <div class="d-flex bd-highlight align-items-center mt-3">
           <div class="bd-highlight p-1"><%= image_tag post_comment.user.get_profile_image(50,50) %></div>
-          <div class="bd-highlight p-1"><span class="d-inline-block text-truncate" style="max-width: 150px;"><%= post_comment.user.name %></span></div>
-          <div class="ml-auto p-1"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+          <div class="bd-highlight p-1 ml-3 ">
+            <div class="comment-user-name"><%= post_comment.user.name %></div>
+          </div>
+          <div class="bd-highlight ml-auto p-1"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
         </div>
       </div>
       <div class="text-break p-1"><%= post_comment.comment %></div>

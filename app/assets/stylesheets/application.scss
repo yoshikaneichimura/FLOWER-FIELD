@@ -237,6 +237,10 @@ main {
   margin: 50px auto;
 }
 
+.comment-user-name {
+  width: auto;
+}
+
 .profile-area {
   @include user_area(300px)
   margin: 10px auto 30px;
@@ -354,6 +358,12 @@ footer {
   .home-image {
     background-image: image-url("home_2.JPG");
   }
+  .comment-user-name {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }
 
 @media screen and (max-width: 567px) {
@@ -379,5 +389,8 @@ footer {
     .search-form-button {
       margin-top: 10px;
     }
+  }
+  .comment-user-name {
+    width: 100px;
   }
 }
