@@ -260,4 +260,32 @@ PostComment.find_or_create_by!(comment: "福岡天神は展示されている菊
   post_comment.post_image = 菊
 end
 
+Favorite.find_or_create_by!(user: 桜井, post_image: 椿)
+Favorite.find_or_create_by!(user: lily, post_image: 牡丹)
+Favorite.find_or_create_by!(user: jack, post_image: 牡丹)
+Favorite.find_or_create_by!(user: 桜井, post_image: 梅)
+Favorite.find_or_create_by!(user: lily, post_image: 梅)
+Favorite.find_or_create_by!(user: jack, post_image: 梅)
+
+Favorite.find_or_create_by!(user: lily, post_image: 桜)
+Favorite.find_or_create_by!(user: jack, post_image: 藤)
+Favorite.find_or_create_by!(user: 魔鬼子, post_image: 藤)
+Favorite.find_or_create_by!(user: lily, post_image: 躑躅)
+Favorite.find_or_create_by!(user: jack, post_image: 躑躅)
+Favorite.find_or_create_by!(user: 魔鬼子, post_image: 躑躅)
+
+Favorite.find_or_create_by!(user: 桜井, post_image: 紫陽花)
+Favorite.find_or_create_by!(user: jack, post_image: 百合)
+Favorite.find_or_create_by!(user: 魔鬼子, post_image: 百合)
+Favorite.find_or_create_by!(user: 桜井, post_image: 向日葵)
+Favorite.find_or_create_by!(user: jack, post_image: 向日葵)
+Favorite.find_or_create_by!(user: 魔鬼子, post_image: 向日葵)
+
+Favorite.find_or_create_by!(user: 桜井, post_image: 曼珠沙華)
+Favorite.find_or_create_by!(user: lily, post_image: 秋桜)
+Favorite.find_or_create_by!(user: 魔鬼子, post_image: 秋桜)
+Favorite.find_or_create_by!(user: 桜井, post_image: 菊)
+Favorite.find_or_create_by!(user: lily, post_image: 菊)
+Favorite.find_or_create_by!(user: 魔鬼子, post_image: 菊)
+
 puts "seedの実行が完了しました。"
