@@ -288,4 +288,14 @@ Favorite.find_or_create_by!(user: 桜井, post_image: 菊)
 Favorite.find_or_create_by!(user: lily, post_image: 菊)
 Favorite.find_or_create_by!(user: 魔鬼子, post_image: 菊)
 
+Relationship.find_or_create_by!(follower: 桜井, followed: jack)
+Relationship.find_or_create_by!(follower: lily, followed: 魔鬼子)
+
+Relationship.find_or_create_by!(follower: jack, followed: 桜井)
+Relationship.find_or_create_by!(follower: jack, followed: 魔鬼子)
+
+Relationship.find_or_create_by!(follower: 魔鬼子, followed: 桜井)
+Relationship.find_or_create_by!(follower: 魔鬼子, followed: lily)
+Relationship.find_or_create_by!(follower: 魔鬼子, followed: jack)
+
 puts "seedの実行が完了しました。"
