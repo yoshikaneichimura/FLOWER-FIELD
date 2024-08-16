@@ -12,7 +12,25 @@
     <% elsif %>
     <h5 class="mt-3">プロフィール</h5>
   <% end %>
-  <div><%= image_tag user.get_profile_image(200,200) %></div>
+
+  <% if user_signed_in?%>
+
+  <div>
+    <%= link_to user_user_path(user.id) do %>
+      <%= image_tag user.get_profile_image(200,200) %>
+    <% end %>
+  </div>
+
+  <% elsif admin_signed_in? %>
+
+  <div>
+    <%= link_to admin_user_path(user.id) do %>
+      <%= image_tag user.get_profile_image(200,200) %>
+    <% end %>
+  </div>
+
+  <% end %>
+
   <div>
     <h6>ユーザーネーム</h6>
     <h5 class="text-white"><%= user.name %></h5>

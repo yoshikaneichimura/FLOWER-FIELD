@@ -37,7 +37,7 @@
       <% if @post_image.user.is_active == true %>
         <%= form_with model: [@post_image, @post_comment],url: user_post_image_post_comments_path(@post_image.id), method: :post do |f| %>
         <%= f. text_area :comment , placeholder: "コメントをここに" , class: "form-control" %>
-        <%= f. submit "送信する" , class: "btn btn-success btn-sm mt-3"%>
+        <%= f. submit "送信する" , class: "btn btn-success btn-sm mt-3 ml-auto"%>
         <% end %>
     </div>
       <% else %>
