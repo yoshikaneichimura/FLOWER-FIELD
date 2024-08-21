@@ -23,7 +23,7 @@
           <% if user_signed_in? %>
           <h3 class="mt-1">
               FLOWER
-              <%= link_to root_path do %>
+              <%= link_to user_user_path(current_user.id) do %>
                 <%= image_tag('F.F.png') %>
               <% end %>
               FIELD
