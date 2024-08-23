@@ -2,9 +2,13 @@
 
 class User::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
+  before_action :forbid_login_user, only: [:new]
+
+  def new
+  end
 
   def after_sign_in_path_for(resource)
-    user_user_path(@user.id)
+    user_user_path(current_user.id)
   end
 
   def after_sign_out_path_for(resource)
@@ -27,6 +31,12 @@ class User::SessionsController < Devise::SessionsController
     reset_session
     flash[:notice] = "退会済みです。再度ご登録をしてからご利用下さい。"
     redirect_to new_user_registration_path
+  end
+
+  def forbid_login_user
+    if current_user
+      redirect_to user_user_path(current_user.id)
+    end
   end
   # before_action :configure_sign_in_params, only: [:create]
 

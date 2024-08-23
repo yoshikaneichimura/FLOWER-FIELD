@@ -2,6 +2,11 @@
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :forbid_login_user, only: [:new]
+
+  def new
+  end
+
   def after_sign_in_path_for(resource)
     admin_users_path
   end
@@ -9,7 +14,7 @@ class Admin::SessionsController < Devise::SessionsController
   def after_sign_out_path_for(resource)
     root_path
   end
-  
+
   def guest_sign_in
     admin = Admin.guest
     sign_in admin
@@ -30,7 +35,13 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
+
+  def forbid_login_user
+    if current_user
+      redirect_to user_user_path(current_user.id)
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
