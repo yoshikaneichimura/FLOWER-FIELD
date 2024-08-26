@@ -16,7 +16,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP&display=swap');
 
-
 $main-color-green: #165e83;
 $background-color-green: #203744;
 $color-green: #bce2e8;
@@ -247,13 +246,14 @@ main {
 }
 
 .user-group {
+  width: 1100px;
   display: flex;
-  flex-wrap: wrap-reverse;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: left;
   .user-block {
     @include user_area(200px)
     max-height: 480px;
-    margin: 30px 10px;
+    margin: 10px 10px;
     .user-name {
       width: 150px;
       overflow: hidden;
@@ -300,6 +300,9 @@ footer {
       width: 150px;
     }
   }
+  .user-group {
+  width: 880px;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -319,7 +322,6 @@ footer {
   .search-form-window {
     margin-top: 10px;
   }
-
   .home-button {
     display: flex;
     flex-direction: column;
@@ -327,6 +329,9 @@ footer {
     div {
       margin: 10px;
     }
+  }
+  .user-group {
+  width: 660px;
   }
 }
 
@@ -365,6 +370,9 @@ footer {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .user-group {
+  width: 440px;
+  }
 }
 
 @media screen and (max-width: 567px) {
@@ -393,5 +401,8 @@ footer {
   }
   .comment-user-name {
     width: 100px;
+  }
+  .user-group {
+  width: 220px;
   }
 }

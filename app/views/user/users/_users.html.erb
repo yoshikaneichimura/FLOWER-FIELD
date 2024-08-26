@@ -1,58 +1,60 @@
 <div class="d-flex justify-content-center mt-3">
-  <% users.each do |user| %>
   <div class="user-group">
-    <div class="
-        user-block
-      <% if user_signed_in? && user == current_user || admin_signed_in? && user.email == "guest@example.com" %>
-        my-color
-      <% else %>
-        user-color
-      <% end %>
-    ">
-      <% if user_signed_in? %>
-      <div>
-        <%= link_to user_user_path(user.id) do %>
-          <%= image_tag user.get_profile_image(150,150)%>
-        <% end %>
-      </div>
-      <% elsif admin_signed_in? %>
-      <div>
-        <%= link_to admin_user_path(user.id) do %>
-          <%= image_tag user.get_profile_image(150,150)%>
-        <% end %>
-      </div>
-      <% end %>
-        <h6 class="user-name"><%= user.name %></h6>
-        <h6 class="mt-1">投稿件数：<%= user.post_images.count %></h6>
-
-      <% if user_signed_in? %>
-
-        <h6><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></h6>
-        <h6><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></h6>
-
-        <% if current_user == user %>
-          <%= link_to "マイページ",user_user_path(user.id), class: "btn btn-info my-3" %>
-        <% elsif current_user.following?(user)%>
-          <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-3", method: :delete %>
-        <% elsif current_user != user && user.is_active == true %>
-          <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success my-3",method: :post %>
+    <% users.each do |user| %>
+      <div class="
+          user-block
+        <% if user_signed_in? && user == current_user || admin_signed_in? && user.email == "guest@example.com" %>
+          my-color
         <% else %>
-          <%= link_to "退会済み", user_user_relationships_path(user.id), class: "btn btn-danger disabled my-3",method: :post %>
+          user-color
+        <% end %>
+      ">
+        <% if user_signed_in? %>
+          <div>
+            <%= link_to user_user_path(user.id) do %>
+              <%= image_tag user.get_profile_image(150,150)%>
+            <% end %>
+          </div>
+        <% elsif admin_signed_in? %>
+          <div>
+            <%= link_to admin_user_path(user.id) do %>
+              <%= image_tag user.get_profile_image(150,150)%>
+            <% end %>
+          </div>
         <% end %>
 
-      <% elsif admin_signed_in? %>
+          <h6 class="user-name"><%= user.name %></h6>
+          <h6 class="mt-1">投稿件数：<%= user.post_images.count %></h6>
 
-        <h6><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></h6>
-        <h6><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></h6>
-        <h6>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></h6>
+        <% if user_signed_in? %>
 
-        <% if user.is_active == true %>
-          <div class="bg-success rounded text-white py-1 px-3 my-3">有効会員</div>
-        <% else %>
-          <div class="bg-danger rounded text-white py-1 px-3 my-3">退会済み</div>
+          <h6><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></h6>
+          <h6><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></h6>
+
+          <% if current_user == user %>
+            <%= link_to "マイページ",user_user_path(user.id), class: "btn btn-info my-3" %>
+          <% elsif current_user.following?(user)%>
+            <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-3", method: :delete %>
+          <% elsif current_user != user && user.is_active == true %>
+            <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success my-3",method: :post %>
+          <% else %>
+            <%= link_to "退会済み", user_user_relationships_path(user.id), class: "btn btn-danger disabled my-3",method: :post %>
+          <% end %>
+
+        <% elsif admin_signed_in? %>
+
+          <h6><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></h6>
+          <h6><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></h6>
+          <h6>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></h6>
+          <% if user.is_active == true %>
+            <div class="bg-success rounded text-white py-1 px-3 my-3">有効会員</div>
+          <% else %>
+            <div class="bg-danger rounded text-white py-1 px-3 my-3">退会済み</div>
+          <% end %>
+
         <% end %>
-      <% end %>
-    </div>
-  <% end %>
+
+      </div>
+    <% end %>
   </div>
 </div>
