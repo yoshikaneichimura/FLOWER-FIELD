@@ -12,8 +12,10 @@ class HomesController < ApplicationController
   def forbid_login_user
     if user_signed_in?
       redirect_to user_user_path(current_user.id)
+      flash[:alert] = "すでにログインしています。"
     elsif admin_signed_in?
       redirect_to admin_users_path
+      flash[:alert] = "すでにログインしています。"
     end
   end
 end
