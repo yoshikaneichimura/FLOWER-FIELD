@@ -28,7 +28,6 @@ $color-red: #eebbcb;
   margin : 0;
   padding: 0;
   box-sizing: border-box;
-  color :$color-green;
   font-family: 'Zen Maru Gothic', serif;
 }
 
@@ -39,6 +38,9 @@ $color-red: #eebbcb;
 .user-color {
   background-color: $main-color-green;
   border: 1px solid $color-green;
+  p {
+    color: $color-green;
+  }
 }
 
 .my-color {
@@ -72,6 +74,7 @@ body {
 header {
   background-color: $main-color-green;
   border-bottom: solid 1px red;
+  color :$color-green;
   .header-window {
     display: flex;
     justify-content: center;
@@ -82,7 +85,7 @@ header {
 .search-form-window {
   display: flex;
   justify-content: center;
-  margin: 15px 0 0 5px;
+  margin: 15px 0 0 10px;
   .search-form-top {
     margin: 5px;
   }
@@ -106,6 +109,7 @@ header {
 main {
   flex-grow: 1;
   background-color: $background-color-green;
+  color :$color-green;
 }
 
 .home-image {
@@ -290,6 +294,7 @@ main {
 footer {
   border-top: solid 1px red;
   background-color : $main-color-green;
+  color :$color-green;
 }
 
 @media screen and (max-width: 1200px) {

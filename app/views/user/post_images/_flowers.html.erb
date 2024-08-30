@@ -1,5 +1,5 @@
 <div class="table-responsive mt-3">
-  <table class="table table-striped">
+  <table class="table table-striped text-white">
     <thead>
       <tr>
         <th>画像</th>
@@ -11,44 +11,44 @@
       </tr>
     </thead>
     <tbody>
-        <% post_images.each do | post_image | %>
-      <tr>
-        <td>
-          <% if user_signed_in? %>
-            <%= link_to user_post_image_path(post_image.id) do %>
-              <%= image_tag post_image.get_image(100,100) %>
+      <% post_images.each do | post_image | %>
+        <tr>
+          <td>
+            <% if user_signed_in? %>
+              <%= link_to user_post_image_path(post_image.id) do %>
+                <%= image_tag post_image.get_image(100,100) %>
+              <% end %>
+            <% elsif admin_signed_in? %>
+              <%= link_to admin_post_image_path(post_image.id) do %>
+                <%= image_tag post_image.get_image(100,100) %>
+              <% end %>
             <% end %>
-          <% elsif admin_signed_in? %>
-            <%= link_to admin_post_image_path(post_image.id) do %>
-              <%= image_tag post_image.get_image(100,100) %>
+          </td>
+          <td class="text-truncate" style="max-width: 100px;"><%= post_image.flower %></td>
+          <td class="text-truncate" style="max-width: 100px;"><%= post_image.field %></td>
+          <td class="text-nowrap d-none d-lg-table-cell"><%= post_image.day %></td>
+          <td class="text-nowrap">
+            <div id="star<%= post_image.id %>"></div>
+            <script>
+              $('#star<%= post_image.id %>').empty();
+              $('#star<%= post_image.id %>').raty({
+                size     : 36,
+                starOff  : "<%= asset_path('star-off.png') %>",
+                starOn   : "<%= asset_path('star-on.png') %>",
+                score: <%= post_image.star%>,
+                half: false,
+                readOnly: true,
+              });
+            </script>
+          </td>
+          <td class="text-truncate d-none d-xl-table-cell"style="max-width: 100px;">
+            <% if user_signed_in? %>
+              <%= link_to "#{post_image.user.name}",user_user_path(post_image.user.id) ,class: "text-reset" %>
+            <% elsif admin_signed_in? %>
+              <%= link_to "#{post_image.user.name}",admin_user_path(post_image.user.id),class: "text-reset" %>
             <% end %>
-          <% end %>
-        </td>
-        <td class="text-truncate" style="max-width: 100px;"><%= post_image.flower %></td>
-        <td class="text-truncate" style="max-width: 100px;"><%= post_image.field %></td>
-        <td class="text-nowrap d-none d-lg-table-cell"><%= post_image.day %></td>
-        <td class="text-nowrap">
-          <div id="star<%= post_image.id %>"></div>
-          <script>
-            $('#star<%= post_image.id %>').empty();
-            $('#star<%= post_image.id %>').raty({
-              size     : 36,
-              starOff  : "<%= asset_path('star-off.png') %>",
-              starOn   : "<%= asset_path('star-on.png') %>",
-              score: <%= post_image.star%>,
-              half: false,
-              readOnly: true,
-            });
-          </script>
-        </td>
-        <td class="text-truncate d-none d-xl-table-cell"style="max-width: 100px;">
-          <% if user_signed_in? %>
-            <%= link_to "#{post_image.user.name}",user_user_path(post_image.user.id) ,class: "text-reset" %>
-          <% elsif admin_signed_in? %>
-            <%= link_to "#{post_image.user.name}",admin_user_path(post_image.user.id),class: "text-reset" %>
-          <% end %>
-        </td>
-      </tr>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
