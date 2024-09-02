@@ -34,8 +34,10 @@
   <div>
     <h6>ユーザーネーム</h6>
     <h5 class="text-white"><%= user.name %></h5>
-    <h6>自己紹介</h6>
-    <h6 class="text-white p-1"><%= user.introduction %></h6>
+    <% if user.introduction.present? %>
+      <h6>自己紹介</h6>
+      <h6 class="text-white p-1"><%= user.introduction %></h6>
+    <% end %>
   </div>
 
   <% if user_signed_in? %>
@@ -47,7 +49,7 @@
       <%= link_to "花の咲く場所を投稿する", new_user_post_image_path, class: "btn btn-success mt-3" %>
       <%= link_to "プロフィールを編集する",edit_user_user_path(user.id), class: "btn btn-info mt-3" %>
       <p class="text-center my-3"><%= link_to "＊ お気に入りリスト",favorites_user_user_path(user), class: "text-reset" %></p>
-    <% elsif current_user.following?(user)%>
+    <% elsif current_user.following?(user) %>
       <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-1", method: :delete %>
     <% elsif current_user != user && user.is_active == true %>
       <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success my-1",method: :post %>
@@ -71,4 +73,5 @@
     </div>
 
   <% end %>
+
 </div>
