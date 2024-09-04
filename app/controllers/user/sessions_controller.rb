@@ -4,9 +4,6 @@ class User::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
   before_action :forbid_login_user, only: [:new]
 
-  def new
-  end
-
   def after_sign_in_path_for(resource)
     user_user_path(current_user.id)
   end
