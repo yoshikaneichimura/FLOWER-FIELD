@@ -13,6 +13,7 @@ class User::PostImagesController < ApplicationController
       flash[:success] = "投稿しました。"
       redirect_to user_post_images_path
     else
+      @user = current_user
       render :new
     end
   end
