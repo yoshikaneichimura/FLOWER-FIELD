@@ -249,8 +249,8 @@ main {
   margin: 10px auto 30px;
 }
 
-.user-group {
-  width: 1100px;
+@mixin users($width) {
+  width: $width;
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
@@ -266,6 +266,14 @@ main {
       margin-top: 10px;
     }
   }
+}
+
+.user-group {
+  @include users(1100px)
+}
+
+.relationship-group {
+  @include users(660px)
 }
 
 .flash-message-area {
@@ -306,7 +314,10 @@ footer {
     }
   }
   .user-group {
-  width: 880px;
+  @include users(880px)
+  }
+  .relationship-group {
+  @include users(440px)
   }
 }
 
@@ -336,7 +347,7 @@ footer {
     }
   }
   .user-group {
-  width: 660px;
+  @include users(660px)
   }
 }
 
@@ -376,7 +387,7 @@ footer {
     text-overflow: ellipsis;
   }
   .user-group {
-  width: 440px;
+  @include users(440px)
   }
 }
 
@@ -408,6 +419,9 @@ footer {
     width: 100px;
   }
   .user-group {
-  width: 220px;
+  @include users(220px)
+  }
+  .relationship-group {
+  @include users(220px)
   }
 }

@@ -1,9 +1,8 @@
-<div class="d-flex justify-content-center mt-3">
-  <div class="user-group">
+
     <% users.each do |user| %>
       <div class="
           user-block
-        <% if user_signed_in? && user == current_user || admin_signed_in? && user.email == "guest@example.com" %>
+        <% if user_signed_in? && user == current_user || admin_signed_in? && user.is_active == false %>
           my-color
         <% else %>
           user-color
@@ -46,7 +45,9 @@
           <h6><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></h6>
           <h6><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></h6>
           <h6>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></h6>
-          <% if user.is_active == true %>
+          <% if user.email == "guest@example.com" %>
+            <div class="bg-primary rounded text-white py-1 px-3 my-3">ゲストユーザー</div>
+          <% elsif user.is_active == true %>
             <div class="bg-success rounded text-white py-1 px-3 my-3">有効会員</div>
           <% else %>
             <div class="bg-danger rounded text-white py-1 px-3 my-3">退会済み</div>
@@ -56,5 +57,3 @@
 
       </div>
     <% end %>
-  </div>
-</div>
