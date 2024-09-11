@@ -3,7 +3,7 @@ class User::UsersController < ApplicationController
   before_action :guest_check, only: [:update]
 
   def index
-    @users = User.order(created_at: :desc)
+    @users = User.where(is_active: "true").order(created_at: :desc)
   end
 
   def show
@@ -32,7 +32,7 @@ class User::UsersController < ApplicationController
   def withdraw
     user = current_user
     if user.email == 'guest@example.com'
-      flash[:notice] = "ゲストユーザーは退会処理できません。"
+      flash[:alert] = "ゲストユーザーは退会処理できません。"
       redirect_to user_user_path(user.id)
     else
       user.update(is_active: false)

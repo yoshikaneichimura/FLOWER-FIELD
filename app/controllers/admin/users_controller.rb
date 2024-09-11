@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :guest_check, only: [:update]
   def index
-    @users = User.page(params[:page]).order(created_at: :desc)
+    @users = User.order(created_at: :desc)
   end
 
   def show
@@ -21,6 +22,13 @@ class Admin::UsersController < ApplicationController
     else
         render :edit
     end
+  end
+
+  def guest_check
+    @user = User.find(params[:id])
+   if @user.email == 'guest@example.com'
+      redirect_to admin_users_path,notice: "ゲストユーザーの情報の編集はできません。"
+   end
   end
 
   private

@@ -16,11 +16,11 @@ class Admin::PostImagesController < ApplicationController
 
   def update
     @post_image = PostImage.find(params[:id])
-    if  @post_image.update(post_image_params)
-        flash[:notice] = "投稿内容を編集しました。"
-        redirect_to admin_post_image_path(@post_image.id)
+    if @post_image.update(post_image_params)
+       flash[:notice] = "投稿内容を編集しました。"
+       redirect_to admin_post_image_path(@post_image.id)
     else
-        render :edit
+       render :edit
     end
   end
 
@@ -36,5 +36,4 @@ class Admin::PostImagesController < ApplicationController
   def post_image_params
     params.require(:post_image).permit(:user_id,:tag_id,:flower,:field,:day,:star,:address,:detail,:image)
   end
-
 end

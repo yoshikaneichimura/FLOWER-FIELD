@@ -1,35 +1,35 @@
 <div class="container">
-  <h3 class="text-center mt-3">メールアドレス・パスワードの変更</h3>
+  <h5 class="text-center mt-3">メールアドレス・パスワードの変更</h5>
   <div class="alert-message">
-      <%= render "user/shared/error_messages", resource: resource %>
-    </div>
+    <%= render "user/shared/error_messages", resource: resource %>
+  </div>
   <div class="d-flex justify-content-center">
     <div class="sign-up-form">
       <%= form_with model: @user,url: user_registration_path do |f| %>
-      <form>
-        <div class="form-group">
-          <%= f.label :"メールアドレス" %><br />
-          <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email" %>
-        </div>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
-        <div class="form-group">
-          <%= f.label :"新しいパスワード" %><br />
-          <%= f.password_field :password,class: "form-control", autocomplete: "new-password" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :"新しいパスワード確認用" %><br />
-          <%= f.password_field :password_confirmation,class: "form-control", autocomplete: "new-password" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :"現在のパスワード" %><br />
-          <%= f.password_field :current_password,class: "form-control", autocomplete: "current-password" %>
-        </div>
-        <div class="actions">
-          <%= f.submit "この内容で保存" ,class: "btn btn-success"%>
-        </div>
-      </form>
+        <form>
+          <div class="form-group">
+            <%= f.label :"メールアドレス" %><br />
+            <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email" %>
+          </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+          <div class="form-group">
+            <%= f.label :"新しいパスワード" %><br />
+            <%= f.password_field :password,class: "form-control", autocomplete: "new-password" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"新しいパスワード確認用" %><br />
+            <%= f.password_field :password_confirmation,class: "form-control", autocomplete: "new-password" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :"現在のパスワード" %><br />
+            <%= f.password_field :current_password,class: "form-control", autocomplete: "current-password" %>
+          </div>
+          <div class="actions">
+            <%= f.submit "この内容で保存" ,class: "btn btn-success"%>
+          </div>
+        </form>
       <% end %>
       <div class="my-3">
         <%= link_to "＊ プロフィールを編集に戻る", edit_user_user_path(@user.id) ,class: "text-reset" %>

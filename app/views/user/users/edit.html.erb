@@ -1,41 +1,42 @@
 <div class="container">
   <h3 class="text-center mt-3 ">プロフィールを編集する</h3>
   <% if @user.errors.any? %>
-  <div class="d-flex justify-content-center mt-3">
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <p class="text-center text-danger"><%= @user.errors.count %>件のエラーが発生しました。</p>
-      <ul class="px-3">
-        <% @user.errors.full_messages.each do | message | %>
-          <li class="text-danger"><%= message %></li>
-        <% end %>
-      </ul>
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+    <div class="d-flex justify-content-center mt-3">
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <p class="text-center text-danger"><%= @user.errors.count %>件のエラーが発生しました。</p>
+        <ul class="px-3">
+          <% @user.errors.full_messages.each do | message | %>
+            <li class="text-danger"><%= message %></li>
+          <% end %>
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     </div>
-  </div>
   <% end %>
   <div class="d-flex justify-content-center">
     <div class="my-5">
       <%= form_with model: @user,url: user_user_path, method: :patch do |f| %>
-      <form>
-        <div class="form-group">
-          <p>プロフィール画像</p>
+        <form>
+          <div class="form-group">
+            <p>プロフィール画像</p>
             <%= f.file_field :profile_image, class: "file-control", accept: "image/*"%>
-        </div>
-        <div class="form-group">
-          <p>ユーザーネーム</p>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <p>自己紹介</p>
-          <%= f.text_area :introduction, class: "form-control" %>
-        </div>
-        <%= f.submit "この内容で保存する", class: "btn btn-success my-3" %>
-      </form>
-    <% end %>
-    <p><%= link_to '＊ メールアドレス、パスワードを変更する',edit_user_registration_path(@user.id), class: "text-reset" %></p>
-    <p><%= link_to "＊ 退会する",user_user_unsubscribes_path(@user.id), class: "text-reset" %></p>
-    <p><%= link_to "＊ マイページに戻る", user_user_path(@user.id),class: "text-reset" %></p>
+          </div>
+          <div class="form-group">
+            <p>ユーザーネーム</p>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <p>自己紹介</p>
+            <%= f.text_area :introduction, class: "form-control" %>
+          </div>
+          <%= f.submit "この内容で保存する", class: "btn btn-success my-3" %>
+        </form>
+      <% end %>
+      <p><%= link_to '＊ メールアドレス、パスワードを変更する',edit_user_registration_path(@user.id), class: "text-reset" %></p>
+      <p><%= link_to "＊ 退会する",user_user_unsubscribes_path(@user.id), class: "text-reset" %></p>
+      <p><%= link_to "＊ マイページに戻る", user_user_path(@user.id),class: "text-reset" %></p>
+    </div>
   </div>
 </div>

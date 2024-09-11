@@ -68,6 +68,12 @@ end
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")
 end
 
+User.find_or_create_by!(email: "anko@test.com") do |user|
+  user.name = "あんこ"
+  user.password = "password"
+  user.is_active = false
+end
+
 椿 = PostImage.find_or_create_by!(flower: "椿") do |post_image|
   post_image.field = "那覇植物公園"
   post_image.day = "2021-12-25"

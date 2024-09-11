@@ -5,7 +5,11 @@
     <h5 class="text-center mt-3">このユーザーお気に入りに追加した投稿</h5>
   <% end %>
   <% if @favorites.present? %>
+
+  <h5 class="text-center mt-3">お気に入り登録：<%= @favorites.count %> 件</h5>
+
     <%= render 'user/post_images/flowers', post_images: @favorites %>
+
   <% else %>
     <div class="informetion">
       <%= image_tag("green-flower.png")%>

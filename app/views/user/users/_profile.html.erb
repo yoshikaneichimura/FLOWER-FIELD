@@ -1,6 +1,6 @@
 <div class="
     profile-area
-  <% if user == current_user %>
+  <% if user_signed_in? && user == current_user || admin_signed_in? && user.is_active == false %>
     my-color
   <% else %>
     user-color
