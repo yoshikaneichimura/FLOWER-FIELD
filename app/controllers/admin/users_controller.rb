@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   before_action :guest_check, only: [:update]
   def index
-    @users = User.order(created_at: :desc)
+    @users = User.sorted
   end
 
   def show

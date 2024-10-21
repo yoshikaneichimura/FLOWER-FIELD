@@ -52,5 +52,10 @@ class User < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
      ["flower","field","address","detail"]
   end
+
+  scope :active,      -> { where(is_active: "true") }
+  scope :not_active,  -> { where(is_active: "false")}
+  scope :sorted,      -> { order(created_at: :desc) }
+  scope :recent,      -> { active.sorted }
 end
 

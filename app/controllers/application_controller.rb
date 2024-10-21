@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       @search_post_images = @search.result(distinct: true).order(created_at: :desc).page(params[:page])
     else admin_signed_in?
       @search = User.ransack(params[:q])
-      @search_users = @search.result(distinct: true).order(created_at: :desc).page(params[:page])
+      @search_users = @search.result(distinct: true).sorted
     end
   end
 

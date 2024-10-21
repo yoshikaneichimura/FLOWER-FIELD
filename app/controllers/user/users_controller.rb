@@ -3,7 +3,7 @@ class User::UsersController < ApplicationController
   before_action :guest_check, only: [:update]
 
   def index
-    @users = User.where(is_active: "true").order(created_at: :desc)
+    @users = User.recent
   end
 
   def show
