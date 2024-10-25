@@ -85,10 +85,13 @@
                 <% elsif admin_signed_in? %>
 
                   <li class="nav-item ml-3 color-red">
-                    <%=link_to "投稿一覧" ,admin_post_images_path, class: 'nav-link text-reset admin-font' %>
+                    <%= link_to "投稿一覧" ,admin_post_images_path, class: 'nav-link text-reset admin-font' %>
                   </li>
                   <li class="nav-item ml-3 color-red">
-                    <%=link_to "投稿者一覧" ,admin_users_path, class: 'nav-link text-reset admin-font' %>
+                    <%= link_to "投稿者一覧" ,admin_users_path, class: 'nav-link text-reset admin-font' %>
+                  </li>
+                  <li class="nav-item ml-3 color-red">
+                    <%= link_to "退会者一覧" ,admin_deleted_path, class: 'nav-link text-reset admin-font' %>
                   </li>
                   <li class="nav-item ml-3 color-red">
                     <%= link_to '管理者情報の編集',edit_admin_registration_path, class: 'nav-link text-reset admin-font' %>
@@ -148,9 +151,9 @@
                 </div>
                 <div class="search-form-bottom">
                   <div class="search-form-day">
-                    <div class="search-form-day-start"><%= f.date_field :day_gteq ,class: "form-control" %></div>
+                    <div class="search-form-day-start"><%= f.date_field :day_gteq,class: "form-control" %></div>
                     <span>〜</span>
-                    <div class="search-form-day-end"><%= f.date_field :day_lteq ,class: "form-control" %></div>
+                    <div class="search-form-day-end"><%= f.date_field :day_lteq,class: "form-control" %></div>
                   </div>
                   <div class="search-form-button"><%= f.submit '検索' ,class: "btn btn-danger" %></div>
                 </div>
