@@ -35,5 +35,6 @@ class PostImage < ApplicationRecord
   end
   
   scope :sorted, -> { order(created_at: :desc) }
+  scope :active, -> { where(is_active: "true") }
 end
 
