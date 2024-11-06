@@ -33,7 +33,7 @@ class PostImage < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     ["name","introduction"]
   end
-  
+
   scope :sorted, -> { order(created_at: :desc) }
   scope :active, -> { where(is_active: "true") }
 end

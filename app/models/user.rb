@@ -58,4 +58,3 @@ class User < ApplicationRecord
   scope :sorted,  -> { order(created_at: :desc) }
   scope :recent,  -> { active.sorted }
 end
-
