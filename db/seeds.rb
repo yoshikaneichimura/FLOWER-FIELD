@@ -68,10 +68,12 @@ end
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")
 end
 
-User.find_or_create_by!(email: "anko@test.com") do |user|
+あんこ = User.find_or_create_by!(email: "anko@test.com") do |user|
   user.name = "あんこ"
   user.password = "password"
-  user.is_active = false
+  user.introduction = "東京の島で生まれ、東京の島で育ちました。"
+  user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")
+  # user.is_active = false
 end
 
 椿 = PostImage.find_or_create_by!(flower: "椿") do |post_image|
@@ -206,9 +208,25 @@ end
   post_image.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post11.jpg"), filename:"sample-post11.jpg")
 end
 
+大島椿 = PostImage.find_or_create_by!(flower: "大島椿") do |post_image|
+  post_image.field = "椿ガーデン"
+  post_image.day = "2000-03-01"
+  post_image.star = "3"
+  post_image.tag = 関東
+  post_image.user = あんこ
+  post_image.address = "東京都大島　〇ー〇ー〇"
+  post_image.detail = "私が育った島で毎年咲く椿の花です。"
+  post_image.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post13.jpg"), filename:"sample-post13.jpg")
+end
+
 PostComment.find_or_create_by!(comment: "園内には熱帯植物園があり、1年を通してベゴニアの展示を行なってますよね！！") do |post_comment|
   post_comment.user = 桜井
   post_comment.post_image = 椿
+end
+
+PostComment.find_or_create_by!(comment: "咲いてる椿もいいですけれど、落ちてしまった椿もまた美しいですね！") do |post_comment|
+  post_comment.user = 桜井
+  post_comment.post_image = 大島椿
 end
 
 PostComment.find_or_create_by!(comment: "旭川八幡宮にぼたん園なんてあるんですね、、、、知らなかったです。") do |post_comment|
@@ -294,7 +312,11 @@ Favorite.find_or_create_by!(user: 桜井, post_image: 菊)
 Favorite.find_or_create_by!(user: lily, post_image: 菊)
 Favorite.find_or_create_by!(user: 魔鬼子, post_image: 菊)
 
+Favorite.find_or_create_by!(user: 桜井, post_image: 大島椿)
+Favorite.find_or_create_by!(user: あんこ, post_image: 椿)
+
 Relationship.find_or_create_by!(follower: 桜井, followed: jack)
+
 Relationship.find_or_create_by!(follower: lily, followed: 魔鬼子)
 
 Relationship.find_or_create_by!(follower: jack, followed: 桜井)
@@ -303,5 +325,6 @@ Relationship.find_or_create_by!(follower: jack, followed: 魔鬼子)
 Relationship.find_or_create_by!(follower: 魔鬼子, followed: 桜井)
 Relationship.find_or_create_by!(follower: 魔鬼子, followed: lily)
 Relationship.find_or_create_by!(follower: 魔鬼子, followed: jack)
+Relationship.find_or_create_by!(follower: 魔鬼子, followed: あんこ)
 
 puts "seedの実行が完了しました。"
