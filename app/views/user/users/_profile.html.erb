@@ -15,7 +15,7 @@
 
   <% if user_signed_in?%>
 
-  <div>
+  <div class="border-line">
     <%= link_to user_user_path(user.id) do %>
       <%= image_tag user.get_profile_image(200,200) %>
     <% end %>
@@ -23,7 +23,7 @@
 
   <% elsif admin_signed_in? %>
 
-  <div>
+  <div class="border-line">
     <%= link_to admin_user_path(user.id) do %>
       <%= image_tag user.get_profile_image(200,200) %>
     <% end %>

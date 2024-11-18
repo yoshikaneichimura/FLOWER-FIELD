@@ -1,4 +1,4 @@
-<% if post_image.post_comments.exists? && post_image.user.is_active == true %>
+<% if post_image.post_comments.exists? %>
   <div class="comment-area">
     <h5 class="ml-3">コメント件数：<%= post_image.post_comments.count %></h5>
     <% post_image.post_comments.each do | post_comment | %>

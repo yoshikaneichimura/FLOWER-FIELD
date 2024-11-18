@@ -37,7 +37,11 @@ $color-red: #eebbcb;
 
 .user-color {
   background-color: $main-color-green;
-  border: 1px solid $color-green;
+  border: 1px solid #00ffff;
+  .border-line {
+    border: 1px solid $color-green;
+    border-radius: 3px;
+  }
   p {
     color: $color-green;
   }
@@ -45,7 +49,11 @@ $color-red: #eebbcb;
 
 .my-color {
   background-color: $background-color-red;
-  border: 3px solid red;
+  border: 1px solid #ff0000;
+  .border-line {
+    border: 1px solid $color-red;
+    border-radius: 3px;
+  }
   h5 {
     color: $color-red;
   }
@@ -152,7 +160,7 @@ main {
   display: flex;
   justify-content: center;
   padding: 10px;
-  border: 3px solid red;
+  border: 1px solid red;
   border-radius: 5px;
   margin-bottom: 10px;
   .header-user-name {
@@ -191,7 +199,7 @@ main {
   flex-direction: column;
   align-items: center;
   border-radius: 5px;
-  padding: 10px;
+  padding: 20px;
   h5 {
     text-align: center;
     word-break: break-all;
@@ -234,9 +242,13 @@ main {
   }
 }
 
+.favorite-field {
+  margin: 30px 30px 30px auto;
+}
+
 .comment-field {
   width: 75%;
-  margin: 30px auto 0;
+  margin: 0 auto;
 }
 
 .comment-area {
@@ -295,7 +307,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 100px auto;
+  margin: 30px auto;
   h5 {
     color: #fff;
     text-align: center;
