@@ -7,6 +7,7 @@
         <th class="text-nowrap">場所</th>
         <th class="text-nowrap d-none d-lg-table-cell">日付</th>
         <th class="text-nowrap">開花状況</th>
+        <th class="text-nowrap d-none d-xl-table-cell">いいね数</th>
         <th class="text-nowrap d-none d-xl-table-cell">投稿者</th>
       </tr>
     </thead>
@@ -40,6 +41,9 @@
                 readOnly: true,
               });
             </script>
+          </td>
+          <td class="text-truncate d-none d-xl-table-cell"style="max-width: 100px;">
+           <i class="fas fa-heart"></i>  <%= post_image.favorites.count %>
           </td>
           <td class="text-truncate d-none d-xl-table-cell"style="max-width: 100px;">
             <% if user_signed_in? %>
