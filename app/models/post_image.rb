@@ -35,6 +35,6 @@ class PostImage < ApplicationRecord
   end
 
   scope :sorted, -> { order(created_at: :desc) }
-  scope :active, -> { where(is_active: "true") }
+  scope :active_post, -> { joins(:user).merge(User.active) }
 end
 

@@ -19,9 +19,7 @@ class User::PostImagesController < ApplicationController
   end
 
   def index
-    user = User.active
-    User.joins(:post_images).where(post_images: { user: user })
-    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images.where(user: user).page(params[:page]) : PostImage.where(user: user).page(params[:page]).sorted
+    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images.active_post.page(params[:page]) : PostImage.active_post.page(params[:page]).sorted
   end
 
   def show
