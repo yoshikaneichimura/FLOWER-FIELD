@@ -53,8 +53,10 @@ class User < ApplicationRecord
      ["flower","field","address","detail"]
   end
 
+  scope :include, -> { includes(profile_image_attachment:[:blob]) }
   scope :active,  -> { where(is_active: "true") }
   scope :deleted, -> { where(is_active: "false")}
-  scope :sorted,  -> { order(created_at: :desc) }
+  scope :sorted,  -> { order(created_at: :desc).include }
   scope :recent,  -> { active.sorted }
+
 end

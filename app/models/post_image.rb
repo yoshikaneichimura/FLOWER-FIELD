@@ -34,6 +34,8 @@ class PostImage < ApplicationRecord
     ["name","introduction"]
   end
 
-  scope :sorted, -> { order(created_at: :desc) }
-  scope :active_post, -> { includes(:user, image_attachment:[:blob]).joins(:user).merge(User.active).sorted }
+  scope :include,     -> { includes(:user,image_attachment:[:blob]).joins(:user) }
+  scope :sorted,      -> { order(created_at: :desc).include }
+  scope :active_post, -> { merge(User.active).sorted }
+
 end

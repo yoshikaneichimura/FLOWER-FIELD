@@ -19,7 +19,7 @@ class User::PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images.active_post.page(params[:page]) : PostImage.active_post.page(params[:page])
+    @post_images = params[:tag_id].present? ? Tag.find(params[:tag_id]).post_images.active_post.page(params[:page]) : PostImage.active_post.page(params[:page]).sorted
   end
 
   def show
