@@ -2,7 +2,7 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
   before_action :guest_check, only: [:update]
   def index
-    @users = User.active
+    @users = User.active.sorted
   end
 
   def show
@@ -25,7 +25,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def deleted
-    @users = User.deleted
+    @users = User.deleted.sorted
   end
 
   def guest_check
