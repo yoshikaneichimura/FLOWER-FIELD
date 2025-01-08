@@ -1,0 +1,28 @@
+<form>
+  <div class="form-group">
+    <p>プロフィール画像</p>
+    <%= f.file_field :profile_image, class: "file-control", accept: "image/*"%>
+  </div>
+  <div class="form-group">
+    <p>ユーザーネーム</p>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <p>自己紹介</p>
+    <%= f.text_area :introduction, class: "form-control" %>
+  </div>
+  <% if local_assigns[:admin_flag].present? %>
+    <div class="form-group">
+      <p>会員状況</p>
+      <div class="form-check form-check-inline mr-5">
+        <%= f.radio_button :is_active, true, class: "form-check-input" %>
+        <label class="form-check-label">有効会員</label>
+      </div>
+      <div class="form-check form-check-inline mr-5" >
+        <%= f.radio_button :is_active, false, class: "form-check-input"  %>
+        <label class="form-check-label">退会済み</label>
+      </div>
+    </div>
+  <% end %>
+  <%= f.submit "この内容で保存する", class: "btn btn-success my-3" %>
+</form>
