@@ -149,9 +149,21 @@ main {
   }
 }
 
+.text-box {
+  width: 350px;
+  line-height: 2;
+  margin: 0 auto;
+  p {
+    margin-top: 30px;
+
+    font-style: italic;
+  }
+}
+
 .sign-up-form {
   width: 300px;
   margin-top: 10px;
+  line-height: 20px;
 }
 
 .user-window {
@@ -319,6 +331,7 @@ footer {
   border-top: solid 1px red;
   background-color : $main-color-green;
   color :$color-green;
+  padding: 10px;
 }
 
 @media screen and (max-width: 1200px) {
