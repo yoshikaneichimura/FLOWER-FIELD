@@ -73,6 +73,10 @@ $color-red: #eebbcb;
   color: $color-red;
 }
 
+.text-white {
+  color: #fff;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -288,6 +292,7 @@ main {
     margin: 10px 10px;
     .user-name {
       width: 150px;
+      color: #fff;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;

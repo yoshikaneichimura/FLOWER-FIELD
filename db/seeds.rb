@@ -38,6 +38,7 @@ end
 User.find_or_create_by!(email: "guest@example.com") do |user|
   user.name = "ゲストユーザー"
   user.password = SecureRandom.urlsafe_base64
+  user.current_sign_in_at = "2025-01-07 07:30"
 end
 
 桜井 = User.find_or_create_by!(email: "sakurai@test.com") do |user|
@@ -45,6 +46,7 @@ end
   user.password = "password"
   user.introduction = "特に花が好きというわけっじゃないんですけど、、、、皆さんのお役に立てる情報を投稿できるかと思って登録しました。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
+  user.current_sign_in_at = "2025-01-15 13:35"
 end
 
 lily = User.find_or_create_by!(email: "lily@test.com") do |user|
@@ -52,6 +54,7 @@ lily = User.find_or_create_by!(email: "lily@test.com") do |user|
   user.password = "password"
   user.introduction = "花は太陽からの光線を自らのエネルギーにして生きている生物である為、光線に対して色彩、形態ともに緻密に計算された生物であると私は考えます。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
+  user.current_sign_in_at = "2025-01-06 20:45"
 end
 
 jack = User.find_or_create_by!(email: "jack@test.com") do |user|
@@ -59,6 +62,7 @@ jack = User.find_or_create_by!(email: "jack@test.com") do |user|
   user.password = "password"
   user.introduction = "花を撮ることよりも、花を描く得意とする者です。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")
+  user.current_sign_in_at = "2025-01-03 17:30"
 end
 
 魔鬼子 = User.find_or_create_by!(email: "makiko@test.com") do |user|
@@ -66,6 +70,7 @@ end
   user.password = "password"
   user.introduction = "可愛いお花も良いのですが、さわればケガをしてしまいそうな強い花の方が私は好きです、よろしくお願いします。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")
+  user.current_sign_in_at = "2025-01-17 17:17"
 end
 
 あんこ = User.find_or_create_by!(email: "anko@test.com") do |user|
@@ -74,6 +79,7 @@ end
   user.introduction = "東京の島で生まれ、東京の島で育ちました。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")
   user.is_active = false
+  user.current_sign_in_at = "24-12-31 22:45"
 end
 
 椿 = PostImage.find_or_create_by!(flower: "椿") do |post_image|
@@ -100,7 +106,7 @@ end
 
 梅 = PostImage.find_or_create_by!(flower: "梅") do |post_image|
   post_image.field = "八幡山"
-  post_image.day = "2022-2-18"
+  post_image.day = "2022-02-18"
   post_image.star = "3"
   post_image.tag = 東北
   post_image.user = 魔鬼子
@@ -133,7 +139,7 @@ end
 
 躑躅 = PostImage.find_or_create_by!(flower: "躑躅") do |post_image|
   post_image.field = "千曲神社"
-  post_image.day = "2002-05-05"
+  post_image.day = "2002-05-17"
   post_image.star = "4"
   post_image.tag = 信州
   post_image.user = 桜井

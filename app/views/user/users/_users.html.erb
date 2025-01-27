@@ -45,12 +45,14 @@
           <h6><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></h6>
           <h6><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></h6>
           <h6>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></h6>
+          <h6>最終ログイン日時</h6>
+          <h6 class="text-white"><%= user.current_sign_in_at.strftime('%Y/%m/%d %H:%M')%></h6>
           <% if user.email == "guest@example.com" %>
-            <div class="bg-primary rounded text-white py-1 px-3 my-3">ゲストユーザー</div>
+            <div class="bg-primary rounded text-white py-1 px-3 my-1">ゲストユーザー</div>
           <% elsif user.is_active == true %>
-            <div class="bg-success rounded text-white py-1 px-3 my-3">有効会員</div>
+            <div class="bg-success rounded text-white py-1 px-3 my-1">有効会員</div>
           <% else %>
-            <div class="bg-danger rounded text-white py-1 px-3 my-3">退会済み</div>
+            <div class="bg-danger rounded text-white py-1 px-3 my-1">退会済み</div>
           <% end %>
 
         <% end %>
