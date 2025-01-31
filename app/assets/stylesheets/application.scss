@@ -73,10 +73,6 @@ $color-red: #eebbcb;
   color: $color-red;
 }
 
-.text-white {
-  color: #fff;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -236,10 +232,6 @@ main {
   border: 3px solid $color-green;
   border-radius: 3px;
 }
-.user-datail {
-  @include user_area(250px)
-  margin: 10px auto 10px;
-}
 
 .post-image-detail {
   max-width: 600px;
@@ -281,32 +273,40 @@ main {
   margin: 10px auto 30px;
 }
 
-@mixin users($width) {
+@mixin user_group($width) {
   width: $width;
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
-  .user-block {
-    @include user_area(200px)
-    max-height: 480px;
-    margin: 10px 10px;
-    .user-name {
-      width: 150px;
-      color: #fff;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      margin-top: 10px;
-    }
+}
+
+.user-block {
+  @include user_area(200px)
+  max-height: 480px;
+  margin: 10px 10px;
+  .user-name {
+    width: 150px;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 10px;
   }
 }
 
+.user-block:nth-child(1) {
+  margin: 10px auto;
+}
+.user-block:nth-child(2) {
+  margin: 10px auto;
+}
+
 .user-group {
-  @include users(1100px)
+  @include user_group(1100px)
 }
 
 .relationship-group {
-  @include users(660px)
+  @include user_group(660px)
 }
 
 .flash-message-area {
@@ -348,10 +348,10 @@ footer {
     }
   }
   .user-group {
-  @include users(880px)
+  @include user_group(880px)
   }
   .relationship-group {
-  @include users(440px)
+  @include user_group(440px)
   }
 }
 
@@ -381,7 +381,7 @@ footer {
     }
   }
   .user-group {
-  @include users(660px)
+  @include user_group(660px)
   }
 }
 
@@ -421,7 +421,7 @@ footer {
     text-overflow: ellipsis;
   }
   .user-group {
-  @include users(440px)
+  @include user_group(440px)
   }
 }
 
@@ -453,9 +453,9 @@ footer {
     width: 100px;
   }
   .user-group {
-  @include users(220px)
+  @include user_group(220px)
   }
   .relationship-group {
-  @include users(220px)
+  @include user_group(220px)
   }
 }

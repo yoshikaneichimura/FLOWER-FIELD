@@ -1,6 +1,5 @@
-
-    <% users.each do |user| %>
-      <div class="
+<% users.each do |user| %>
+  <div class="
           user-block
         <% if user_signed_in? && user == current_user || admin_signed_in? && user.is_active == false %>
           my-color
@@ -22,14 +21,13 @@
           </div>
         <% end %>
 
-          <h6 class="user-name"><%= user.name %></h6>
-          <h6 class="mt-1">投稿件数：<%= user.post_images.count %></h6>
+        <h6 class="user-name"><%= user.name %></h6>
+        <h6 class="mt-1">投稿件数：<span class="text-white"><%= user.post_images.count %></span></h6>
 
         <% if user_signed_in? %>
 
-          <h6><%= link_to "#{user.followings.count} ：フォロー中", user_user_followings_path(user.id), class: "text-reset" %></h6>
-          <h6><%= link_to "#{user.followers.count} ：フォロワー", user_user_followers_path(user.id), class: "text-reset"%></h6>
-
+          <h6><%= link_to "フォロー中 : #{user.followings.count}", user_user_followings_path(user.id), class: "text-reset" %></h6>
+          <h6><%= link_to "フォロワー : #{user.followers.count}", user_user_followers_path(user.id), class: "text-reset"%></h6>
           <% if current_user == user %>
             <%= link_to "マイページ",user_user_path(user.id), class: "btn btn-info my-3" %>
           <% elsif current_user.following?(user)%>
@@ -42,9 +40,8 @@
 
         <% elsif admin_signed_in? %>
 
-          <h6><%= link_to "#{user.followings.count}：フォロー中",admin_user_followings_path(user.id),class: "text-reset" %></h6>
-          <h6><%= link_to "#{user.followers.count}：フォロワー",admin_user_followers_path(user.id),class: "text-reset" %></h6>
-          <h6>登録日：<%= user.created_at.strftime('%Y/%m/%d')%></h6>
+          <h6><%= link_to "フォロー中 : #{user.followings.count}",admin_user_followings_path(user.id),class: "text-reset" %></h6>
+          <h6><%= link_to "フォロワー : #{user.followers.count}",admin_user_followers_path(user.id),class: "text-reset" %></h6>
           <h6>最終ログイン日時</h6>
           <h6 class="text-white"><%= user.current_sign_in_at.strftime('%Y/%m/%d %H:%M')%></h6>
           <% if user.email == "guest@example.com" %>
@@ -56,6 +53,6 @@
           <% end %>
 
         <% end %>
-
       </div>
-    <% end %>
+
+<% end %>

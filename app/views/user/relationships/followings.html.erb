@@ -10,8 +10,9 @@
       <% if current_user == @user %>
         <p class="text-center mt-3">あなたがフォロー中のユーザー：<%= @user.followings.count %></p>
       <% else %>
-        <p class="text-center mt-3"><span class="text-white"><%= @user.name %></span><br>
-        さんがフォロー中のユーザー：<%= @user.followings.count %></p>
+        <p class="text-center mt-3">
+          <span class="text-white"><%= @user.name %></span> さんがフォロー中のユーザー：<%= @user.followings.count %>
+        </p>
       <% end %>
 
       <% if @users.exists? %>

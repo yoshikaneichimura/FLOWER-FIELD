@@ -10,8 +10,7 @@
       <% if current_user == @user %>
         <p class="text-center mt-3">あなたのフォロワー：<%= @user.followers.count %></p>
       <% else %>
-        <p class="text-center mt-3"><span class="text-white"><%= @user.name %></span><br>
-        さんのフォロワー：<%= @user.followers.count %></p>
+        <p class="text-center mt-3"><span class="text-white"><%= @user.name %></span>さんのフォロワー：<%= @user.followers.count %></p>
       <% end %>
 
       <% if @users.exists? %>
