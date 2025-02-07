@@ -282,7 +282,7 @@ main {
 
 .user-block {
   @include user_area(200px)
-  max-height: 480px;
+  max-height: 400px;
   margin: 10px 10px;
   .user-name {
     width: 150px;

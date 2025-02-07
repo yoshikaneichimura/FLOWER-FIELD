@@ -2,9 +2,11 @@
   <h3 class="text-center mt-3">花を見つけた人達</h3>
   <div class="d-flex justify-content-center mt-3">
     <div class="user-group">
+      <% @users.each do |user| %>
 
-      <%= render 'users', users: @users %>
+        <%= render 'user_block', user: user %>
 
+      <% end %>
     </div>
   </div>
 </div>

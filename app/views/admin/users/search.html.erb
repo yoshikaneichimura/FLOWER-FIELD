@@ -3,9 +3,11 @@
   <% if @search_users.exists? %>
     <div class="d-flex justify-content-center mt-3">
       <div class="user-group">
+        <% @search_users.each do |user| %>
 
-        <%= render 'user/users/users' ,users: @search_users %>
+          <%= render 'user/users/user_block', user: user %>
 
+        <% end %>
       </div>
     </div>
   <% else %>

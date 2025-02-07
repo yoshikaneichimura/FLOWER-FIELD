@@ -7,20 +7,21 @@
 
     </div>
     <div class="col-lg-9 mt-3">
-      <p class="text-center mt-3"><span class="text-white"><%= @user.name %></span><br>
-      さんがフォロー中のユーザー：<%= @user.followings.count %></p>
+      <p class="text-center mt-3"><span class="text-white"><%= @user.name %></span> さんがフォロー中のユーザー：<%= @user.followings.count %></p>
       <% if @users.exists? %>
         <div class="d-flex justify-content-center mt-3">
           <div class="relationship-group">
+            <% @users.each do |user| %>
 
-            <%= render 'user/users/users', users: @users %>
+              <%= render 'user/users/user_block', user: user %>
 
+            <% end %>
           </div>
         </div>
       <% else %>
         <div class="informetion">
           <%= image_tag("green-flower.png") %>
-        <h5>＊ ユーザーはいません。</h5>
+          <h5>＊ ユーザーはいません。</h5>
         </div>
       <% end %>
     </div>

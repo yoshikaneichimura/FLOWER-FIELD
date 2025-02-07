@@ -2,9 +2,11 @@
   <h3 class="text-center mt-3">投稿者一覧</h3>
   <div class="d-flex justify-content-center mt-3">
     <div class="user-group">
-    
-      <%= render 'user/users/users', users: @users %>
-    
+      <% @users.each do |user| %>
+
+        <%= render 'user/users/user_block', user: user %>
+
+      <% end %>
     </div>
   </div>
 </div>

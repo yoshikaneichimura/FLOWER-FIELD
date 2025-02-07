@@ -1,0 +1,55 @@
+<div class="
+    user-block
+  <% if user_signed_in? && user == current_user || admin_signed_in? && user.is_active == false %>
+    my-color
+  <% else %>
+    user-color
+  <% end %>
+">
+  <% if user_signed_in? %>
+    <div class="border-line">
+      <%= link_to user_user_path(user.id) do %>
+        <%= image_tag user.get_profile_image(150,150)%>
+      <% end %>
+    </div>
+  <% elsif admin_signed_in? %>
+    <div class="border-line">
+      <%= link_to admin_user_path(user.id) do %>
+        <%= image_tag user.get_profile_image(150,150)%>
+      <% end %>
+    </div>
+  <% end %>
+
+  <h6 class="user-name"><%= user.name %></h6>
+  <h6 class="mt-1">投稿件数：<span class="text-white"><%= user.post_images.count %></span></h6>
+
+  <% if user_signed_in? %>
+
+    <h6><%= link_to "フォロー中 : #{user.followings.count}", user_user_followings_path(user.id), class: "text-reset" %></h6>
+    <h6><%= link_to "フォロワー : #{user.followers.count}", user_user_followers_path(user.id), class: "text-reset"%></h6>
+    <% if current_user == user %>
+      <%= link_to "マイページ",user_user_path(user.id), class: "btn btn-info my-3" %>
+    <% elsif current_user.following?(user)%>
+      <%= link_to "フォローを外す", user_user_relationships_path(user.id), class: "btn btn-danger my-3", method: :delete %>
+    <% elsif current_user != user && user.is_active == true %>
+      <%= link_to "フォローする", user_user_relationships_path(user.id), class: "btn btn-success my-3",method: :post %>
+    <% else %>
+      <%= link_to "退会済み", user_user_relationships_path(user.id), class: "btn btn-danger disabled my-3",method: :post %>
+    <% end %>
+
+  <% elsif admin_signed_in? %>
+
+    <h6><%= link_to "フォロー中 : #{user.followings.count}",admin_user_followings_path(user.id),class: "text-reset" %></h6>
+    <h6><%= link_to "フォロワー : #{user.followers.count}",admin_user_followers_path(user.id),class: "text-reset" %></h6>
+    <h6>最終ログイン日時</h6>
+    <h6 class="text-white"><%= user.current_sign_in_at.strftime('%Y/%m/%d %H:%M')%></h6>
+    <% if user.email == "guest@example.com" %>
+      <div class="bg-primary rounded text-white py-1 px-3 my-1">ゲストユーザー</div>
+    <% elsif user.is_active == true %>
+      <div class="bg-success rounded text-white py-1 px-3 my-1">有効会員</div>
+    <% else %>
+      <div class="bg-danger rounded text-white py-1 px-3 my-1">退会済み</div>
+    <% end %>
+
+  <% end %>
+</div>
