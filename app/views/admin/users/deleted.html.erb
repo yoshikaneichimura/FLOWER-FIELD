@@ -3,9 +3,11 @@
   <div class="d-flex justify-content-center mt-3">
     <div class="user-group">
       <% if @users.exists? %>
+        <% @users.each do |user| %>
 
-       <%= render 'user/users/users', users: @users %>
+          <%= render 'user/users/user_block', user: user %>
 
+        <% end %>
       <% else %>
         <div class="informetion">
           <%= image_tag("green-flower.png")%>
