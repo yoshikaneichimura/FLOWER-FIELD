@@ -144,46 +144,63 @@
               </div>
             </div>
             <%= search_form_for @search, url: user_search_path do |f| %>
-            <form>
-              <div class="search-form-window">
-                <div class="search-form-top">
-                <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索",class: "form-control" %>
-                </div>
-                <div class="search-form-bottom">
-                  <div class="search-form-day">
-                    <div class="search-form-day-start"><%= f.date_field :day_gteq,class: "form-control" %></div>
-                    <span>〜</span>
-                    <div class="search-form-day-end"><%= f.date_field :day_lteq,class: "form-control" %></div>
+              <form>
+                <div class="search-form-window">
+                  <div class="search-form-top">
+                  <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索",class: "form-control" %>
                   </div>
-                  <div class="search-form-button"><%= f.submit '検索' ,class: "btn btn-danger" %></div>
+                  <div class="search-form-bottom">
+                    <div class="search-form-day">
+                      <div class="search-form-day-start"><%= f.date_field :day_gteq,class: "form-control" %></div>
+                      <span>〜</span>
+                      <div class="search-form-day-end"><%= f.date_field :day_lteq,class: "form-control" %></div>
+                    </div>
+                    <div class="search-form-button"><%= f.submit '検索' ,class: "btn btn-danger" %></div>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
             <% end %>
           </div>
 
         <% elsif admin_signed_in? %>
 
           <div class="row mb-3">
-            <div class="ml-auto">
-            <%= search_form_for @search, url: admin_search_path do |f| %>
-              <form>
-                <div class="form-inline">
-                  <div class="col ml-auto">
-                    <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" ,class: "form-control" %>
-                  </div>
-                  <div class="mr-3 ">
-                    <%= f.submit '検索' ,class: "btn btn-danger" %>
-                  </div>
+
+            <div class="header-detail">
+              <div>
+                <div>
+                  <h6>総投稿件数：<%= PostImage.all.count %></h6>
                 </div>
-              </form>
+                <div>
+                  <h6>総投稿者数：<%= User.all.count %></h6>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <h6>総コメント数：<%= PostComment.all.count %></h6>
+                </div>
+                <div>
+                  <h6>総いいね数：<%= Favorite.all.count %></h6>
+                </div>
+              </div>
             </div>
-            <% end %>
-            </div>
+
+            <div class="ml-auto">
+              <%= search_form_for @search, url: admin_search_path do |f| %>
+                <form>
+                  <div class="form-inline">
+                    <div class="col ml-auto">
+                      <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" ,class: "form-control" %>
+                    </div>
+                    <div class="mr-3 ">
+                      <%= f.submit '検索' ,class: "btn btn-danger" %>
+                    </div>
+                  </div>
+                </form>
+                <% end %>
+              </div>
           </div>
-
         <% end %>
-
       </div>
     </header>
 

@@ -33,6 +33,9 @@ $color-red: #eebbcb;
 
 .background-color-red {
   background-color: $main-color-red;
+  h5 {
+    color: $color-red;
+  }
 }
 
 .user-color {
@@ -111,6 +114,24 @@ header {
     .search-form-button {
       margin-left: 10px;
     }
+  }
+}
+
+.header-detail {
+  background-color: $background-color-red;
+  width: 800px;
+  height: 50px;
+  border: solid 1px #ff0000;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  div {
+    display: flex;
+  }
+  h6 {
+    color: $color-red;
+    margin: 0 30px;
   }
 }
 
@@ -347,11 +368,15 @@ footer {
       width: 150px;
     }
   }
+  .header-detail {
+    background-color: $background-color-red;
+    margin-bottom: 20px;
+  }
   .user-group {
-  @include user_group(880px)
+    @include user_group(880px)
   }
   .relationship-group {
-  @include user_group(440px)
+    @include user_group(440px)
   }
 }
 
@@ -369,6 +394,7 @@ footer {
       width: 350px;
     }
   }
+
   .search-form-window {
     margin-top: 10px;
   }
@@ -381,7 +407,7 @@ footer {
     }
   }
   .user-group {
-  @include user_group(660px)
+    @include user_group(660px)
   }
 }
 
@@ -395,6 +421,18 @@ footer {
   .user-window {
     width: 500px;
   }
+  .header-detail {
+    width: 400px;
+    height: 70px;
+    margin: 0 auto 20px auto;
+    div {
+      display: block;
+    }
+    h6 {
+      margin: 5px 30px;
+    }
+  }
+
   .search-form-window {
     width: auto;
     display: flex;
@@ -421,7 +459,7 @@ footer {
     text-overflow: ellipsis;
   }
   .user-group {
-  @include user_group(440px)
+    @include user_group(440px)
   }
 }
 
@@ -449,13 +487,28 @@ footer {
       margin-top: 10px;
     }
   }
+
+  .header-detail {
+    width: 300px;
+    height: 140px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    div {
+      display: block;
+    }
+    h6 {
+      margin: 5px 30px;
+    }
+  }
   .comment-user-name {
     width: 100px;
   }
   .user-group {
-  @include user_group(220px)
+    @include user_group(220px)
   }
   .relationship-group {
-  @include user_group(220px)
+    @include user_group(220px)
   }
 }
