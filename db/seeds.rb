@@ -79,7 +79,7 @@ end
   user.introduction = "東京の島で生まれ、東京の島で育ちました。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")
   user.is_active = false
-  user.current_sign_in_at = "24-12-31 22:45"
+  user.current_sign_in_at = "2024-12-31 22:45"
 end
 
 椿 = PostImage.find_or_create_by!(flower: "椿") do |post_image|
