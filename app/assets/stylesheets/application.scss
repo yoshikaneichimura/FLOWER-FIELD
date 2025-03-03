@@ -29,6 +29,7 @@ $color-red: #eebbcb;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Zen Maru Gothic', serif;
+  color: $color-green;
 }
 
 .background-color-red {
@@ -45,9 +46,6 @@ $color-red: #eebbcb;
     border: 1px solid $color-green;
     border-radius: 3px;
   }
-  p {
-    color: $color-green;
-  }
 }
 
 .my-color {
@@ -57,13 +55,7 @@ $color-red: #eebbcb;
     border: 1px solid $color-red;
     border-radius: 3px;
   }
-  h5 {
-    color: $color-red;
-  }
-  h6 {
-    color: $color-red;
-  }
-  p {
+  h5, h6, p {
     color: $color-red;
   }
 }
@@ -85,7 +77,6 @@ body {
 header {
   background-color: $main-color-green;
   border-bottom: solid 1px red;
-  color :$color-green;
   .header-window {
     display: flex;
     justify-content: center;
@@ -128,17 +119,24 @@ header {
   align-items: center;
   div {
     display: flex;
-  }
-  h6 {
-    color: $color-red;
-    margin: 0 30px;
+    div {
+      width: 200px;
+      h6 {
+      color: $color-red;
+      font-size: 14px;
+      width: 200px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      margin: 10px 30px;
+      }
+    }
   }
 }
 
 main {
   flex-grow: 1;
   background-color: $background-color-green;
-  color :$color-green;
 }
 
 .home-image {
@@ -176,7 +174,6 @@ main {
   margin: 0 auto;
   p {
     margin-top: 30px;
-
     font-style: italic;
   }
 }
@@ -213,7 +210,6 @@ main {
 .pagination>li>a {
   border: none;
   background-color: $main-color-green;
-  color: $color-green;
   margin: 1px;
 }
 
@@ -395,6 +391,16 @@ footer {
     }
   }
 
+  .header-detail {
+    width: 600px;
+    height: 70px;
+    margin: 0 auto 20px auto;
+    div {
+      width: 200px;
+      display: block;
+    }
+  }
+
   .search-form-window {
     margin-top: 10px;
   }
@@ -405,6 +411,14 @@ footer {
     div {
       margin: 10px;
     }
+  }
+
+  .post-image-border{
+  margin-bottom: 20px;
+}
+  .user-block {
+    margin-top: 10px;
+
   }
   .user-group {
     @include user_group(660px)
@@ -420,17 +434,6 @@ footer {
   }
   .user-window {
     width: 500px;
-  }
-  .header-detail {
-    width: 400px;
-    height: 70px;
-    margin: 0 auto 20px auto;
-    div {
-      display: block;
-    }
-    h6 {
-      margin: 5px 30px;
-    }
   }
 
   .search-form-window {
@@ -496,10 +499,8 @@ footer {
     flex-direction: column;
     align-items: baseline;
     div {
-      display: block;
-    }
-    h6 {
-      margin: 5px 30px;
+    display: block;
+    margin-bootm: 10px;
     }
   }
   .comment-user-name {
