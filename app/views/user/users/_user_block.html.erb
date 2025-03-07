@@ -21,7 +21,7 @@
   <% end %>
 
   <h6 class="user-name"><%= user.name %></h6>
-  <h6 class="mt-1">投稿件数：<span class="text-white"><%= user.post_images.count %></span></h6>
+  <h6 class="mt-1">投稿件数：<%= user.post_images.count %></h6>
 
   <% if user_signed_in? %>
 
@@ -41,8 +41,7 @@
 
     <h6><%= link_to "フォロー中 : #{user.followings.count}",admin_user_followings_path(user.id),class: "text-reset" %></h6>
     <h6><%= link_to "フォロワー : #{user.followers.count}",admin_user_followers_path(user.id),class: "text-reset" %></h6>
-    <h6>最終ログイン日時</h6>
-    <h6 class="text-white"><%= user.current_sign_in_at.strftime('%Y/%m/%d %H:%M')%></h6>
+
     <% if user.email == "guest@example.com" %>
       <div class="bg-primary rounded text-white py-1 px-3 my-1">ゲストユーザー</div>
     <% elsif user.is_active == true %>

@@ -38,6 +38,8 @@ end
 User.find_or_create_by!(email: "guest@example.com") do |user|
   user.name = "ゲストユーザー"
   user.password = SecureRandom.urlsafe_base64
+  user.sign_in_count = "0"
+  user.current_sign_in_ip = "xxx.xxx.xx.xx"
   user.current_sign_in_at = "2025-01-07 07:30"
 end
 
@@ -46,6 +48,8 @@ end
   user.password = "password"
   user.introduction = "特に花が好きというわけっじゃないんですけど、、、、皆さんのお役に立てる情報を投稿できるかと思って登録しました。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.jpg"), filename:"sample-user1.jpg")
+  user.sign_in_count = "48"
+  user.current_sign_in_ip = "XXX.XXX.XX.XX"
   user.current_sign_in_at = "2025-01-15 13:35"
 end
 
@@ -54,6 +58,8 @@ lily = User.find_or_create_by!(email: "lily@test.com") do |user|
   user.password = "password"
   user.introduction = "花は太陽からの光線を自らのエネルギーにして生きている生物である為、光線に対して色彩、形態ともに緻密に計算された生物であると私は考えます。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.jpg"), filename:"sample-user2.jpg")
+  user.sign_in_count = "102"
+  user.current_sign_in_ip = "XXX.XXX.XX.XX"
   user.current_sign_in_at = "2025-01-06 20:45"
 end
 
@@ -62,6 +68,8 @@ jack = User.find_or_create_by!(email: "jack@test.com") do |user|
   user.password = "password"
   user.introduction = "花を撮ることよりも、花を描く得意とする者です。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")
+  user.sign_in_count = "97"
+  user.current_sign_in_ip = "XXX.XXX.XX.XX"
   user.current_sign_in_at = "2025-01-03 17:30"
 end
 
@@ -70,6 +78,8 @@ end
   user.password = "password"
   user.introduction = "可愛いお花も良いのですが、さわればケガをしてしまいそうな強い花の方が私は好きです、よろしくお願いします。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user4.jpg"), filename:"sample-user4.jpg")
+  user.sign_in_count = "77"
+  user.current_sign_in_ip = "XXX.XXX.XX.XX"
   user.current_sign_in_at = "2025-01-17 17:17"
 end
 
@@ -79,6 +89,8 @@ end
   user.introduction = "東京の島で生まれ、東京の島で育ちました。"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user5.jpg"), filename:"sample-user5.jpg")
   user.is_active = false
+  user.sign_in_count = "5"
+  user.current_sign_in_ip = "XXX.XXX.XX.XX"
   user.current_sign_in_at = "2024-12-31 22:45"
 end
 
