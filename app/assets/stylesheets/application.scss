@@ -29,7 +29,7 @@ $color-red: #eebbcb;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Zen Maru Gothic', serif;
-  color: $color-green;
+  // color: $color-green;
 }
 
 .background-color-red {
@@ -42,6 +42,7 @@ $color-red: #eebbcb;
 .user-color {
   background-color: $main-color-green;
   border: 1px solid #00ffff;
+  color: $color-green;
   .border-line {
     border: 1px solid $color-green;
     border-radius: 3px;
@@ -77,6 +78,7 @@ body {
 header {
   background-color: $main-color-green;
   border-bottom: solid 1px red;
+  color: $color-green;
   .header-window {
     display: flex;
     justify-content: center;
@@ -137,6 +139,7 @@ header {
 main {
   flex-grow: 1;
   background-color: $background-color-green;
+  color: $color-green;
 }
 
 .home-image {
@@ -344,7 +347,7 @@ main {
   align-items: center;
   margin: 30px auto;
   h5 {
-    color: #fff;
+    color: $color-green;
     text-align: center;
     margin: 50px auto;
   }
