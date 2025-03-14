@@ -1,18 +1,20 @@
 <div class="container">
-  <h3 class="text-center mt-5"><i class="fas fa-exclamation-triangle"></i> 本当に退会しますか？</h3>
-  <p class="text-center mt-5">
-    一度退会させますと、<br>
-    投稿内容の閲覧ができなくなり、<br>
-    またこれまでの投稿された内容や<br>
-    会員情報の確認ができなくなります。<br>
-  </p>
-  <p class="text-center mt-1">再度ご利用いただく際には、<br>
-    新規登録していただきますようお願いします。<br>
-    退会される方は
-  </p>
-  <p class="text-center mt-1">
-   「退会する」 をクリックして下さい。
-  </p>
+  <h3 class="text-center mt-3"><i class="fas fa-exclamation-triangle"></i> 本当に退会しますか？</h3>
+  <div class="text-box">
+    <p>
+      一度退会させますと、<br>
+      投稿内容の閲覧ができなくなり、<br>
+      またこれまでの投稿された内容や<br>
+      会員情報の確認ができなくなります。<br>
+    </p>
+    <p>再度ご利用いただく際には、<br>
+      新規登録していただきますようお願いします。<br>
+      退会される方は
+    </p>
+    <p>
+     「退会する」 をクリックして下さい。
+    </p>
+  </div>
   <div class="d-flex justify-content-center">
     <div class="buttons-group">
       <%= link_to "退会しない",user_user_path(@user.id), class: "btn btn-primary btn-lg m-3" %>
