@@ -153,11 +153,11 @@ main {
     background-color: rgba(0,0,0,0.3);
     text-align: center;
     padding-top: 100px;
-    h1 {
+    h3 {
       letter-spacing: 0.5em;
-    }
-    span {
-      letter-spacing: 0em;
+      img {
+        margin: 10px 0;
+      }
     }
   }
 }
@@ -470,6 +470,10 @@ footer {
 }
 
 @media screen and (max-width: 567px) {
+
+  p {
+    font-size: 14px;
+  }
   .user-window {
     width: 350px;
     .header-user-name {

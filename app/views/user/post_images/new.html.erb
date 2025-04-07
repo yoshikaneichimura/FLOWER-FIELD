@@ -1,8 +1,8 @@
 <div class="container">
-  <h5 class="text-center mt-3">あなたの見つけた花の咲く場所と投稿してみましょう</h5>
-  
+  <h3 class="text-center mt-3">あなたの見つけた花の咲く場所を投稿してみましょう！</h3>
+
   <%= render 'error_messages', post_image: @post_image %>
- 
+
   <%= form_with model: @post_image, url: user_post_images_path, method: :post do |f| %>
 
     <%= render 'form', f: f %>

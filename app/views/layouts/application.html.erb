@@ -27,29 +27,29 @@
         <div class="container">
 
           <% if user_signed_in? %>
-            <h3 class="mt-1">
+            <h1 class="mt-1">
               FLOWER
               <%= link_to user_user_path(current_user.id) do %>
                 <%= image_tag('F.F.png') %>
               <% end %>
               FIELD
-            </h3>
+            </h1>
           <% elsif admin_signed_in? %>
-            <h3 class="mt-1 admin-font color-red">
+            <h1 class="mt-1 admin-font color-red">
               ADMIN
               <%= link_to admin_users_path do %>
                 <%= image_tag('F.F.png') %>
               <% end %>
               PAGE
-            </h3>
+            </h1>
           <% else %>
-            <h3 class="mt-1">
+            <h1 class="mt-1">
               FLOWER
               <%= link_to root_path do %>
                 <%= image_tag('F.F.png') %>
               <% end %>
               FIELD
-            </h3>
+            </h1>
           <% end %>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -97,7 +97,7 @@
                     <%= link_to '管理者情報の編集',edit_admin_registration_path, class: 'nav-link text-reset admin-font' %>
                   </li>
                   <li class="nav-item ml-3 color-red">
-                    <%= link_to "管理者ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-reset admin-font' %>
+                    <%= link_to "ログアウト", destroy_admin_session_path,method: :delete, class: 'nav-link text-reset admin-font' %>
                   </li>
 
                 <% else %>
