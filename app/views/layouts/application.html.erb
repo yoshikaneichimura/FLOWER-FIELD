@@ -220,11 +220,16 @@
        background-color-red
       <% end %>">
       <div class="container">
-        <p class="text-center
-        <% if admin_signed_in?%>
+        <p class="
+        <% if admin_signed_in? %>
          admin-font color-red
         <% end %>
-        ">© All rights reserved by tefutefu.Inc.</p>
+        ">&copy; All rights reserved by tefutefu.Inc.</p>
+        <% if user_signed_in? %>
+          <adress>
+            <a href="mailto:info@example.com" class="text-reset">info@example.com</a>
+          </adress>
+        <% end %>
       </div>
     </footer>
   </body>
