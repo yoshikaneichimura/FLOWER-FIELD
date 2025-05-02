@@ -20,8 +20,8 @@ $main-color-green: #165e83;
 $background-color-green: #203744;
 $color-green: #bce2e8;
 
-$main-color-red: #a22041;
-$background-color-red: #6c2c2f;
+$main-color-red: #6c2c2f;
+$background-color-red: #a22041;
 $color-red: #eebbcb;
 
 * {
@@ -31,17 +31,28 @@ $color-red: #eebbcb;
   font-family: 'Zen Maru Gothic', serif;
 }
 
+.background-color-green {
+  background-color: $background-color-green;
+  color: $color-green;
+}
+
 .background-color-red {
+  background-color: $background-color-red;
+  color: $color-red;
+}
+
+.main-color-green {
+  background-color : $main-color-green;
+  color: $color-green;
+}
+.main-color-red {
   background-color: $main-color-red;
-  h5 {
-    color: $color-red;
-  }
+  color: $color-red;
 }
 
 .user-color {
   background-color: $main-color-green;
   border: 1px solid #00ffff;
-  color: $color-green;
   .border-line {
     border: 1px solid $color-green;
     border-radius: 3px;
@@ -49,23 +60,17 @@ $color-red: #eebbcb;
 }
 
 .my-color {
-  background-color: $background-color-red;
+  background-color: $main-color-red;
   border: 1px solid #ff0000;
+  color: $color-red;
   .border-line {
     border: 1px solid $color-red;
     border-radius: 3px;
-  }
-  h5, h6, p {
-    color: $color-red;
   }
 }
 
 .admin-font {
   font-family: "Noto Sans JP", sans-serif;
-}
-
-.color-red {
-  color: $color-red;
 }
 
 body {
@@ -75,9 +80,8 @@ body {
 }
 
 header {
-  background-color: $main-color-green;
+  height: 200px;
   border-bottom: solid 1px red;
-  color: $color-green;
   .header-window {
     display: flex;
     justify-content: center;
@@ -110,7 +114,7 @@ header {
 }
 
 .header-detail {
-  background-color: $background-color-red;
+  background-color: $main-color-red;
   width: 800px;
   height: 50px;
   border: solid 1px #ff0000;
@@ -188,7 +192,7 @@ main {
 
 .user-window {
   width: 500px;
-  background-color: $background-color-red;
+  background-color: $main-color-red;
   display: flex;
   justify-content: center;
   padding: 10px;
@@ -369,7 +373,6 @@ footer {
     }
   }
   .header-detail {
-    background-color: $background-color-red;
     margin-bottom: 20px;
   }
   .user-group {
@@ -381,6 +384,10 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
+
+  header {
+    height: 250px;
+  }
 
   .header-window {
     display: flex;
@@ -474,6 +481,10 @@ footer {
 
   p {
     font-size: 14px;
+  }
+
+  header {
+    height: 400px;
   }
   .user-window {
     width: 350px;
