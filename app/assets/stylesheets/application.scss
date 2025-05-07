@@ -16,13 +16,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Serif+JP&display=swap');
 
-$main-color-green: #165e83;
-$background-color-green: #203744;
-$color-green: #bce2e8;
+$main-color-green: #203744;
+$sub-color-green:  #165e83;
+$text-color-green: #bce2e8;
 
 $main-color-red: #6c2c2f;
-$background-color-red: #a22041;
-$color-red: #eebbcb;
+$sub-color-red: #a22041;
+$text-color-red: #eebbcb;
 
 * {
   margin : 0;
@@ -31,40 +31,37 @@ $color-red: #eebbcb;
   font-family: 'Zen Maru Gothic', serif;
 }
 
-.background-color-green {
-  background-color: $background-color-green;
-  color: $color-green;
-}
-
-.background-color-red {
-  background-color: $background-color-red;
-  color: $color-red;
-}
-
 .main-color-green {
-  background-color : $main-color-green;
-  color: $color-green;
+  background-color: $main-color-green;
+  color: $text-color-green;
 }
+.sub-color-green {
+  background-color: $sub-color-green;
+  color: $text-color-green;
+}
+
 .main-color-red {
   background-color: $main-color-red;
-  color: $color-red;
+  color: $text-color-red;
+}
+.sub-color-red {
+  background-color: $sub-color-red;
+  color: $text-color-red;
 }
 
-.user-color {
-  background-color: $main-color-green;
+.user-color-green {
+  @extend .sub-color-green;
   border: 1px solid #00ffff;
   .border-line {
-    border: 1px solid $color-green;
+    border: 1px solid $text-color-green;
     border-radius: 3px;
   }
 }
-
-.my-color {
-  background-color: $main-color-red;
+.user-color-red {
+  @extend .main-color-red;
   border: 1px solid #ff0000;
-  color: $color-red;
   .border-line {
-    border: 1px solid $color-red;
+    border: 1px solid $text-color-red;
     border-radius: 3px;
   }
 }
@@ -80,12 +77,30 @@ body {
 }
 
 header {
-  height: 200px;
   border-bottom: solid 1px red;
+  @extend .sub-color-green;
   .header-window {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+  }
+}
+
+.user-window {
+  @extend .user-color-red;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  .header-user-name {
+    width: 350px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 10px;
+    color: #fff;
   }
 }
 
@@ -113,12 +128,10 @@ header {
   }
 }
 
-.header-detail {
-  background-color: $main-color-red;
+.detail-window {
+  @extend .user-color-red;
   width: 800px;
   height: 50px;
-  border: solid 1px #ff0000;
-  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,7 +140,6 @@ header {
     div {
       width: 200px;
       h6 {
-      color: $color-red;
       font-size: 14px;
       width: 200px;
       overflow: hidden;
@@ -140,9 +152,8 @@ header {
 }
 
 main {
+  @extend .main-color-green;
   flex-grow: 1;
-  background-color: $background-color-green;
-  color: $color-green;
 }
 
 .home-image {
@@ -190,33 +201,13 @@ main {
   line-height: 20px;
 }
 
-.user-window {
-  width: 500px;
-  background-color: $main-color-red;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-  border: 1px solid red;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  .header-user-name {
-    width: 350px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin-top: 10px;
-    color: #fff;
-  }
-}
-
 .select-tag-bar {
   width: 300px;
 }
 
 .pagination>li>a {
+  @extend .sub-color-green;
   border: none;
-  background-color: $main-color-green;
-  color: $color-green;
   margin: 1px;
 }
 
@@ -230,6 +221,7 @@ main {
 }
 
 @mixin user_area($width) {
+  @extend .user-color-green;
   width: $width;
   display: flex;
   flex-direction: column;
@@ -253,7 +245,7 @@ main {
 }
 
 .post-image-border{
-  border: 3px solid $color-green;
+  border: 3px solid $text-color-green;
   border-radius: 3px;
 }
 
@@ -350,16 +342,15 @@ main {
   align-items: center;
   margin: 30px auto;
   h5 {
-    color: $color-green;
+    color: $text-color-green;
     text-align: center;
     margin: 50px auto;
   }
 }
 
 footer {
+  @extend .sub-color-green;
   border-top: solid 1px red;
-  background-color : $main-color-green;
-  color :$color-green;
   text-align: center;
   padding: 10px;
 }

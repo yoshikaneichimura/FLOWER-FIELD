@@ -15,9 +15,7 @@
   <body>
     <header class="
     <% if admin_signed_in? %>
-      background-color-red
-    <% else %>
-      main-color-green
+     sub-color-red
     <% end %>
     ">
       <div class="header-top">
@@ -33,7 +31,7 @@
               FIELD
             </h1>
           <% elsif admin_signed_in? %>
-            <h1 class="mt-1 admin-font color-red">
+            <h1 class="mt-1 admin-font">
               ADMIN
               <%= link_to admin_users_path do %>
                 <%= image_tag('F.F.png') %>
@@ -164,7 +162,7 @@
 
           <div class="row mb-3">
 
-            <div class="header-detail">
+            <div class="detail-window">
               <div>
                 <div>
                   <h6>総投稿件数：<%= PostImage.all.count %></h6>
@@ -215,12 +213,12 @@
 
     <footer class="
       <% if admin_signed_in? %>
-       background-color-red
+       sub-color-red
       <% end %>">
       <div class="container">
         <p class="
         <% if admin_signed_in? %>
-         admin-font color-red
+         admin-font
         <% end %>
         ">&copy; All rights reserved by tefutefu.Inc.</p>
         <% if user_signed_in? %>
