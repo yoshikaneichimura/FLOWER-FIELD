@@ -376,10 +376,6 @@ footer {
 
 @media screen and (max-width: 992px) {
 
-  header {
-    height: 250px;
-  }
-
   .header-window {
     display: flex;
     flex-direction: column;
@@ -393,7 +389,7 @@ footer {
     }
   }
 
-  .header-detail {
+  .detail-window {
     width: 600px;
     height: 70px;
     margin: 0 auto 20px auto;
@@ -501,7 +497,7 @@ footer {
     }
   }
 
-  .header-detail {
+  .detail-window {
     width: 300px;
     height: 140px;
     margin: 0 auto 20px auto;
