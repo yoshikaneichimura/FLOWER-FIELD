@@ -52,18 +52,13 @@ $text-color-red: #eebbcb;
 .user-color-green {
   @extend .sub-color-green;
   border: 1px solid #00ffff;
-  .border-line {
-    border: 1px solid $text-color-green;
-    border-radius: 3px;
-  }
+  border-radius: 3px;
+
 }
 .user-color-red {
   @extend .main-color-red;
   border: 1px solid #ff0000;
-  .border-line {
-    border: 1px solid $text-color-red;
-    border-radius: 3px;
-  }
+  border-radius: 3px;
 }
 
 .admin-font {
@@ -79,32 +74,34 @@ body {
 header {
   border-bottom: solid 1px red;
   @extend .sub-color-green;
-  .header-window {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
 }
 
-.user-window {
+.header-bottom {
+  display: flex;
+  align-items: baseline;
+}
+
+.user-name-window {
   @extend .user-color-red;
   width: 500px;
   display: flex;
-  justify-content: center;
+  align-items: baseline;
   padding: 10px;
   border-radius: 5px;
-  margin-bottom: 10px;
-  .header-user-name {
+  margin-bottom: 15px;
+  .user-name {
+    display: flex;
+    align-items: baseline;
     width: 350px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-top: 10px;
     color: #fff;
   }
 }
 
-.search-form-window {
+.user-search-window {
+  width: 600px;
   display: flex;
   justify-content: center;
   margin: 15px 0 0 10px;
@@ -128,7 +125,13 @@ header {
   }
 }
 
-.detail-window {
+.admin-window {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.admin-detail-window {
   @extend .user-color-red;
   width: 800px;
   height: 50px;
@@ -149,6 +152,10 @@ header {
       }
     }
   }
+}
+
+.admin-search-window {
+  margin-left: 10px;
 }
 
 main {
@@ -313,6 +320,7 @@ main {
 .user-block:nth-child(1) {
   margin: 10px auto;
 }
+
 .user-block:nth-child(2) {
   margin: 10px auto;
 }
@@ -324,7 +332,6 @@ main {
 .relationship-group {
   @include user_group(660px)
 }
-
 .flash-message-area {
   display: flex;
   justify-content: center;
@@ -357,18 +364,40 @@ footer {
 
 @media screen and (max-width: 1200px) {
 
-  .user-window {
-    width: 300px;
-    .header-user-name {
-      width: 150px;
+  .header-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-name-window {
+    width: 600px;
+    .user-name {
+      width: 300px;
     }
   }
-  .header-detail {
+
+  .user-search-window {
+    margin: 0 0 10px 0;
+  }
+
+  .admin-detail-window {
     margin-bottom: 20px;
   }
+
+  .admin-window {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .admin-search-window {
+    margin: 10 0 10 auto ;
+  }
+
   .user-group {
     @include user_group(880px)
   }
+
   .relationship-group {
     @include user_group(440px)
   }
@@ -376,20 +405,15 @@ footer {
 
 @media screen and (max-width: 992px) {
 
-  .header-window {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
   .user-window {
     width: 600px;
     margin: 0 auto;
-    .header-user-name {
+    .user-name {
       width: 350px;
     }
   }
 
-  .detail-window {
+  .admin-detail-window {
     width: 600px;
     height: 70px;
     margin: 0 auto 20px auto;
@@ -399,9 +423,6 @@ footer {
     }
   }
 
-  .search-form-window {
-    margin-top: 10px;
-  }
   .home-button {
     display: flex;
     flex-direction: column;
@@ -411,12 +432,12 @@ footer {
     }
   }
 
-  .post-image-border{
-  margin-bottom: 20px;
-}
+  .post-image-border {
+    margin-bottom: 20px;
+  }
+
   .user-block {
     margin-top: 10px;
-
   }
   .user-group {
     @include user_group(660px)
@@ -425,34 +446,38 @@ footer {
 
 @media screen and (max-width: 768px) {
 
-  .haeder-window{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .user-window {
+  .user-name-window {
     width: 500px;
   }
 
-  .search-form-window {
+  .user-search-window {
     width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   .search-form-top {
     width: 500px;
   }
+
   .search-form-day-start {
     width: 200px;
   }
+
   .search-form-day-end {
     width: 200px;
   }
+
+  .admin-detail-window {
+    width: 400px;
+  }
+
   .home-image {
     background-image: image-url("home_image2.jpg");
     background-position: bottom;
   }
+
   .comment-user-name {
     width: 200px;
     overflow: hidden;
@@ -473,21 +498,26 @@ footer {
   header {
     height: 400px;
   }
-  .user-window {
+
+  .user-name-window {
     width: 350px;
-    .header-user-name {
+    .user-name {
       width: 150px;
     }
   }
+
   .search-form-top {
     width: 340px;
   }
+
   .search-form-day-start {
     width: 155px;
   }
+
   .search-form-day-end {
     width: 155px;
   }
+
   .search-form-bottom {
     display: flex;
     flex-direction: column;
@@ -497,7 +527,7 @@ footer {
     }
   }
 
-  .detail-window {
+  .admin-detail-window {
     width: 300px;
     height: 140px;
     margin: 0 auto 20px auto;
@@ -509,12 +539,15 @@ footer {
     margin-bootm: 10px;
     }
   }
+
   .comment-user-name {
     width: 100px;
   }
+
   .user-group {
     @include user_group(220px)
   }
+
   .relationship-group {
     @include user_group(220px)
   }
