@@ -1,19 +1,24 @@
 <form>
   <div class="form-group">
-    <p>プロフィール画像</p>
-    <%= f.file_field :profile_image, class: "file-control", accept: "image/*"%>
+    <label for="InputProfileImage">プロフィール画像</label><br>
+    <%= f.file_field :profile_image, class: "file-control", id: "InputProfileImage", accept: "image/*"%>
   </div>
   <div class="form-group">
-    <p>ユーザーネーム</p>
-    <%= f.text_field :name, class: "form-control" %>
+    <label for="InputName">ユーザーネーム</label><br>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text"><i class="fa-solid fa-user"></i></div>
+      </div>
+      <%= f.text_field :name, class: "form-control", id: "InputName" %>
+    </div>
   </div>
   <div class="form-group">
-    <p>自己紹介</p>
-    <%= f.text_area :introduction, class: "form-control" %>
+    <label for="InputIntroduction">自己紹介</label><br>
+    <%= f.text_area :introduction, class: "form-control", id: "InputIntroduction" %>
   </div>
   <% if local_assigns[:admin_flag].present? %>
     <div class="form-group">
-      <p>会員状況</p>
+      <label>会員状況</label><br>
       <div class="form-check form-check-inline mr-5">
         <%= f.radio_button :is_active, true, class: "form-check-input" %>
         <label class="form-check-label">有効会員</label>

@@ -8,23 +8,43 @@
       <%= form_with model: @admin, url: admin_registration_path do |f| %>
         <form>
           <div class="form-group">
-            <%= f.label :"メールアドレス" %><br />
-            <%= f.email_field :email,class: "form-control", autofocus: true, autocomplete: "email" %>
+            <label for="InputEmail">メールアドレス</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa-solid fa-envelope"></i></div>
+              </div>
+            <%= f.email_field :email,class: "form-control",id: "InputEmail", autofocus: true, autocomplete: "email" %>
+            </div>
           </div>
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
           <% end %>
           <div class="form-group">
-            <%= f.label :"新しいパスワード" %><br />
-            <%= f.password_field :password,class: "form-control", autocomplete: "new-password" %>
+           <label for="InputPassword">新しいパスワード</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-lock"></i></div>
+              </div>
+            <%= f.password_field :password,class: "form-control",id: "InputPassword" ,autocomplete: "new-password" %>
+            </div>
           </div>
           <div class="form-group">
-            <%= f.label :"新しいパスワード確認用" %><br />
-            <%= f.password_field :password_confirmation,class: "form-control", autocomplete: "new-password" %>
+            <label for="InputPasswordConfirmation">新しいパスワード確認用</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-check-circle"></i></div>
+              </div>
+            <%= f.password_field :password_confirmation,class: "form-control",id: "InputPasswordConfirmation" ,autocomplete: "new-password" %>
+            </div>
           </div>
           <div class="form-group">
-            <%= f.label :"現在のパスワード" %><br />
-            <%= f.password_field :current_password,class: "form-control", autocomplete: "current-password" %>
+           <label for="InputCurrentPassword">現在のパスワード</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-lock-open"></i></div>
+              </div>
+            <%= f.password_field :current_password,class: "form-control",id: "InputCurrentPassword" ,autocomplete: "current-password" %>
+            </div>
           </div>
           <div class="actions">
             <%= f.submit "この内容で保存" ,class: "btn btn-success my-3" %>
