@@ -29,6 +29,7 @@ $text-color-red: #eebbcb;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Zen Maru Gothic', serif;
+  font-size: 16px;
 }
 
 .main-color-green {
@@ -74,6 +75,16 @@ body {
 header {
   border-bottom: solid 1px red;
   @extend .sub-color-green;
+}
+
+
+.header-heading {
+  display: flex;
+  align-items: center;
+  h1 {
+    letter-spacing: 0.05em;
+    margin: 5px;
+  }
 }
 
 .header-bottom {
@@ -365,6 +376,10 @@ footer {
 
 @media screen and (max-width: 1200px) {
 
+  .header-top {
+    display: block;
+  }
+
   .header-bottom {
     display: flex;
     flex-direction: column;
@@ -447,6 +462,10 @@ footer {
 
 @media screen and (max-width: 768px) {
 
+  * {
+    font-size: 14px;
+  }
+
   .user-name-window {
     width: 500px;
   }
@@ -492,8 +511,8 @@ footer {
 
 @media screen and (max-width: 567px) {
 
-  p {
-    font-size: 14px;
+  * {
+    font-size: 12px;
   }
 
   header {
