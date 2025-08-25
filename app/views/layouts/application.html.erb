@@ -25,34 +25,38 @@
             <% if user_signed_in? %>
 
             <div class="header-heading">
-                <h1>FLOWER</h1>
-                <h1>
-                  <%= link_to user_user_path(current_user.id) do %>
-                    <%= image_tag('F.F.png') %>
-                  <% end %>
-                </h1>
-                <h1>FIELD</h1>
-              </div>
+              <h1>FLOWER</h1>
+              <h1>
+                <%= link_to user_user_path(current_user.id) do %>
+                  <%= image_tag('F.F.png') %>
+                <% end %>
+              </h1>
+              <h1>FIELD</h1>
+            </div>
 
             <% elsif admin_signed_in? %>
 
-            <h1 class="mt-1 admin-font">
-                ADMIN
+            <div class="header-heading">
+              <h1 class="admin-font">ADMIN</h1>
+              <h1>
                 <%= link_to admin_users_path do %>
                   <%= image_tag('F.F.png') %>
                 <% end %>
-                PAGE
               </h1>
+              <h1 class="admin-font">PAGE</h1>
+            </div>
 
             <% else %>
 
-            <h1 class="mt-1">
-                FLOWER
+            <div class="header-heading">
+              <h1>FLOWER</h1>
+              <h1>
                 <%= link_to root_path do %>
                   <%= image_tag('F.F.png') %>
                 <% end %>
-                FIELD
               </h1>
+              <h1>FIELD</h1>
+            </div>
 
             <% end %>
 

@@ -32,6 +32,10 @@ $text-color-red: #eebbcb;
   font-size: 16px;
 }
 
+.size {
+  font-size: 24px;
+}
+
 .main-color-green {
   background-color: $main-color-green;
   color: $text-color-green;
@@ -166,7 +170,6 @@ header {
 }
 
 .admin-search-window {
-  width: 300px;
   margin-left: 10px;
 }
 
@@ -313,6 +316,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
+  margin-bottom: 10px;
 }
 
 .user-block {
@@ -325,7 +329,7 @@ main {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-top: 10px;
+    margin-top: 15px;
   }
 }
 
@@ -407,7 +411,7 @@ footer {
   }
 
   .admin-search-window {
-    margin-left: 0;
+    margin-left: auto;
   }
 
   .user-group {
