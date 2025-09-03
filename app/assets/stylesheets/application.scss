@@ -81,7 +81,6 @@ header {
   @extend .sub-color-green;
 }
 
-
 .header-heading {
   display: flex;
   align-items: center;
@@ -487,7 +486,7 @@ footer {
 
   .search-form-bottom {
     width: 500px;
-    }
+  }
 
   .search-form-day-start {
     width: 200px;
@@ -525,10 +524,6 @@ footer {
     font-size: 12px;
   }
 
-  header {
-    height: 400px;
-  }
-
   .user-name-window {
     width: 350px;
     .user-name {
@@ -537,25 +532,28 @@ footer {
   }
 
   .search-form-top {
-    width: 340px;
-  }
-
-  .search-form-day-start {
-    width: 155px;
-  }
-
-  .search-form-day-end {
-    width: 155px;
+    width: 350px;
   }
 
   .search-form-bottom {
+    width: 350px;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    .search-form-button {
-      margin-top: 10px;
+  }
+  .search-form-day {
+    width: 350px;
+    .search-form-day-start {
+      width: 160px;
+    }
+    .search-form-day-end {
+      width: 160px;
+      margin-right: 0px;
     }
   }
+  .search-form-button {
+      margin-top: 10px;
+    }
 
   .admin-detail-window {
     width: 300px;
