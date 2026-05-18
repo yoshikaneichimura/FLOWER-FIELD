@@ -1,6 +1,7 @@
 class User::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :guest_check, only: [:update]
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def index
     @users = User.recent
@@ -53,6 +54,13 @@ class User::UsersController < ApplicationController
    if current_user.email == 'guest@example.com'
       redirect_to user_user_path(current_user.id),notice: "ゲストユーザーの情報の編集はできません。"
    end
+  end
+
+  def ensure_correct_user
+     @user = User.find(params[:id])
+    if @user != current_user
+      redirect_to user_user_path(current_user.id)
+    end
   end
 
   private

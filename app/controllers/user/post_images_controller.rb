@@ -1,5 +1,6 @@
 class User::PostImagesController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post_image = PostImage.new
@@ -47,6 +48,13 @@ class User::PostImagesController < ApplicationController
     post_image.destroy
     flash[:erorr] = "投稿を削除しました。"
     redirect_to user_post_images_path
+  end
+
+  def ensure_correct_user
+    @post_image = PostImage.find(params[:id])
+    if @post_image.user != current_user
+      redirect_to user_user_path(current_user.id)
+    end
   end
 
   private
