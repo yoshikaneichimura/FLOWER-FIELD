@@ -102,7 +102,7 @@ header {
   align-items: baseline;
   padding: 10px;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin: 0 auto 15px 0;
   .user-name {
     display: flex;
     align-items: baseline;
@@ -118,31 +118,17 @@ header {
   width: 600px;
   display: flex;
   justify-content: center;
-  margin: 15px 0 0 10px;
-  .search-form-top {
-    margin: 5px;
-  }
-  .search-form-bottom {
-    display : flex;
-    justify-content: center;
-    margin: 5px;
-    .search-form-day {
-      display : flex;
-      justify-content: center;
-      span {
-        margin: 3px 5px 0;
-      }
-    }
-    .search-form-button {
-      margin-left: 10px;
-    }
-  }
+  margin-left: 10px;
 }
 
 .admin-window {
   display: flex;
   align-items: baseline;
   margin-bottom: 20px;
+}
+
+.search-form {
+  display: inline;
 }
 
 .admin-detail-window {
@@ -391,13 +377,16 @@ footer {
 
   .user-name-window {
     width: 600px;
+    margin: 0 0 15px 0;
     .user-name {
       width: 300px;
     }
   }
 
   .user-search-window {
-    margin: 0 0 10px 0;
+    display: flex;
+    justify-content: center;
+    margin: 0 0 15px 0;
   }
 
   .admin-detail-window {
@@ -423,14 +412,6 @@ footer {
 }
 
 @media screen and (max-width: 992px) {
-
-  .user-window {
-    width: 600px;
-    margin: 0 auto;
-    .user-name {
-      width: 350px;
-    }
-  }
 
   .admin-detail-window {
     width: 600px;
@@ -474,28 +455,10 @@ footer {
   }
 
   .user-search-window {
-    width: auto;
+    width: 500px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .search-form-top {
-    width: 500px;
-  }
-
-  .search-form-bottom {
-    width: 500px;
-  }
-
-  .search-form-day-start {
-    width: 200px;
-    margin-right: 5px;
-  }
-
-  .search-form-day-end {
-    width: 200px;
-    margin: 0 5px 0 5px;
+    justify-content: center;
+    margin: 0 0 10 0px;
   }
 
   .admin-detail-window {
@@ -531,29 +494,12 @@ footer {
     }
   }
 
-  .search-form-top {
-    width: 350px;
-  }
-
-  .search-form-bottom {
+  .user-search-window {
     width: 350px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    justify-content: center;
+    margin: 0 0 10 0px;
   }
-  .search-form-day {
-    width: 350px;
-    .search-form-day-start {
-      width: 160px;
-    }
-    .search-form-day-end {
-      width: 160px;
-      margin-right: 0px;
-    }
-  }
-  .search-form-button {
-      margin-top: 10px;
-    }
 
   .admin-detail-window {
     width: 300px;

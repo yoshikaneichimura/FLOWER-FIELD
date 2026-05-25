@@ -155,17 +155,8 @@
           <%= search_form_for @search, url: user_search_path do |f| %>
           <form>
             <div class="user-search-window">
-              <div class="search-form-top">
-              <%= f.text_field :flower_or_field_or_address_or_detail_cont, placeholder: "花の情報を検索",class: "form-control" %>
-              </div>
-              <div class="search-form-bottom">
-                <div class="search-form-day">
-                  <div class="search-form-day-start"><%= f.date_field :day_gteq,class: "form-control" %></div>
-                  <span>〜</span>
-                  <div class="search-form-day-end"><%= f.date_field :day_lteq,class: "form-control" %></div>
-                </div>
-                <div class="search-form-button"><%= f.submit '検索' ,class: "btn btn-danger" %></div>
-              </div>
+              <%= f.text_field :flower_or_field_or_address_or_detail_or_user_name_cont, placeholder: "キーワード検索",class: "form-control" %>
+              <%= f.submit '検索' ,class: "btn btn-danger ml-3" %>
             </div>
           </form>
           <% end %>
@@ -198,8 +189,8 @@
                     <div>
                       <%= f.search_field :name_or_introduction_cont, placeholder: "ユーザーの情報を検索" ,class: "form-control" %>
                     </div>
-                    <div class="ml-3">
-                      <%= f.submit '検索' ,class: "btn btn-danger" %>
+                    <div>
+                      <%= f.submit '検索' ,class: "btn btn-danger ml-3" %>
                     </div>
                   </div>
                 </form>
