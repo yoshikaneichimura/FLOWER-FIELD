@@ -31,7 +31,7 @@ class PostImage < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["user"]
+    ["tag"]
   end
 
   scope :include,     -> { includes(:user,image_attachment:[:blob]).joins(:user) }
