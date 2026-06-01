@@ -155,7 +155,7 @@
           <%= search_form_for @search, url: user_search_path do |f| %>
           <form>
             <div class="user-search-window">
-              <%= f.text_field :flower_or_field_or_day_or_address_or_detail, placeholder: "花の名前　花が咲いていた場所　住所",class: "form-control" %>
+              <%= f.text_field :flower_or_field_or_day_or_address_or_detail_or_tag_area_cont, placeholder: "花の名前　花が咲いていた場所　住所",class: "form-control" %>
               <%= f.submit '検索' ,class: "btn btn-danger ml-3" %>
             </div>
           </form>
