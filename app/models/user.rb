@@ -45,6 +45,14 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["name","introduction"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+     ["post_image"]
+  end
+
   scope :include, -> { includes(profile_image_attachment:[:blob]) }
   scope :active,  -> { where(is_active: "true") }
   scope :deleted, -> { where(is_active: "false")}
