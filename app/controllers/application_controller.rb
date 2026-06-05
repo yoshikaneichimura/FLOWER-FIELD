@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
         })
       @search_post_images = @search.result(distinct: true).page(params[:page]).sorted
     else admin_signed_in?
-      @search = User.ransack(params[:q])
-      @search_users = @search.result(distinct: true).sorted
+      @search = PostImage.ransack(params[:q])
+      @search_post_images = @search.result(distinct: true).page(params[:page]).sorted
     end
   end
 

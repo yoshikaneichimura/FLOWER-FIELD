@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-     ["post_image"]
+     ["post_images", "post_comments"]
   end
 
   scope :include, -> { includes(profile_image_attachment:[:blob]) }

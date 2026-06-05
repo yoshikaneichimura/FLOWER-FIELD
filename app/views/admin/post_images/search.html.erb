@@ -1,0 +1,13 @@
+<div class="container">
+  <h3 class="text-center mt-3">検索結果：<%= @search_post_images.count %> 件</h3>
+  <% if @search_post_images.exists? %>
+
+    <%= render 'user/post_images/flowers' ,post_images: @search_post_images %>
+
+  <% else %>
+    <div class="informetion">
+      <%= image_tag("green-flower.png")%>
+      <h5>＊ 見つかりませんでした。</h5>
+    </div>
+  <% end %>
+</div>
