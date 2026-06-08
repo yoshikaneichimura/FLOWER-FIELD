@@ -17,8 +17,20 @@ class ApplicationController < ActionController::Base
         })
       @search_post_images = @search.result(distinct: true).page(params[:page]).sorted
     else admin_signed_in?
-      @search = PostImage.ransack(params[:q])
-      @search_post_images = @search.result(distinct: true).page(params[:page]).sorted
+      # @search = PostImage.ransack(params[:q])
+      # @search_post_images = @search.result(distinct: true).page(params[:page]).sorted
+       @search = User.ransack(params[:q])
+      if params[:q].present? && params[:q][:name_or_introduction_or_post_comments_comment_cont].present?
+        key_words = params[:q][:name_or_introduction_or_post_comments_comment_cont].split(/[\p{blank}\s]+/)
+        grouping_hash = key_words.reduce({}) do |hash, word|
+          hash.merge(word => { name_or_introduction_or_post_comments_comment_cont: word})
+        end
+      end
+      @search = User.ransack({
+        combinator: "and",
+        groupings: grouping_hash
+        })
+      @search_users = @search.result(distinct: true).page(params[:page]).sorted
     end
   end
 

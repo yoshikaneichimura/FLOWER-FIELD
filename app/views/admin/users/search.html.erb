@@ -1,0 +1,12 @@
+<div class="container">
+  <h3 class="text-center mt-3">検索結果</h3>
+  <div class="d-flex justify-content-center mt-3">
+    <div class="user-group">
+      <% @search_users.each do |user| %>
+
+        <%= render 'user/users/user_block',user: user %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

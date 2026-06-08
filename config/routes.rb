@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     resources :post_images, only: [:index, :show, :edit, :update, :destroy] do
       resources :post_comments, only: [:destroy]
     end
-    get 'search' => 'post_images#search'
+    get 'search' => 'users#search'
     resources :users, only: [:index, :show, :edit ,:update] do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
