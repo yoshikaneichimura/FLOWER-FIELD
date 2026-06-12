@@ -152,15 +152,14 @@
             </div>
           </div>
 
-          <%= search_form_for @search, url: user_search_path do |f| %>
+          <%= search_form_for @search_form, url: user_search_path do |f| %>
           <form>
             <div class="user-search-window">
-              <%= f.search_field :flower_or_field_or_day_or_address_or_detail_or_tag_area_cont, placeholder: "花の名前　花が咲いていた場所　地域　詳細",class: "form-control" %>
+              <%= f.search_field :flower_or_field_or_day_or_address_or_detail_or_tag_area_cont, placeholder: "キーワード検索",class: "form-control" %>
               <%= f.submit '検索' ,class: "btn btn-danger ml-3" %>
             </div>
           </form>
           <% end %>
-
 
         <% elsif admin_signed_in? %>
 
@@ -184,11 +183,11 @@
               </div>
             </div>
             <div class="admin-search-window" >
-              <%= search_form_for @search, url: admin_search_path do |f| %>
+              <%= search_form_for @search_form, url: admin_search_path do |f| %>
                 <form>
                   <div class="form-inline">
                     <div>
-                      <%= f.search_field :name_or_introduction_or_post_comments_comment_cont, placeholder: "投稿者情報　コメント" ,class: "form-control" %>
+                      <%= f.search_field :name_or_introduction_or_post_comments_comment_cont, placeholder: "ユーザー情報 検索" ,class: "form-control" %>
                     </div>
                     <div>
                       <%= f.submit '検索' ,class: "btn btn-danger ml-3" %>
