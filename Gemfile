@@ -6,7 +6,7 @@ ruby '3.1.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+#gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -65,6 +65,10 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'kaminari','~> 1.2.1'
 gem 'ransack'
+
+#local development
+gem "nio4r", "2.7.3"
+gem "sqlite3", "1.6.9"
 
 gem 'dotenv-rails'
 group :production do
